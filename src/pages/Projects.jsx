@@ -35,8 +35,8 @@ const Projects = () => {
   // Highlights section - starts with last provided videoId, rest unchanged
   const highlights = [
     { videoId: '2qFnRXpSFn8' },
-    { videoId: 'CevxZvSJLk8' },
-    { videoId: 'kffacxfA7G4' },
+    { videoId: 'dRjCKw7YonM' },
+    { videoId: 'L9PMwOelcRk' },
     { videoId: 'qeMFqkcPYcg' },
     { videoId: 'SQoA_wjmE9w' },
     { videoId: 'ZbZSe6N_BXs' },
@@ -131,11 +131,13 @@ const Projects = () => {
           <h2 className='section-title font-[font2] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl uppercase text-center text-layer-2 text-glow'>
             Teasers
           </h2>
-          <VideoGrid 
-            videos={teasers} 
-            gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
-            aspectRatio="aspect-video"
-          />
+          <div className="w-full max-w-6xl">
+            <VideoGrid 
+              videos={teasers} 
+              gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+              aspectRatio="aspect-video"
+            />
+          </div>
         </section>
 
         {/* Highlights Section */}
@@ -143,11 +145,13 @@ const Projects = () => {
           <h2 className='section-title font-[font2] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl uppercase text-center text-layer-2 text-glow'>
             Highlights
           </h2>
-          <VideoGrid 
-            videos={highlights} 
-            gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            aspectRatio="aspect-video"
-          />
+          <div className="w-full max-w-7xl">
+            <VideoGrid 
+              videos={highlights} 
+              gridCols="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+              aspectRatio="aspect-video"
+            />
+          </div>
         </section>
       </div>
       </div>
