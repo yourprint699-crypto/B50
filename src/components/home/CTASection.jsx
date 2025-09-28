@@ -90,8 +90,8 @@ const CTASection = () => {
     >
       <div className="cinematic-overlay"></div>
       <div className="container mx-auto text-center w-full">
-        <div className="max-width-wide">
-          <div className="floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12">
+        <div className="max-width-wide mx-auto">
+          <div className="floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12 flex flex-col items-center justify-center">
             <h2 
             id="cta-heading"
               className="cta-fade font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow"
@@ -99,7 +99,7 @@ const CTASection = () => {
             Ready to Create Magic?
             </h2>
 
-            <p className="cta-fade font-[font1] text-responsive leading-relaxed text-layer-2 max-width-text">
+            <p className="cta-fade font-[font1] text-responsive leading-relaxed text-layer-2 max-width-text mx-auto">
             Transformons votre jour spécial en un chef-d'œuvre cinématographique qui raconte votre histoire unique.
             </p>
 
@@ -125,9 +125,9 @@ const CTASection = () => {
               </Link>
             </div>
 
-            <div className="cta-fade responsive-grid-3 text-center">
+            <div className="cta-fade responsive-grid-3 text-center mx-auto">
               {statsData.map((stat, index) => (
-                <div key={stat.label} className="floating-panel-dark glass-hover space-y-3 sm:space-y-4">
+                <div key={stat.label} className="floating-panel-dark glass-hover space-y-3 sm:space-y-4 flex flex-col items-center justify-center">
                   <div className="text-2xl sm:text-3xl lg:text-4xl font-[font2] text-[#D3FD50] glow-accent text-layer-2 text-glow-strong">
                   {stat.value}
                   </div>

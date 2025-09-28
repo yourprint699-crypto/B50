@@ -73,18 +73,18 @@ const PricingSection = () => {
     <section id="pricing" ref={sectionRef} className='min-h-screen section-dark text-white relative depth-3 section-transition'>
       <div className="cinematic-overlay"></div>
       <div className='container mx-auto section-padding'>
-        <div className='text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8'>
+        <div className='flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto'>
           <h2 className='pricing-title font-[font2] heading-responsive-xl uppercase mb-6 sm:mb-8 lg:mb-10 leading-tight text-layer-3 text-glow'>
             Get a Quote
           </h2>
           
           {/* Pricing Hero Content */}
-          <div className='pricing-content floating-panel-dark max-width-content space-y-6 sm:space-y-8'>
-            <div className='text-center space-y-4 sm:space-y-6'>
+          <div className='pricing-content floating-panel-dark max-width-content mx-auto space-y-6 sm:space-y-8'>
+            <div className='flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6'>
               <p className='font-[font1] text-2xl sm:text-3xl lg:text-4xl leading-relaxed text-layer-2'>
                 Our editing starts at just <span className='text-[#D3FD50] glow-accent text-glow-strong'>$99</span>
               </p>
-              <p className='font-[font1] text-responsive leading-relaxed text-layer-1 max-width-text'>
+              <p className='font-[font1] text-responsive leading-relaxed text-layer-1 max-width-text mx-auto'>
                 Final pricing changes depending on the project type, complexity, and requirements.
               </p>
             </div>

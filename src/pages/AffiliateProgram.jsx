@@ -58,11 +58,11 @@ const AffiliateProgram = () => {
       <div className='container mx-auto section-padding'>
         <div className='max-width-wide'>
           {/* Header */}
-          <div className='text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8'>
+          <div className='flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto'>
             <h1 className='font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow'>
               Affiliate Program
             </h1>
-            <div className='floating-panel-dark max-width-content'>
+            <div className='floating-panel-dark max-width-content mx-auto'>
               <p className='font-[font1] text-responsive leading-relaxed text-layer-2'>
               Rejoignez notre programme d'affiliation et gagnez des commissions en recommandant nos services de vidéographie de mariage premium.
               </p>
@@ -70,7 +70,7 @@ const AffiliateProgram = () => {
           </div>
 
           {/* Commission Highlight */}
-          <div className='text-center component-margin'>
+          <div className='flex justify-center items-center component-margin'>
             <div className='floating-panel-dark bg-gradient-to-br from-[#D3FD50] to-[#b8e03e] inline-block glow-accent glass-hover animate-glow-pulse'>
               <h2 className='font-[font2] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl uppercase text-black mb-4 sm:mb-6 text-layer-2'>
                 15% Lifetime
@@ -83,11 +83,11 @@ const AffiliateProgram = () => {
 
           {/* Program Overview */}
           <section className='component-margin'>
-            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-8 sm:mb-10 lg:mb-12 text-center text-glow'>
+            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-8 sm:mb-10 lg:mb-12 text-center text-glow mx-auto'>
               Program Overview
             </h2>
-            <div className='floating-panel-dark'>
-              <p className='font-[font1] text-responsive leading-relaxed text-layer-1 text-center max-width-text'>
+            <div className='floating-panel-dark mx-auto'>
+              <p className='font-[font1] text-responsive leading-relaxed text-layer-1 text-center max-width-text mx-auto'>
                 Our affiliate program is designed for wedding professionals, influencers, and anyone with connections in the wedding industry. 
                 Earn substantial commissions by referring couples to our premium wedding videography services.
               </p>
@@ -96,7 +96,7 @@ const AffiliateProgram = () => {
 
           {/* Benefits Grid */}
           <section className='component-margin'>
-            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-10 sm:mb-12 lg:mb-16 text-center text-glow'>
+            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-10 sm:mb-12 lg:mb-16 text-center text-glow mx-auto'>
               Program Benefits
             </h2>
             <div className='responsive-grid-2'>
@@ -126,7 +126,7 @@ const AffiliateProgram = () => {
 
           {/* Requirements */}
           <section className='component-margin'>
-            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-6 sm:mb-8 text-center text-glow'>
+            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-6 sm:mb-8 text-center text-glow mx-auto'>
               Eligibility Requirements
             </h2>
             <div className='glass rounded-xl sm:rounded-2xl responsive-padding-lg'>
@@ -147,7 +147,7 @@ const AffiliateProgram = () => {
 
           {/* Sign-up Process */}
           <section className='component-margin'>
-            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-6 sm:mb-8 text-center text-glow'>
+            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-6 sm:mb-8 text-center text-glow mx-auto'>
               How to Join
             </h2>
             <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8'>
@@ -170,7 +170,7 @@ const AffiliateProgram = () => {
 
           {/* FAQ */}
           <section className='component-margin'>
-            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-6 sm:mb-8 text-center text-glow'>
+            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-6 sm:mb-8 text-center text-glow mx-auto'>
               Frequently Asked Questions
             </h2>
             <div className='space-y-4 sm:space-y-6'>
@@ -189,14 +189,14 @@ const AffiliateProgram = () => {
 
           {/* AmouraWorks Branding */}
           <section className='component-margin'>
-            <div className='floating-panel-dark rounded-xl sm:rounded-2xl text-center'>
+            <div className='floating-panel-dark rounded-xl sm:rounded-2xl text-center mx-auto'>
               <h3 className='font-[font2] heading-responsive-lg uppercase text-[#D3FD50] mb-4 sm:mb-6 text-glow'>
                 Powered by AmouraWorks
               </h3>
-              <p className='font-[font1] text-responsive text-layer-2 leading-relaxed mb-6 sm:mb-8 max-width-text'>
+              <p className='font-[font1] text-responsive text-layer-2 leading-relaxed mb-6 sm:mb-8 max-width-text mx-auto'>
                 Notre programme d'affiliation est géré par AmouraWorks, garantissant des paiements fiables, un suivi transparent et un support professionnel.
               </p>
-              <div className='inline-flex items-center space-x-3 sm:space-x-4'>
+              <div className='flex items-center justify-center space-x-3 sm:space-x-4'>
                 <div className='w-10 h-10 sm:w-12 sm:h-12 bg-[#D3FD50] rounded-full flex items-center justify-center glow-accent micro-bounce'>
                   <span className='font-[font2] text-black text-lg sm:text-xl'>A</span>
                 </div>
@@ -209,10 +209,10 @@ const AffiliateProgram = () => {
 
           {/* Contact for Affiliates */}
           <section className='component-margin'>
-            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-6 sm:mb-8 text-center text-glow'>
+            <h2 className='font-[font2] heading-responsive-lg uppercase text-layer-2 mb-6 sm:mb-8 text-center text-glow mx-auto'>
               Affiliate Support
             </h2>
-            <div className='glass rounded-lg sm:rounded-xl responsive-padding-md text-center'>
+            <div className='glass rounded-lg sm:rounded-xl responsive-padding-md text-center mx-auto'>
               <p className='font-[font1] text-responsive text-layer-1 mb-3 sm:mb-4'>
                 Questions about the affiliate program? Our dedicated team is here to help.
               </p>
@@ -228,7 +228,7 @@ const AffiliateProgram = () => {
           </section>
 
           {/* CTA */}
-          <div className='text-center'>
+          <div className='flex justify-center items-center'>
             <Link 
               to='/contact'
               className='btn-pill btn-primary h-12 sm:h-14 lg:h-16 px-8 sm:px-12 lg:px-16 inline-flex items-center justify-center group'

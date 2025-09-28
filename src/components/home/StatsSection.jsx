@@ -112,7 +112,7 @@ const StatsSection = () => {
       <div className="cinematic-overlay"></div>
       <div className='container mx-auto section-padding'>
         {/* Section Header */}
-        <div className='text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8'>
+        <div className='flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto'>
           <h2 className='stats-title font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow'>
             A Few Stats About Us
           </h2>

@@ -17,11 +17,11 @@ const Contact = () => {
     <PageWrapper className='section-dark text-white'>
       <div className="cinematic-overlay"></div>
       {/* Header */}
-      <div className='pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 text-center container mx-auto'>
+      <div className='pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 flex flex-col items-center justify-center text-center container mx-auto'>
         <h1 className='contact-content font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow'>
           Contact Us
         </h1>
-        <div className='floating-panel-dark max-width-content'>
+        <div className='floating-panel-dark max-width-content mx-auto'>
           <p className='contact-content font-[font1] text-responsive leading-relaxed text-layer-2'>
         The first step to your perfect film is a simple hello. Reach out to us today
           </p>

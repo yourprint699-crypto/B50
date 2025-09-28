@@ -107,12 +107,12 @@ const Projects = () => {
       <div className="cinematic-overlay"></div>
       <div className='container mx-auto section-padding mb-[30vh] sm:mb-[40vh] lg:mb-[50vh]'>
       {/* Page Header */}
-      <div className='pt-[25vh] sm:pt-[30vh] lg:pt-[35vh] component-margin text-center'>
-        <div className='floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12'>
+      <div className='pt-[25vh] sm:pt-[30vh] lg:pt-[35vh] component-margin flex flex-col items-center justify-center text-center'>
+        <div className='floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12 mx-auto'>
           <h1 className='font-[font2] heading-responsive-xl uppercase text-white text-layer-3 text-glow'>
             The designs that turn vision into a bold reality
           </h1>
-          <div className='text-center'>
+          <div className='flex justify-center items-center'>
             <Link 
               to='/contact'
               className='btn-pill btn-primary h-12 sm:h-16 lg:h-20 px-8 sm:px-12 lg:px-16 inline-flex items-center justify-center group'
@@ -127,7 +127,7 @@ const Projects = () => {
 
       <div className='projects-content space-y-16 sm:space-y-24 lg:space-y-32'>
         {/* Teasers Section */}
-        <section className='floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12'>
+        <section className='floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12 flex flex-col items-center'>
           <h2 className='section-title font-[font2] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl uppercase text-center text-layer-2 text-glow'>
             Teasers
           </h2>
@@ -139,7 +139,7 @@ const Projects = () => {
         </section>
 
         {/* Highlights Section */}
-        <section className='floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12'>
+        <section className='floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12 flex flex-col items-center'>
           <h2 className='section-title font-[font2] text-3xl sm:text-4xl lg:text-5xl xl:text-6xl uppercase text-center text-layer-2 text-glow'>
             Highlights
           </h2>
