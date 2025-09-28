@@ -27,7 +27,7 @@ const PricingSection = () => {
       }
     )
 
-    gsap.fromTo('.pricing-card',
+    gsap.fromTo('.pricing-content',
       {
         opacity: 0,
         y: 40,
@@ -43,7 +43,7 @@ const PricingSection = () => {
           amount: 0.4
         },
         scrollTrigger: {
-          trigger: '.pricing-grid',
+          trigger: '.pricing-content',
           start: 'top 75%',
           toggleActions: 'play none none none'
         }
@@ -51,53 +51,21 @@ const PricingSection = () => {
     )
   })
 
-  const pricingPlans = [
+  const highlights = [
     {
-      title: 'Essential',
-      price: '€1,200',
-      subtitle: 'Perfect for intimate ceremonies',
-      features: [
-        '4-6 hours of coverage',
-        '2-3 minute highlight reel',
-        'Full ceremony footage',
-        'Professional editing',
-        'Digital delivery',
-        '1 revision included'
-      ],
-      popular: false
+      icon: '✅',
+      title: 'Unlimited Revisions',
+      description: 'We work until you\'re completely satisfied'
     },
     {
-      title: 'Premium',
-      price: '€2,500',
-      subtitle: 'Our most popular package',
-      features: [
-        '8-10 hours of coverage',
-        '5-7 minute cinematic film',
-        'Full ceremony & reception',
-        'Drone footage included',
-        'Same-day highlights',
-        'Professional color grading',
-        'Digital + USB delivery',
-        '3 revisions included'
-      ],
-      popular: true
+      icon: '⏱',
+      title: 'On-Time Delivery Guarantee',
+      description: 'Your project delivered exactly when promised'
     },
     {
-      title: 'Luxury',
-      price: '€4,200',
-      subtitle: 'Complete wedding documentation',
-      features: [
-        'Full day coverage (12+ hours)',
-        '10-15 minute feature film',
-        'Multiple camera angles',
-        'Drone & gimbal footage',
-        'Same-day highlights',
-        'Raw footage access',
-        'Custom music licensing',
-        'Premium packaging',
-        'Unlimited revisions'
-      ],
-      popular: false
+      icon: '🛡',
+      title: 'Risk-Free First Edit',
+      description: 'See our quality before you commit'
     }
   ]
 
@@ -106,103 +74,70 @@ const PricingSection = () => {
       <div className="cinematic-overlay"></div>
       <div className='container mx-auto section-padding'>
         <div className='text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8'>
-          <h2 className='pricing-title font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow'>
-            Pricing
+          <h2 className='pricing-title font-[font2] heading-responsive-xl uppercase mb-6 sm:mb-8 lg:mb-10 leading-tight text-layer-3 text-glow'>
+            Get a Quote
           </h2>
-          <div className='floating-panel-dark max-width-content'>
-            <p className='font-[font1] text-responsive leading-relaxed text-layer-2'>
-              Choisissez le forfait qui correspond parfaitement à votre vision et à votre budget.
-            </p>
+          
+          {/* Pricing Hero Content */}
+          <div className='pricing-content floating-panel-dark max-width-content space-y-6 sm:space-y-8'>
+            <div className='text-center space-y-4 sm:space-y-6'>
+              <p className='font-[font1] text-2xl sm:text-3xl lg:text-4xl leading-relaxed text-layer-2'>
+                Our editing starts at just <span className='text-[#D3FD50] glow-accent text-glow-strong'>$99</span>
+              </p>
+              <p className='font-[font1] text-responsive leading-relaxed text-layer-1 max-width-text'>
+                Final pricing changes depending on the project type, complexity, and requirements.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className='pricing-grid responsive-grid-3 max-width-wide'>
-          {pricingPlans.map((plan, index) => (
-            <div 
-              key={index}
-              className={`pricing-card group floating-panel-dark glass-hover glass-click gpu-accelerated relative ${
-                plan.popular ? 'border-2 border-[#D3FD50] glow-accent' : ''
-              }`}
-            >
-              {/* Popular Badge */}
-              {plan.popular && (
-                <div className='absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-[#D3FD50] to-[#b8e03e] text-black px-4 sm:px-6 py-1 sm:py-2 rounded-full text-xs sm:text-sm font-[font2] uppercase tracking-wide glow-accent'>
-                  Most Popular
+        {/* Highlights Grid */}
+        <div className='component-margin max-width-wide'>
+          <div className='responsive-grid-3'>
+            {highlights.map((highlight, index) => (
+              <div 
+                key={index}
+                className='pricing-content group floating-panel-dark glass-hover glass-click gpu-accelerated text-center'
+              >
+                <div className='text-4xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8 micro-bounce glow-accent'>
+                  {highlight.icon}
                 </div>
-              )}
-              
-              {/* Plan Header */}
-              <div className='text-center mb-6 sm:mb-8'>
-                <h3 className='font-[font2] heading-responsive-md uppercase text-layer-2 mb-2 sm:mb-3'>
-                  {plan.title}
-                </h3>
-                <div className='mb-3 sm:mb-4'>
-                  <span className='font-[font2] text-3xl sm:text-4xl lg:text-5xl text-[#D3FD50] glow-accent text-glow-strong'>
-                    {plan.price}
-                  </span>
+                
+                <div className='space-y-4 sm:space-y-6'>
+                  <h3 className='font-[font2] heading-responsive-md uppercase text-layer-2'>
+                    {highlight.title}
+                  </h3>
+                  <p className='font-[font1] text-responsive leading-relaxed text-layer-1'>
+                    {highlight.description}
+                  </p>
                 </div>
-                <p className='font-[font1] text-sm sm:text-base text-layer-1 italic'>
-                  {plan.subtitle}
-                </p>
+
+                <div className='w-full accent-line mt-6 sm:mt-8 rounded-full glow-accent'></div>
               </div>
-
-              {/* Features List */}
-              <ul className='space-y-3 sm:space-y-4 mb-8 sm:mb-10 flex-1'>
-                {plan.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className='flex items-start space-x-3 sm:space-x-4'>
-                    <span className='w-2 h-2 sm:w-3 sm:h-3 bg-gradient-to-r from-[#D3FD50] to-[#b8e03e] rounded-full flex-shrink-0 mt-2 sm:mt-2.5 micro-bounce glow-accent'></span>
-                    <span className='font-[font1] text-responsive leading-relaxed text-layer-1'>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA Button */}
-              <div className='text-center'>
-                <button 
-                  onClick={() => {
-                    const element = document.getElementById('contact')
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                    }
-                  }}
-                  className={`w-full btn-pill h-12 sm:h-14 font-[font2] text-base sm:text-lg ${
-                    plan.popular 
-                      ? 'btn-primary' 
-                      : 'btn-secondary'
-                  }`}
-                >
-                  Get Started
-                </button>
-              </div>
-
-              {/* Hover accent line */}
-              <div className='w-full accent-line mt-6 sm:mt-8 rounded-full glow-accent'></div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
-        {/* Additional Info */}
+        {/* CTA Section */}
         <div className='text-center component-margin'>
-          <div className='floating-panel-dark max-width-content'>
-            <p className='font-[font1] text-responsive text-layer-1 mb-4 sm:mb-6'>
-              Tous les forfaits incluent une consultation gratuite et un devis personnalisé.
+          <div className='pricing-content floating-panel-dark max-width-content space-y-6 sm:space-y-8'>
+            <button 
+              onClick={() => {
+                const element = document.getElementById('contact')
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              }}
+              className='btn-pill btn-primary h-12 sm:h-16 lg:h-20 px-8 sm:px-12 lg:px-16 inline-flex items-center justify-center group'
+            >
+              <span className='font-[font2] text-base sm:text-xl lg:text-2xl'>
+                Request a Quote
+              </span>
+            </button>
+            
+            <p className='font-[font1] text-sm sm:text-base text-layer-1'>
+              Free consultation • No commitment required
             </p>
-            <div className='flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-6 lg:space-x-8'>
-              <div className='flex items-center space-x-2 sm:space-x-3'>
-                <span className='text-lg sm:text-xl micro-bounce glow-accent'>💎</span>
-                <span className='font-[font1] text-sm sm:text-base text-layer-1'>Premium Quality</span>
-              </div>
-              <div className='flex items-center space-x-2 sm:space-x-3'>
-                <span className='text-lg sm:text-xl micro-bounce glow-accent'>⚡</span>
-                <span className='font-[font1] text-sm sm:text-base text-layer-1'>Fast Delivery</span>
-              </div>
-              <div className='flex items-center space-x-2 sm:space-x-3'>
-                <span className='text-lg sm:text-xl micro-bounce glow-accent'>🎯</span>
-                <span className='font-[font1] text-sm sm:text-base text-layer-1'>100% Satisfaction</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
