@@ -243,18 +243,18 @@ const Header = () => {
                   {item.href.startsWith('#') ? (
                     <button
                       onClick={(e) => handleSmoothScroll(e, item.href)}
-                      className="nav-link font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group"
+                      className="nav-link font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer"
                     >
                       {item.name}
-                      <span className="nav-underline absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full" />
+                      <span className="nav-underline absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full pointer-events-none" />
                     </button>
                   ) : (
                     <Link
                       to={item.href}
-                      className="nav-link font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group"
+                      className="nav-link font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer"
                     >
                       {item.name}
-                      <span className="nav-underline absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full" />
+                      <span className="nav-underline absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full pointer-events-none" />
                     </Link>
                   )}
                 </div>
