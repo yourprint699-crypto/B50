@@ -79,7 +79,7 @@ const WhyUsSection = () => {
   const highlights = [
     {
       icon: '✓',
-      title: 'Unlimited Revisions',
+      title: 'Multiple Revisions',
       description:
         'We work until you\'re completely satisfied with every detail of your wedding film.',
     },
