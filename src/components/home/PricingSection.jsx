@@ -53,7 +53,7 @@ const PricingSection = () => {
 
   const highlights = [
     {
-      icon: '✅',
+      icon: '✓',
       title: 'Unlimited Revisions',
       description: 'We work until you\'re completely satisfied'
     },
@@ -63,7 +63,7 @@ const PricingSection = () => {
       description: 'Your project delivered exactly when promised'
     },
     {
-      icon: '🛡',
+      icon: '❖',
       title: 'Risk-Free First Edit',
       description: 'See our quality before you commit'
     }
