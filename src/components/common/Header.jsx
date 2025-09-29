@@ -163,7 +163,7 @@ const Header = () => {
 
   const navigationItems = [
     { name: 'Portfolio', href: '/projects' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'Estimate', href: '#pricing' },
     { name: 'Contact Us', href: '/contact' }
   ]
 
