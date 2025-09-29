@@ -9,7 +9,6 @@ import StatsSection from '../components/home/StatsSection'
 import PricingSection from '../components/home/PricingSection'
 import ServicesSection from '../components/home/ServicesSection'
 import ProcessSection from '../components/home/ProcessSection'
-import CTASection from '../components/home/CTASection'
 import AboutSection from '../components/home/AboutSection'
 import ContactSection from '../components/home/ContactSection'
 import Footer from '../components/home/Footer'
@@ -114,9 +113,6 @@ const Home = () => {
         
         {/* Process Section */}
         <ProcessSection />
-        
-        {/* Call-to-Action Section */}
-        <CTASection />
         
         {/* About Us Section */}
         <AboutSection />
