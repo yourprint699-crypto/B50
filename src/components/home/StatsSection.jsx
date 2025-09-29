@@ -31,7 +31,7 @@ const StatsSection = () => {
       number: 7,
       suffix: ' yrs',
       label: 'Post-production experience',
-      icon: '🏆'
+      icon: '⚝'
     }
   ]
 
