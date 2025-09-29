@@ -58,7 +58,7 @@ const PricingSection = () => {
       description: 'We work until you\'re completely satisfied'
     },
     {
-      icon: '⏱',
+      icon: '⧗',
       title: 'On-Time Delivery Guarantee',
       description: 'Your project delivered exactly when promised'
     },
