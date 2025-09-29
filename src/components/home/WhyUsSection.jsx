@@ -88,7 +88,7 @@ const WhyUsSection = () => {
       icon: '🎯',
       title: 'Editing with Heart',
       description:
-        'We follow the pulse of the story. Every choice is made to keep it breathing, flowing, and feeling real from start to finish.',
+        'We follow the pulse of the story. Every choice is made to keep it breathing, flowing, and feeling real from start to finish.                                                                                     ',
     },
     {
       icon: '🔥',
