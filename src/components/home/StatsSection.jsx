@@ -10,14 +10,14 @@ const StatsSection = () => {
   // Configurable stats data for easy editing
   const statsData = [
     {
-      number: 2000,
+      number: 500,
       suffix: '+',
       label: 'Wedding projects completed',
       icon: '⚘'
     },
     {
-      number: 150,
-      suffix: '+',
+      number: 99,
+      suffix: '%',
       label: 'Happy Videographers',
       icon: '◉'
     },
@@ -28,7 +28,7 @@ const StatsSection = () => {
       icon: '✎'
     },
     {
-      number: 7,
+      number: 5,
       suffix: ' yrs',
       label: 'Post-production experience',
       icon: '⚝'
