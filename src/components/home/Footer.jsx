@@ -54,24 +54,8 @@ const Footer = () => {
     <footer ref={footerRef} className='section-dark text-white relative depth-3'>
       <div className="cinematic-overlay"></div>
       <div className='container mx-auto section-padding'>
-        {/* Main CTA Section */}
-        <div className='text-center component-margin footer-content'>
-          <div className='floating-panel-dark space-y-6 sm:space-y-8'>
-            <h2 className='font-[font2] text-4xl sm:text-5xl lg:text-[6vw] uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow'>
-            Let's Talk About Your Project
-            </h2>
-            <div className='flex justify-center'>
-              <button className='btn-pill btn-primary h-12 sm:h-14 lg:h-16 px-6 sm:px-8 lg:px-12 group'>
-                <span className='font-[font2] text-base sm:text-lg lg:text-xl'>
-                Inquire Now
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-
         {/* Footer Information Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 mb-12 sm:mb-16' style={{ opacity: 1, visibility: 'visible' }}>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 mb-12 sm:mb-16 mt-8 sm:mt-12 lg:mt-16' style={{ opacity: 1, visibility: 'visible' }}>
           {/* Quick Links */}
           <div className='footer-content floating-panel-dark space-y-4 sm:space-y-6' style={{ opacity: 1, visibility: 'visible' }}>
             <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] mb-4 sm:mb-6 text-layer-2'>
