@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-import { Link } from 'react-router-dom';
 
 const WhyUsSection = () => {
   const sectionRef = useRef(null);
@@ -12,7 +11,7 @@ const WhyUsSection = () => {
   useGSAP(() => {
     // Animate section title
     gsap.fromTo(
-      '.why-us-title',
+      '.quote-title',
       {
         opacity: 0,
         y: 50,
@@ -23,7 +22,7 @@ const WhyUsSection = () => {
         duration: 1,
         ease: 'power2.out',
         scrollTrigger: {
-          trigger: '.why-us-title',
+          trigger: '.quote-title',
           start: 'top 80%',
           toggleActions: 'play none none none',
         },
@@ -53,7 +52,7 @@ const WhyUsSection = () => {
 
     // Animate benefit cards with stagger
     gsap.fromTo(
-      '.benefit-card',
+      '.quote-card',
       {
         opacity: 0,
         y: 40,
@@ -69,7 +68,7 @@ const WhyUsSection = () => {
           amount: 0.4,
         },
         scrollTrigger: {
-          trigger: '.benefits-grid',
+          trigger: '.quote-grid',
           start: 'top 75%',
           toggleActions: 'play none none none',
         },
@@ -77,71 +76,74 @@ const WhyUsSection = () => {
     );
   });
 
-  const benefits = [
+  const highlights = [
     {
-      icon: '✦',
-      title: 'Storycraft',
+      icon: '✓',
+      title: 'Unlimited Revisions',
       description:
-        'At Amoura Works, stories are what drive us. We notice the moments others might miss. A smile that flickers, a silence that speaks, a spark that lingers. These are the threads we weave into stories that stay with you.',
+        'We work until you\'re completely satisfied with every detail of your wedding film.',
     },
     {
-      icon: '✄',
-      title: 'Editing with Heart',
+      icon: '⧗',
+      title: 'On-Time Delivery Guarantee',
       description:
-        'We follow the pulse of the story. Every choice is made to keep it breathing, flowing, and feeling real from start to finish.',
+        'Your project delivered exactly when promised, every single time.',
     },
     {
-      icon: '∞',
-      title: 'The Feeling That Lasts',
+      icon: '❖',
+      title: 'Risk-Free First Edit',
       description:
-        'What matters isn’t the edit itself, it’s what lingers after. A laugh you carry, a silence that stirs something, a moment you want to replay.',
-    },
-    {
-      icon: '⤻',
-      title: 'With You, All the Way',
-      description:
-        'For us, this is personal. We listen, we collaborate, we get excited about your story and we won’t stop until it feels right.',
+        'See our quality before you commit. Experience our craftsmanship firsthand.',
     },
   ];
 
   return (
     <section
-      id="why-us"
+      id="quote"
       className="min-h-screen section-dark text-white relative depth-3 section-transition"
     >
       <div className="cinematic-overlay"></div>
       <div className="container mx-auto section-padding">
         {/* Section Header */}
         <div className="flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto">
-          <h2 className="why-us-title font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow">
-          Get to Know the Amoura Promise
+          <h2 className="quote-title font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow">
+            Get a Quote
           </h2>
           <div className="floating-panel-dark max-width-content mx-auto">
             <p className="intro-text font-[font1] text-responsive leading-relaxed text-layer-2">
-            Creative • Reliable • Timely
+              Our editing starts at just <span className='text-[#D3FD50] glow-accent text-glow-strong'>$99</span>
             </p>
           </div>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="benefits-grid responsive-grid-2 max-width-wide">
-          {benefits.map((benefit, index) => (
+        {/* Pricing Hero Content */}
+        <div className='quote-card floating-panel-dark max-width-content mx-auto space-y-6 sm:space-y-8 component-margin'>
+          <div className='flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6'>
+            <p className='font-[font1] text-responsive leading-relaxed text-layer-1 max-width-text mx-auto'>
+              Final pricing changes depending on the project type, complexity, and requirements.
+            </p>
+          </div>
+        </div>
+
+        {/* Highlights Grid */}
+        <div className="quote-grid responsive-grid-3 max-width-wide component-margin">
+          {highlights.map((highlight, index) => (
             <div
               key={index}
-              className="benefit-card group floating-panel-dark glass-hover glass-click gpu-accelerated"
+              className="quote-card group floating-panel-dark glass-hover glass-click gpu-accelerated text-center"
             >
               {/* Icon */}
-              <div className="text-5xl sm:text-6xl lg:text-7xl mb-6 sm:mb-8 micro-bounce glow-accent">
-                {benefit.icon}
+              <div className="text-4xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8 micro-bounce glow-accent">
+                {highlight.icon}
               </div>
 
               {/* Content */}
               <div className="space-y-4 sm:space-y-6">
                 <h3 className="font-[font2] heading-responsive-md uppercase text-layer-2">
-                  {benefit.title}
+                  {highlight.title}
                 </h3>
                 <p className="font-[font1] text-responsive leading-relaxed text-layer-1">
-                  {benefit.description}
+                  {highlight.description}
                 </p>
               </div>
 
@@ -149,6 +151,29 @@ const WhyUsSection = () => {
               <div className="w-full accent-line mt-6 sm:mt-8 rounded-full glow-accent"></div>
             </div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className='text-center component-margin'>
+          <div className='quote-card floating-panel-dark max-width-content space-y-6 sm:space-y-8'>
+            <button 
+              onClick={() => {
+                const element = document.getElementById('contact')
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }
+              }}
+              className='btn-pill btn-primary h-12 sm:h-16 lg:h-20 px-8 sm:px-12 lg:px-16 inline-flex items-center justify-center group'
+            >
+              <span className='font-[font2] text-base sm:text-xl lg:text-2xl'>
+                Request a Quote
+              </span>
+            </button>
+            
+            <p className='font-[font1] text-sm sm:text-base text-layer-1'>
+              Free consultation • No commitment required
+            </p>
+          </div>
         </div>
       </div>
     </section>
