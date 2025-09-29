@@ -85,7 +85,7 @@ const WhyUsSection = () => {
         'At Amoura Works, stories are what drive us. We notice the moments others might miss. A smile that flickers, a silence that speaks, a spark that lingers. These are the threads we weave into stories that stay with you.',
     },
     {
-      icon: '✂',
+      icon: '✄',
       title: 'Editing with Heart',
       description:
         'We follow the pulse of the story. Every choice is made to keep it breathing, flowing, and feeling real from start to finish.',
