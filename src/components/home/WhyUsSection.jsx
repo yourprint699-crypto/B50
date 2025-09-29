@@ -88,19 +88,20 @@ const WhyUsSection = () => {
       icon: '🎯',
       title: 'Strategic Focus',
       description:
-        'Every decision is made with long-term brand building in mind, ensuring sustainable growth and influence.',
+        'We follow the pulse of the story. Every choice is made to keep it breathing, flowing, and feeling real from start to finish.',
     },
     {
       icon: '🔥',
       title: 'Authentic Friction',
       description:
-        'We create the right tension that generates emotion and builds genuine connections with your audience.',
+        'What matters isn’t the edit itself, it’s what lingers after. A laugh you carry, a silence that stirs something, a moment you want to replay.
+',
     },
     {
       icon: '💎',
       title: 'Unfiltered Honesty',
       description:
-        'We tell you what needs to be said and do what needs to be done, ensuring transparent partnerships.',
+        'For us, this is personal. We listen, we collaborate, we get excited about your story and we won’t stop until it feels right.',
     },
   ];
 
