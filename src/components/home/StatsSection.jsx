@@ -25,7 +25,7 @@ const StatsSection = () => {
       number: 8,
       suffix: '',
       label: 'Editors in our team',
-      icon: '✂️'
+      icon: '✎'
     },
     {
       number: 7,
