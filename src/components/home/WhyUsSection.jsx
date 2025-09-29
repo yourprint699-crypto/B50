@@ -94,8 +94,7 @@ const WhyUsSection = () => {
       icon: '🔥',
       title: 'Authentic Friction',
       description:
-        'What matters isn’t the edit itself, it’s what lingers after. A laugh you carry, a silence that stirs something, a moment you want to replay.
-',
+        'What matters isn’t the edit itself, it’s what lingers after. A laugh you carry, a silence that stirs something, a moment you want to replay.',
     },
     {
       icon: '💎',
