@@ -82,7 +82,7 @@ const PricingSection = () => {
           <div className='pricing-content floating-panel-dark max-width-content mx-auto space-y-6 sm:space-y-8'>
             <div className='flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6'>
               <p className='font-[font1] text-2xl sm:text-3xl lg:text-4xl leading-relaxed text-layer-2'>
-                Our editing starts at just <span className='text-[#D3FD50] glow-accent text-glow-strong'>$99</span>
+                Our editing starts at just <span className='text-[#D3FD50] glow-accent text-glow-strong'>$ 149</span>
               </p>
               <p className='font-[font1] text-responsive leading-relaxed text-layer-1 max-width-text mx-auto'>
                 Final pricing changes depending on the project type, complexity, and requirements.
