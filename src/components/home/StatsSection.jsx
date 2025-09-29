@@ -13,7 +13,7 @@ const StatsSection = () => {
       number: 2000,
       suffix: '+',
       label: 'Wedding projects completed',
-      icon: '💍'
+      icon: '⚭'
     },
     {
       number: 150,
