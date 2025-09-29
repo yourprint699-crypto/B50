@@ -82,7 +82,7 @@ const WhyUsSection = () => {
       icon: '⚡',
       title: 'Creative Spark',
       description:
-        'We ignite the creative process with innovative thinking that transforms brands into memorable experiences.',
+        'At Amoura Works, stories are what drive us. We notice the moments others might miss. A smile that flickers, a silence that speaks, a spark that lingers. These are the threads we weave into stories that stay with you.',
     },
     {
       icon: '🎯',
