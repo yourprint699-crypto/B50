@@ -257,7 +257,7 @@ const PortfolioSection = () => {
           </h2>
           <div className="floating-panel-dark max-width-content mx-auto">
             <p className="font-[font1] text-responsive leading-relaxed text-layer-2">
-              gujar jati veeron ki
+              Some of the stories we’ve refined
             </p>
           </div>
         </div>
