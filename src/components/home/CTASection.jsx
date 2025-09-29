@@ -91,53 +91,7 @@ const CTASection = () => {
       <div className="cinematic-overlay"></div>
       <div className="container mx-auto text-center w-full">
         <div className="max-width-wide mx-auto">
-          <div className="floating-panel-dark space-y-8 sm:space-y-10 lg:space-y-12 flex flex-col items-center justify-center">
-            <h2 
-            id="cta-heading"
-              className="cta-fade font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow"
-            >
-            Ready to Create Magic?
-            </h2>
-
-            <p className="cta-fade font-[font1] text-responsive leading-relaxed text-layer-2 max-width-text mx-auto">
-            Transformons votre jour spécial en un chef-d'œuvre cinématographique qui raconte votre histoire unique.
-            </p>
-
-            <div className="cta-fade flex-col-mobile justify-center">
-              <Link
-              to="/contact"
-                className="btn-pill btn-primary h-12 sm:h-16 lg:h-20 px-8 sm:px-12 lg:px-16 inline-flex items-center justify-center group focus:outline-none"
-              aria-label="Get started with our wedding videography services"
-              >
-                <span className="font-[font2] text-base sm:text-xl lg:text-2xl">
-                Get Started Today
-                </span>
-              </Link>
-
-              <Link
-              to="/projects"
-                className="btn-pill btn-secondary h-12 sm:h-16 lg:h-20 px-8 sm:px-12 lg:px-16 inline-flex items-center justify-center group focus:outline-none"
-              aria-label="View our wedding videography portfolio"
-              >
-                <span className="font-[font2] text-base sm:text-xl lg:text-2xl">
-                View Our Work
-                </span>
-              </Link>
-            </div>
-
-            <div className="cta-fade responsive-grid-3 text-center mx-auto">
-              {statsData.map((stat, index) => (
-                <div key={stat.label} className="floating-panel-dark glass-hover space-y-3 sm:space-y-4 flex flex-col items-center justify-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-[font2] text-[#D3FD50] glow-accent text-layer-2 text-glow-strong">
-                  {stat.value}
-                  </div>
-                  <div className="font-[font1] text-xs sm:text-sm lg:text-base text-layer-1 uppercase tracking-wide">
-                  {stat.label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* Content removed */}
         </div>
       </div>
     </section>
