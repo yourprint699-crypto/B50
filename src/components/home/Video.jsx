@@ -236,7 +236,7 @@ const Video = () => {
       {/* Error state */}
       {hasError && (
         <div className="hero-video-error absolute inset-0 z-20 flex items-center justify-center bg-black/70">
-          <p className="text-white text-sm opacity-50">Video unavailable</p>
+          <p className="text-white text-sm opacity-50">‎ </p>
         </div>
       )}
     </div>
