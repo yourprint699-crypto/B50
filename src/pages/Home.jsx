@@ -109,9 +109,6 @@ const Home = () => {
         {/* Stats Section */}
         <StatsSection />
         
-        {/* Pricing Section */}
-        <PricingSection />
-        
         {/* Services Section */}
         <ServicesSection />
         
