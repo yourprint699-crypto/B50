@@ -111,7 +111,7 @@ const WhyUsSection = () => {
           </h2>
           <div className="floating-panel-dark max-width-content mx-auto">
             <p className="intro-text font-[font1] text-responsive leading-relaxed text-layer-2">
-              Our editing starts at just <span className='text-[#D3FD50] glow-accent text-glow-strong'>$99</span>
+              Our editing starts at just <span className='text-[#D3FD50] glow-accent text-glow-strong'>$149</span>
             </p>
           </div>
         </div>
