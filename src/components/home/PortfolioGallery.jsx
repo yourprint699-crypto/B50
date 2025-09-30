@@ -19,7 +19,7 @@ function PortfolioGallery({
   videos = [],
   className = "",
   maxHeight = 120,
-  spacing = "-space-x-48 md:-space-x-56 lg:-space-x-64",
+  spacing = "-space-x-60 md:-space-x-64 lg:-space-x-72", // updated spacing
   onVideoClick,
   pauseOnHover = true,
   marqueeRepeat = 4
