@@ -31,15 +31,11 @@ const highlights = [
   { videoId: 'C0DPdy98e4c' }
 ]
 
-// Minimal Video Card Component with cinematic styling and inline playback
+// Clean, standard YouTube embed component
 const VideoCard = ({ video, index, isVisible, isMobile }) => {
-  const [isHovered, setIsHovered] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   const [thumbnailLoaded, setThumbnailLoaded] = useState(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isMuted, setIsMuted] = useState(true)
   const cardRef = useRef(null)
-  const iframeRef = useRef(null)
 
   // Generate thumbnail URL from YouTube video ID
   const thumbnailUrl = `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`
@@ -64,69 +60,22 @@ const VideoCard = ({ video, index, isVisible, isMobile }) => {
     }
   }, [isVisible, index])
 
-  const handleCardClick = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
-
-    if (!isPlaying) {
-      // Start playing and unmute
-      setIsPlaying(true)
-      setIsMuted(false)
-
-      // Send message to YouTube iframe to play and unmute
-      if (iframeRef.current) {
-        try {
-          iframeRef.current.contentWindow.postMessage(
-            JSON.stringify({ event: 'command', func: 'playVideo', args: '' }),
-            '*'
-          )
-          iframeRef.current.contentWindow.postMessage(
-            JSON.stringify({ event: 'command', func: 'unMute', args: '' }),
-            '*'
-          )
-        } catch (err) {
-          console.warn('Unable to control video:', err)
-        }
-      }
-    } else {
-      // Toggle mute state
-      setIsMuted(!isMuted)
-      if (iframeRef.current) {
-        try {
-          iframeRef.current.contentWindow.postMessage(
-            JSON.stringify({
-              event: 'command',
-              func: isMuted ? 'unMute' : 'mute',
-              args: ''
-            }),
-            '*'
-          )
-        } catch (err) {
-          console.warn('Unable to control video:', err)
-        }
-      }
-    }
-  }
-
   return (
     <div
       ref={cardRef}
-      className="group relative aspect-video video-glass gpu-accelerated cursor-pointer overflow-hidden"
-      onMouseEnter={() => !isMobile && setIsHovered(true)}
-      onMouseLeave={() => !isMobile && setIsHovered(false)}
-      onClick={handleCardClick}
+      className="group relative aspect-video video-glass gpu-accelerated overflow-hidden"
     >
       {/* Loading shimmer effect */}
       {!thumbnailLoaded && (
         <div className="absolute inset-0 loading-shimmer bg-gray-800/50" />
       )}
 
-      {/* Thumbnail Image with blur-to-sharp transition */}
+      {/* Thumbnail Image */}
       <img
         src={thumbnailUrl}
         alt={`Portfolio video ${index + 1}`}
-        className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
-          (isHovered && isLoaded && !isMobile) || isPlaying ? 'opacity-0 scale-105' : 'opacity-100 scale-100'
+        className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+          isLoaded ? 'opacity-0' : 'opacity-100'
         } ${!thumbnailLoaded ? 'blur-sm' : 'blur-0'}`}
         loading="lazy"
         onLoad={() => setThumbnailLoaded(true)}
@@ -142,15 +91,13 @@ const VideoCard = ({ video, index, isVisible, isMobile }) => {
         loading="lazy"
       />
 
-      {/* YouTube Video with inline playback support */}
+      {/* Clean YouTube Embed - Standard functionality */}
       {isVisible && (
         <iframe
-          ref={iframeRef}
-          className={`absolute inset-0 w-full h-full transition-all duration-700 pointer-events-none ${
-            ((isHovered && thumbnailLoaded && !isMobile) || isPlaying) ? 'opacity-100 scale-105' : 'opacity-0 scale-100'
+          className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${
+            isLoaded ? 'opacity-100' : 'opacity-0'
           }`}
-          style={{ pointerEvents: isPlaying ? 'auto' : 'none' }}
-          src={`https://www.youtube.com/embed/${video.videoId}?autoplay=${(isHovered && !isMobile) || isPlaying ? 1 : 0}&mute=${isMuted ? 1 : 0}&loop=1&playlist=${video.videoId}&controls=1&modestbranding=1&rel=0&showinfo=0&playsinline=1&enablejsapi=1`}
+          src={`https://www.youtube.com/embed/${video.videoId}?rel=0&modestbranding=1&showinfo=0&iv_load_policy=3&playsinline=1`}
           title={`Portfolio video ${index + 1}`}
           frameBorder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -160,47 +107,8 @@ const VideoCard = ({ video, index, isVisible, isMobile }) => {
         />
       )}
 
-      {/* Cinematic overlay gradients */}
-      <div className={`absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 transition-all duration-500 pointer-events-none ${
-        (isHovered && !isMobile) || isPlaying ? 'opacity-40' : 'opacity-80'
-      }`} />
-
-      {/* Custom Play Button and Unmute indicator */}
-      <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 pointer-events-none ${
-        ((isHovered && !isMobile) || isPlaying) ? 'opacity-0 scale-90' : 'opacity-100 scale-100'
-      }`}>
-        <div className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 glass rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-300 glow-accent">
-          <div className="w-0 h-0 border-l-[12px] sm:border-l-[16px] lg:border-l-[20px] border-l-white border-y-[8px] sm:border-y-[12px] lg:border-y-[14px] border-y-transparent ml-1 sm:ml-2"></div>
-        </div>
-      </div>
-
-      {/* Mute/Unmute indicator when playing */}
-      {isPlaying && (
-        <div className="absolute bottom-4 right-4 glass rounded-full p-3 transition-opacity duration-300 z-10">
-          {isMuted ? (
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-            </svg>
-          ) : (
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-            </svg>
-          )}
-        </div>
-      )}
-
-      {/* Tap instruction for mobile */}
-      {isMobile && !isPlaying && (
-        <div className="absolute top-4 left-4 bg-black/60 px-3 py-1.5 rounded-full text-xs text-white/80 pointer-events-none">
-          Tap to play & unmute
-        </div>
-      )}
-
-      {/* Cinematic glow effect on hover */}
-      <div className={`absolute inset-0 rounded-lg sm:rounded-xl transition-all duration-500 pointer-events-none ${
-        (isHovered && !isMobile) || isPlaying ? 'shadow-2xl shadow-[#D3FD50]/20 scale-105' : 'scale-100'
-      }`} />
+      {/* Subtle overlay for visual depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-black/10 opacity-60 pointer-events-none" />
     </div>
   )
 }
