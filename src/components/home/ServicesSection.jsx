@@ -110,9 +110,9 @@ const ServicesSection = () => {
              
             </p>
             <div className='mt-6 sm:mt-8 flex flex-wrap justify-center gap-6 text-sm sm:text-base font-[font1] text-layer-2'>
-              <span>🎞 Post Production Experience: <strong>7+ Years</strong></span>
-              <span>💍 Wedding Projects: <strong>1000+</strong></span>
-              <span>🎥 Happy Videographers: <strong>74</strong></span>
+              <span> <strong></strong></span>
+              <span><strong></strong></span>
+              <span><strong></strong></span>
             </div>
           </div>
         </div>
