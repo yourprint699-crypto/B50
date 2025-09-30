@@ -163,11 +163,35 @@ const Header = () => {
 
   const navigationItems = [
     { name: 'Portfolio', href: '/projects' },
-    { name: 'Pricing', href: '#pricing' },
+    { name: 'Pricing', href: '#contact', action: 'scrollToQuote' },
     { name: 'Contact Us', href: '/contact' }
   ]
 
-  const handleSmoothScroll = (e, href) => {
+  const handleSmoothScroll = (e, href, action) => {
+    if (action === 'scrollToQuote') {
+      e.preventDefault()
+      const contactElement = document.getElementById('contact')
+      if (contactElement) {
+        contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+        setTimeout(() => {
+          const uploadButton = document.querySelector('[aria-controls="file-upload-section"]')
+          if (uploadButton && uploadButton.getAttribute('aria-expanded') === 'false') {
+            uploadButton.click()
+          }
+
+          setTimeout(() => {
+            const uploadArea = document.querySelector('#file-upload-section')
+            if (uploadArea) {
+              uploadArea.scrollIntoView({ behavior: 'smooth', block: 'center' })
+            }
+          }, 600)
+        }, 800)
+      }
+      closeMobileMenu()
+      return
+    }
+
     if (href.startsWith('#')) {
       e.preventDefault()
       const element = document.getElementById(href.substring(1))
@@ -251,7 +275,7 @@ const Header = () => {
                 >
                   {item.href.startsWith('#') ? (
                     <button
-                      onClick={(e) => handleSmoothScroll(e, item.href)}
+                      onClick={(e) => handleSmoothScroll(e, item.href, item.action)}
                       className="nav-link-item group relative inline-flex items-center py-2 px-1 font-[font2] text-sm lg:text-base xl:text-lg text-white/90 uppercase tracking-wide transition-colors duration-300 ease-in-out hover:text-[#D3FD50] focus:outline-none focus:text-[#D3FD50]"
                       aria-label={`Navigate to ${item.name}`}
                     >
@@ -373,7 +397,7 @@ const Header = () => {
                 {item.href.startsWith('#') ? (
                   <button
                     ref={index === 0 ? firstMenuItemRef : null}
-                    onClick={(e) => handleSmoothScroll(e, item.href)}
+                    onClick={(e) => handleSmoothScroll(e, item.href, item.action)}
                     className="w-full text-left font-[font2] text-lg text-white uppercase tracking-wide py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-[#D3FD50] focus:bg-white/5 focus:text-[#D3FD50] focus:outline-none relative group"
                   >
                     {item.name}

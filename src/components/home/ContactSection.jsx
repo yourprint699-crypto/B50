@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/all';
 
 const ContactSection = () => {
   const sectionRef = useRef(null);
+  const uploadSectionRef = useRef(null);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

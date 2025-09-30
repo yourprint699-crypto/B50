@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -9,10 +9,34 @@ const ContactForm = () => {
     phone: '',
     venue: '',
     package: '',
-    message: ''
+    message: '',
+    files: []
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
+  const [isUploadExpanded, setIsUploadExpanded] = useState(false)
+  const [dragActive, setDragActive] = useState(false)
+  const fileInputRef = useRef(null)
+  const uploadSectionRef = useRef(null)
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const openUpload = urlParams.get('openUpload')
+
+    if (openUpload === 'true') {
+      setIsUploadExpanded(true)
+
+      setTimeout(() => {
+        uploadSectionRef.current?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        })
+      }, 300)
+
+      const newUrl = window.location.pathname + window.location.hash
+      window.history.replaceState({}, '', newUrl)
+    }
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -22,18 +46,71 @@ const ContactForm = () => {
     }))
   }
 
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files || [])
+    addFiles(files)
+  }
+
+  const handleDrag = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (e.type === 'dragenter' || e.type === 'dragover') {
+      setDragActive(true)
+    } else if (e.type === 'dragleave') {
+      setDragActive(false)
+    }
+  }
+
+  const handleDrop = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setDragActive(false)
+
+    const files = Array.from(e.dataTransfer.files || [])
+    addFiles(files)
+  }
+
+  const addFiles = (newFiles) => {
+    const validFiles = newFiles.filter(file => {
+      const validTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp', 'video/mp4', 'video/quicktime']
+      const maxSize = 50 * 1024 * 1024
+      return validTypes.includes(file.type) && file.size <= maxSize
+    })
+
+    setFormData(prev => ({
+      ...prev,
+      files: [...prev.files, ...validFiles].slice(0, 10)
+    }))
+  }
+
+  const removeFile = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      files: prev.files.filter((_, i) => i !== index)
+    }))
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitting(true)
     setSubmitStatus(null)
 
     try {
+      const formDataToSend = new FormData()
+
+      Object.keys(formData).forEach(key => {
+        if (key !== 'files') {
+          formDataToSend.append(key, formData[key])
+        }
+      })
+
+      formData.files.forEach((file, index) => {
+        formDataToSend.append(`file${index}`, file)
+      })
+
       const response = await fetch('https://formspree.io/f/mandlzyw', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: formDataToSend,
       })
 
       if (response.ok) {
@@ -45,8 +122,10 @@ const ContactForm = () => {
           phone: '',
           venue: '',
           package: '',
-          message: ''
+          message: '',
+          files: []
         })
+        setIsUploadExpanded(false)
       } else {
         setSubmitStatus('error')
       }
@@ -149,7 +228,7 @@ const ContactForm = () => {
           <option value="custom">Custom Package</option>
         </select>
         
-        <textarea 
+        <textarea
           name="message"
           placeholder="Tell us about your wedding vision, special requests, or any questions you have..."
           value={formData.message}
@@ -158,13 +237,129 @@ const ContactForm = () => {
           disabled={isSubmitting}
           className='w-full input-inset text-white placeholder:text-gray-400 resize-none'
         />
-        
-        <button 
+
+        <div ref={uploadSectionRef} className='space-y-4 sm:space-y-6'>
+          <button
+            type="button"
+            onClick={() => setIsUploadExpanded(!isUploadExpanded)}
+            className='w-full flex items-center justify-between p-4 sm:p-5 lg:p-6 glass glass-hover rounded-2xl transition-all duration-300 hover:border-[#D3FD50]/30'
+            aria-expanded={isUploadExpanded}
+            aria-controls="file-upload-section"
+          >
+            <div className='flex items-center gap-3 sm:gap-4'>
+              <span className='text-2xl sm:text-3xl glow-accent pointer-events-none'>📎</span>
+              <div className='text-left pointer-events-none'>
+                <h3 className='font-[font2] text-sm sm:text-base lg:text-lg uppercase text-white'>
+                  Upload Reference Images
+                </h3>
+                <p className='font-[font1] text-xs sm:text-sm text-white/60'>
+                  Optional • {formData.files.length}/10 files
+                </p>
+              </div>
+            </div>
+            <span className={`text-xl sm:text-2xl text-[#D3FD50] transition-transform duration-300 pointer-events-none ${isUploadExpanded ? 'rotate-180' : ''}`}>
+              ⌄
+            </span>
+          </button>
+
+          <div
+            id="file-upload-section"
+            className={`overflow-hidden transition-all duration-500 ease-in-out ${
+              isUploadExpanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <div className='space-y-4 sm:space-y-6'>
+              <div
+                onDragEnter={handleDrag}
+                onDragLeave={handleDrag}
+                onDragOver={handleDrag}
+                onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
+                className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all duration-300 ${
+                  dragActive
+                    ? 'border-[#D3FD50] bg-[#D3FD50]/10'
+                    : 'border-white/20 hover:border-[#D3FD50]/50 hover:bg-white/5'
+                }`}
+                role="button"
+                tabIndex={0}
+                aria-label="Upload files"
+              >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept="image/*,video/mp4,video/quicktime"
+                  onChange={handleFileChange}
+                  className='hidden'
+                  disabled={isSubmitting}
+                />
+
+                <div className='space-y-3 sm:space-y-4 pointer-events-none'>
+                  <div className='text-4xl sm:text-5xl lg:text-6xl'>📸</div>
+                  <div>
+                    <p className='font-[font2] text-base sm:text-lg lg:text-xl text-white mb-2'>
+                      Drop files here or click to browse
+                    </p>
+                    <p className='font-[font1] text-xs sm:text-sm text-white/60'>
+                      Images & Videos • Max 50MB per file • Up to 10 files
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {formData.files.length > 0 && (
+                <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4'>
+                  {formData.files.map((file, index) => (
+                    <div
+                      key={index}
+                      className='relative group glass rounded-xl overflow-hidden aspect-square'
+                    >
+                      {file.type.startsWith('image/') ? (
+                        <img
+                          src={URL.createObjectURL(file)}
+                          alt={file.name}
+                          className='w-full h-full object-cover'
+                        />
+                      ) : (
+                        <div className='w-full h-full flex items-center justify-center bg-white/5'>
+                          <span className='text-3xl sm:text-4xl'>🎬</span>
+                        </div>
+                      )}
+
+                      <button
+                        type="button"
+                        onClick={() => removeFile(index)}
+                        className='absolute top-2 right-2 w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center bg-red-500 hover:bg-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200 text-white text-sm sm:text-base'
+                        aria-label={`Remove ${file.name}`}
+                      >
+                        <span className='pointer-events-none'>✕</span>
+                      </button>
+
+                      <div className='absolute bottom-0 left-0 right-0 bg-black/70 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
+                        <p className='font-[font1] text-xs text-white truncate'>
+                          {file.name}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div className='glass rounded-xl p-4 sm:p-5'>
+                <p className='font-[font1] text-xs sm:text-sm text-white/70 leading-relaxed'>
+                  <span className='font-[font2] text-[#D3FD50]'>💡 Pro Tip:</span> Upload reference photos or videos that inspire your wedding vision. This helps us understand your style preferences and deliver exactly what you envision.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button
           type="submit"
           disabled={isSubmitting}
           className='w-full btn-pill btn-primary h-12 sm:h-14 lg:h-16 font-[font2] text-base sm:text-xl lg:text-2xl disabled:opacity-50 disabled:cursor-not-allowed'
         >
-          {isSubmitting ? 'Sending...' : 'Send Inquiry'}
+          <span className='pointer-events-none'>{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
         </button>
       </form>
     </div>
