@@ -7,7 +7,7 @@ import PortfolioGallery from './PortfolioGallery'
 const teasers = [
   {
     url: 'https://www.youtube.com/watch?v=QGsa5QB5gK4',
-    title: ''
+    title: 'swipe right for more'
   },
   {
     url: 'https://www.youtube.com/watch?v=5fR4MErzYeI',
