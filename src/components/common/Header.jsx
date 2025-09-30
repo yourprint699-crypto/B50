@@ -181,12 +181,12 @@ const Header = () => {
 
   return (
     <>
-      <header 
+      <header
         ref={headerRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out w-full ${
+        className={`fixed top-0 left-0 right-0 transition-all duration-500 ease-out w-full ${
           isScrolled ? 'backdrop-blur-md bg-black/20' : 'bg-transparent'
         }`}
-        style={{ zIndex: isMobileMenuOpen ? 30 : 1000 }}
+        style={{ zIndex: isMobileMenuOpen ? 9999 : 1000 }}
       >
         {/* Subtle gradient fade for text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-transparent pointer-events-none" />
@@ -237,7 +237,9 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:flex items-center space-x-8 xl:space-x-12">
+            <div className={`hidden lg:flex items-center space-x-8 xl:space-x-12 transition-opacity duration-300 ${
+              isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            }`}>
               {navigationItems.map((item, index) => (
                 <div key={index} className="nav-item-animate">
                   {item.href.startsWith('#') ? (
@@ -291,10 +293,11 @@ const Header = () => {
       </header>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 z-50 lg:hidden transition-all duration-300 ease-out ${
+      <div
+        className={`fixed inset-0 lg:hidden transition-all duration-300 ease-out ${
         isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
         }`}
+        style={{ zIndex: 10000 }}
         onClick={handleOverlayClick}
         aria-hidden={!isMobileMenuOpen}
       >
@@ -302,12 +305,13 @@ const Header = () => {
         <div className="absolute inset-0 bg-black/80 backdrop-blur-md" />
         
         {/* Mobile Menu Content */}
-        <div 
+        <div
           ref={mobileMenuRef}
           id="mobile-menu"
-          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-black/95 backdrop-blur-xl border-l border-white/10 transform transition-transform duration-300 ease-out z-60 ${
+          className={`absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-black/95 backdrop-blur-xl border-l border-white/10 transform transition-transform duration-300 ease-out ${
           isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
+          style={{ zIndex: 10001 }}
           onClick={(e) => e.stopPropagation()}
           role="dialog"
           aria-modal="true"

@@ -450,8 +450,16 @@ body.loading {
 
 /* Ensure header stays above all content with responsive sizing */
 header {
-    z-index: 1000 !important;
     padding: clamp(0.75rem, 2vw, 1.5rem) 0;
+}
+
+/* Mobile menu z-index hierarchy */
+.mobile-menu-overlay {
+    z-index: 10000 !important;
+}
+
+.mobile-menu-content {
+    z-index: 10001 !important;
 }
 
 /* Responsive container system */
