@@ -247,7 +247,7 @@ const Header = () => {
                       onClick={(e) => handleSmoothScroll(e, item.href)}
                       className="font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer transition-colors duration-300 hover:text-[#D3FD50] py-2 px-1"
                     >
-                      {item.name}
+                      <span className="pointer-events-none">{item.name}</span>
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D3FD50] to-[#b8e03e] transition-all duration-300 ease-out group-hover:w-full pointer-events-none rounded-full" />
                     </button>
                   ) : (
@@ -255,7 +255,7 @@ const Header = () => {
                       to={item.href}
                       className="font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer transition-colors duration-300 hover:text-[#D3FD50] py-2 px-1"
                     >
-                      {item.name}
+                      <span className="pointer-events-none">{item.name}</span>
                       <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D3FD50] to-[#b8e03e] transition-all duration-300 ease-out group-hover:w-full pointer-events-none rounded-full" />
                     </Link>
                   )}
@@ -266,9 +266,9 @@ const Header = () => {
               <div className="nav-item-animate">
                 <Link
                   to="/affiliate-program"
-                  className="affiliate-btn font-[font2] text-xs lg:text-sm xl:text-base text-white uppercase tracking-wide px-4 lg:px-6 py-2 lg:py-3 border border-gray-400 rounded-full transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg hover:shadow-white/10 active:scale-95"
+                  className="affiliate-btn font-[font2] text-xs lg:text-sm xl:text-base text-white uppercase tracking-wide px-4 lg:px-6 py-2 lg:py-3 border border-gray-400 rounded-full transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg hover:shadow-white/10 active:scale-95 relative group"
                 >
-                  Become an Affiliate
+                  <span className="pointer-events-none">Become an Affiliate</span>
                 </Link>
               </div>
             </div>
