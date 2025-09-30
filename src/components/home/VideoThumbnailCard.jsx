@@ -44,12 +44,6 @@ function VideoThumbnailCard({ video, onClick }) {
           </div>
         </div>
 
-        {youtubeId && (
-          <div className="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded">
-            YouTube
-          </div>
-        )}
-
         {video.title && (
           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
             <p className="text-white font-medium">{video.title}</p>
