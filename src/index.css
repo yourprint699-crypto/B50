@@ -174,8 +174,12 @@ body.loading {
 
 /* Responsive hover states - only on devices that support hover */
 @media (hover: hover) and (pointer: fine) {
+    .glass-hover {
+        cursor: pointer;
+    }
+
     .glass-hover:hover {
-        transform: translateY(-6px) scale(1.02);
+        transform: translateY(-4px) scale(1.01);
         box-shadow: var(--glass-shadow-hover), var(--glass-glow-hover);
         background: var(--glass-bg-hover);
         border-color: var(--glass-border-hover);
@@ -227,12 +231,12 @@ body.loading {
     }
 
     .floating-panel:hover {
-        transform: translateY(-8px) scale(1.02);
+        transform: translateY(-6px) scale(1.01);
         background: rgba(255, 255, 255, 0.05);
-        box-shadow: 
-            0 24px 80px rgba(0, 0, 0, 0.5),
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.5),
             0 1px 0 rgba(255, 255, 255, 0.08) inset,
-            0 0 30px rgba(211, 253, 80, 0.1);
+            0 0 25px rgba(211, 253, 80, 0.1);
         border-color: rgba(255, 255, 255, 0.12);
     }
 }
@@ -278,12 +282,12 @@ body.loading {
     }
 
     .floating-panel-dark:hover {
-        transform: translateY(-8px) scale(1.02);
+        transform: translateY(-4px);
         background: rgba(0, 0, 0, 0.75);
-        box-shadow: 
-            0 24px 80px rgba(0, 0, 0, 0.7),
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.7),
             0 1px 0 rgba(255, 255, 255, 0.08) inset,
-            0 0 30px rgba(211, 253, 80, 0.12);
+            0 0 25px rgba(211, 253, 80, 0.12);
         border-color: rgba(255, 255, 255, 0.12);
     }
 }
@@ -327,13 +331,17 @@ body.loading {
 }
 
 @media (hover: hover) and (pointer: fine) {
+    .btn-pill {
+        cursor: pointer;
+    }
+
     .btn-pill:hover::before {
         left: 100%;
     }
 
     .btn-pill:hover {
-        transform: translateY(-4px) scale(1.02);
-        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 30px rgba(211, 253, 80, 0.2);
+        transform: translateY(-2px) scale(1.01);
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), 0 0 25px rgba(211, 253, 80, 0.2);
     }
 }
 
@@ -408,6 +416,11 @@ body.loading {
         0 0 0 3px rgba(211, 253, 80, 0.2),
         0 0 20px rgba(211, 253, 80, 0.15);
     background: rgba(255, 255, 255, 0.05);
+}
+
+/* Fix cursor flicker on navigation */
+.nav-link {
+    cursor: pointer;
 }
 
 /* Responsive navigation */
@@ -575,11 +588,12 @@ header {
 /* Responsive micro-interactions */
 .micro-bounce {
     transition: transform 0.2s var(--transition-spring);
+    cursor: pointer;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .micro-bounce:hover {
-        transform: translateY(-3px) scale(1.05);
+        transform: translateY(-2px) scale(1.03);
     }
 }
 
@@ -814,18 +828,18 @@ body.mobile-menu-open {
     position: relative;
     padding: clamp(8px, 2vw, 12px) clamp(12px, 3vw, 20px);
     border-radius: clamp(12px, 3vw, 16px);
-    transition: all 0.3s var(--transition-smooth);
+    transition: color 0.3s var(--transition-smooth), background-color 0.3s var(--transition-smooth);
     color: var(--text-secondary);
     font-size: clamp(0.875rem, 2.5vw, 1rem);
     min-height: 44px; /* Touch target */
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .nav-item:hover {
         background: rgba(211, 253, 80, 0.08);
-        transform: translateY(-2px);
         color: var(--text-primary);
     }
 }
@@ -838,9 +852,10 @@ body.mobile-menu-open {
     width: 0;
     height: 2px;
     background: var(--accent-primary);
-    transition: all 0.3s ease;
+    transition: width 0.3s ease;
     transform: translateX(-50%);
     box-shadow: 0 0 8px rgba(211, 253, 80, 0.5);
+    pointer-events: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -923,9 +938,19 @@ body.mobile-menu-open {
 /* Performance optimizations for all devices */
 .gpu-accelerated {
     transform: translateZ(0);
-    will-change: transform, opacity;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+}
+
+/* Prevent cursor flicker on interactive elements */
+button, a, [role="button"] {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+button *, a *, [role="button"] * {
+    pointer-events: none;
 }
 
 /* Enhanced section backgrounds - seamless flow */
@@ -1066,24 +1091,24 @@ select.input-inset {
 /* Responsive navigation styles */
 .nav-link {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
     padding: clamp(6px, 1.5vw, 8px) 0;
-    transition: all 0.3s var(--transition-smooth);
+    transition: color 0.3s var(--transition-smooth);
     font-size: clamp(0.875rem, 2.5vw, 1.125rem);
     min-height: 44px;
-    display: flex;
-    align-items: center;
+    cursor: pointer;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .nav-link:hover {
-        transform: translateY(-1px);
+        color: var(--accent-primary);
     }
 }
 
 .nav-underline {
-    background: linear-gradient(90deg, transparent, white, transparent);
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(90deg, transparent, rgba(211, 253, 80, 1), transparent);
+    box-shadow: 0 0 6px rgba(211, 253, 80, 0.4);
     height: clamp(1px, 0.25vw, 2px);
 }
 
@@ -1984,25 +2009,27 @@ iframe {
         min-width: 48px;
         padding: 16px 32px;
     }
-    
+
     .nav-item {
         min-height: 48px;
         padding: 12px 20px;
     }
-    
+
     .input-inset {
         min-height: 48px;
         padding: 16px 20px;
     }
-    
-    /* Remove hover effects on touch devices */
+
+    /* Disable hover effects on touch devices to prevent flicker */
     .glass-hover:hover,
     .floating-panel:hover,
-    .floating-panel-dark:hover {
-        transform: none;
-        background: inherit;
-        box-shadow: inherit;
-        border-color: inherit;
+    .floating-panel-dark:hover,
+    .micro-bounce:hover,
+    .btn-pill:hover {
+        transform: none !important;
+        background: inherit !important;
+        box-shadow: inherit !important;
+        border-color: inherit !important;
     }
 }
 

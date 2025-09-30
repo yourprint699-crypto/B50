@@ -169,9 +169,9 @@ const ContactSection = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 glass glass-hover glass-click rounded-full flex items-center justify-center group glow-accent"
+                    className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 glass rounded-full flex items-center justify-center group glow-accent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#D3FD50]/20 cursor-pointer"
                   >
-                    <span className="text-lg sm:text-xl lg:text-2xl micro-bounce glow-accent">
+                    <span className="text-lg sm:text-xl lg:text-2xl glow-accent pointer-events-none">
                       {social.icon}
                     </span>
                   </a>
@@ -260,9 +260,9 @@ const ContactSection = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full btn-pill btn-primary h-12 sm:h-14 font-[font2] text-base sm:text-lg lg:text-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full btn-pill btn-primary h-12 sm:h-14 font-[font2] text-base sm:text-lg lg:text-xl disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Inquiry'}
+                  <span className="pointer-events-none">{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
                 </button>
             </form>
           </div>

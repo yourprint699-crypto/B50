@@ -243,18 +243,18 @@ const Header = () => {
                   {item.href.startsWith('#') ? (
                     <button
                       onClick={(e) => handleSmoothScroll(e, item.href)}
-                      className="nav-link font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer"
+                      className="font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer transition-colors duration-300 hover:text-[#D3FD50] py-2 px-1"
                     >
                       {item.name}
-                      <span className="nav-underline absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full pointer-events-none" />
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D3FD50] to-[#b8e03e] transition-all duration-300 ease-out group-hover:w-full pointer-events-none rounded-full" />
                     </button>
                   ) : (
                     <Link
                       to={item.href}
-                      className="nav-link font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer"
+                      className="font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer transition-colors duration-300 hover:text-[#D3FD50] py-2 px-1"
                     >
                       {item.name}
-                      <span className="nav-underline absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 ease-out group-hover:w-full pointer-events-none" />
+                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D3FD50] to-[#b8e03e] transition-all duration-300 ease-out group-hover:w-full pointer-events-none rounded-full" />
                     </Link>
                   )}
                 </div>

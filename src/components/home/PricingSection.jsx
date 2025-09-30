@@ -121,16 +121,16 @@ const PricingSection = () => {
         {/* CTA Section */}
         <div className='flex flex-col items-center justify-center text-center component-margin'>
           <div className='pricing-content floating-panel-dark max-width-content mx-auto space-y-6 sm:space-y-8'>
-            <button 
+            <button
               onClick={() => {
                 const element = document.getElementById('contact')
                 if (element) {
                   element.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }
               }}
-              className='btn-pill btn-primary h-12 sm:h-16 lg:h-20 px-8 sm:px-12 lg:px-16 inline-flex items-center justify-center group'
+              className='btn-pill btn-primary h-12 sm:h-16 lg:h-20 px-8 sm:px-12 lg:px-16 inline-flex items-center justify-center group cursor-pointer'
             >
-              <span className='font-[font2] text-base sm:text-xl lg:text-2xl'>
+              <span className='font-[font2] text-base sm:text-xl lg:text-2xl pointer-events-none'>
                 Request a Quote
               </span>
             </button>
