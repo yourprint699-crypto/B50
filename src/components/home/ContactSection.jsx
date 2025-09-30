@@ -121,6 +121,7 @@ const ContactSection = () => {
       id="contact"
       ref={sectionRef}
       className="min-h-screen section-dark text-white relative depth-3 section-transition"
+      style={{ border: 'none', boxShadow: 'none' }}
     >
       <div className="cinematic-overlay"></div>
       <div className="container mx-auto section-padding">

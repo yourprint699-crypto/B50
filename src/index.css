@@ -679,11 +679,14 @@ header {
     color: var(--accent-primary) !important;
 }
 
-/* Responsive section transitions */
+/* Responsive section transitions - seamless flow */
 .section-transition {
     position: relative;
     padding: clamp(60px, 12vw, 120px) 0;
-    background: transparent; /* Let the body gradient show through */
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    margin: 0;
 }
 
 /* Remove the old transition overlay as we now have seamless backgrounds */
@@ -946,7 +949,7 @@ body.mobile-menu-open {
     min-height: 100dvh;
 }
 
-/* Seamless section transition overlays */
+/* Enhanced seamless section transition overlays */
 .section-dark::before,
 .section-dark-alt::before {
     content: '';
@@ -954,10 +957,11 @@ body.mobile-menu-open {
     top: 0;
     left: 0;
     right: 0;
-    height: clamp(80px, 15vw, 150px);
-    background: linear-gradient(180deg, 
-        rgba(0, 0, 0, 0.8) 0%, 
-        rgba(0, 0, 0, 0.4) 50%, 
+    height: clamp(120px, 20vw, 200px);
+    background: linear-gradient(180deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.7) 30%,
+        rgba(0, 0, 0, 0.3) 70%,
         transparent 100%);
     pointer-events: none;
     z-index: 1;
@@ -970,10 +974,11 @@ body.mobile-menu-open {
     bottom: 0;
     left: 0;
     right: 0;
-    height: clamp(80px, 15vw, 150px);
-    background: linear-gradient(0deg, 
-        rgba(0, 0, 0, 0.8) 0%, 
-        rgba(0, 0, 0, 0.4) 50%, 
+    height: clamp(120px, 20vw, 200px);
+    background: linear-gradient(0deg,
+        rgba(0, 0, 0, 0.95) 0%,
+        rgba(0, 0, 0, 0.7) 30%,
+        rgba(0, 0, 0, 0.3) 70%,
         transparent 100%);
     pointer-events: none;
     z-index: 1;
@@ -981,17 +986,26 @@ body.mobile-menu-open {
 
 /* Enhanced seamless blending for alternating sections */
 .section-dark + .section-dark-alt::before {
-    background: linear-gradient(180deg, 
-        rgba(10, 15, 28, 0.9) 0%, 
-        rgba(0, 0, 0, 0.6) 50%, 
+    background: linear-gradient(180deg,
+        rgba(10, 15, 28, 0.98) 0%,
+        rgba(0, 0, 0, 0.8) 30%,
+        rgba(0, 0, 0, 0.4) 70%,
         transparent 100%);
 }
 
 .section-dark-alt + .section-dark::before {
-    background: linear-gradient(180deg, 
-        rgba(26, 31, 46, 0.9) 0%, 
-        rgba(0, 0, 0, 0.6) 50%, 
+    background: linear-gradient(180deg,
+        rgba(26, 31, 46, 0.98) 0%,
+        rgba(0, 0, 0, 0.8) 30%,
+        rgba(0, 0, 0, 0.4) 70%,
         transparent 100%);
+}
+
+/* Remove any visible borders between sections */
+.section-dark + .section-dark-alt,
+.section-dark-alt + .section-dark {
+    border-top: none;
+    box-shadow: none;
 }
 
 /* Responsive cinematic overlay effects */
@@ -1027,13 +1041,31 @@ body {
         background-attachment: scroll; /* Better performance on mobile */
         background-size: 100% 300vh;
     }
-    
+
     .section-dark::before,
     .section-dark-alt::before,
     .section-dark::after,
     .section-dark-alt::after {
-        height: clamp(60px, 12vw, 100px);
+        height: clamp(80px, 15vw, 120px);
     }
+}
+
+/* Ensure perfectly seamless transitions between all sections */
+section + section {
+    border-top: none !important;
+    margin-top: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Override any depth filter shadows that might create visible lines */
+.section-transition.depth-3 {
+    filter: none;
+}
+
+/* Adjust container padding to prevent content from touching edges */
+.section-transition .container {
+    position: relative;
+    z-index: 10;
 }
 
 /* Responsive form styling */
