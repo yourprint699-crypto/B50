@@ -104,10 +104,10 @@ const ServicesSection = () => {
           </h2>
           <div className='floating-panel-dark max-width-content mx-auto'>
             <p className='font-[font1] text-responsive leading-relaxed text-layer-2'>
-              Everything you need to relive your wedding — beautifully filmed, thoughtfully crafted, and made just for you.
+              The Services we Provide
             </p>
             <p className='font-[font2] text-accent mt-4 text-lg sm:text-xl glow-accent'>
-              “We Keep The Edits, You Keep the Calm”
+             
             </p>
             <div className='mt-6 sm:mt-8 flex flex-wrap justify-center gap-6 text-sm sm:text-base font-[font1] text-layer-2'>
               <span>🎞 Post Production Experience: <strong>7+ Years</strong></span>
