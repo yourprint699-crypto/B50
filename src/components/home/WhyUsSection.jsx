@@ -111,7 +111,7 @@ const WhyUsSection = () => {
           </h2>
           <div className="floating-panel-dark max-width-content mx-auto">
             <p className="intro-text font-[font1] text-responsive leading-relaxed text-layer-2">
-              Professional results without the premium      tag<span className='text-[#D3FD50] glow-accent text-glow-strong'>Price</span>
+              Professional results without the premium <span className='text-[#D3FD50] glow-accent text-glow-strong'>Pricing</span>
             </p>
           </div>
         </div>
