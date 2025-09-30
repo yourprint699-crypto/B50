@@ -42,7 +42,6 @@ const ServicesSection = () => {
     )
   })
 
-  // ✅ Fixed: Added the missing services array
   const services = [
     {
       icon: '🎬',
@@ -100,20 +99,15 @@ const ServicesSection = () => {
         {/* Title + Intro */}
         <div className='flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto'>
           <h2 className='services-title font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow'>
-            Our Services
+            Services
           </h2>
           <div className='floating-panel-dark max-width-content mx-auto'>
             <p className='font-[font1] text-responsive leading-relaxed text-layer-2'>
-              The Services we Provide
+              Everything you need to relive your wedding — beautifully filmed, thoughtfully crafted, and made just for you.
             </p>
             <p className='font-[font2] text-accent mt-4 text-lg sm:text-xl glow-accent'>
-             
+              “We Keep The Edits, You Keep the Calm”
             </p>
-            <div className='mt-6 sm:mt-8 flex flex-wrap justify-center gap-6 text-sm sm:text-base font-[font1] text-layer-2'>
-              <span> <strong></strong></span>
-              <span><strong></strong></span>
-              <span><strong></strong></span>
-            </div>
           </div>
         </div>
 
