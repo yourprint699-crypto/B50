@@ -237,41 +237,69 @@ const Header = () => {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className={`hidden lg:flex items-center space-x-8 xl:space-x-12 transition-opacity duration-300 ${
-              isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
-            }`}>
+            <nav
+              className={`hidden lg:flex items-center gap-8 xl:gap-12 transition-opacity duration-300 ${
+                isMobileMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'
+              }`}
+              aria-label="Main navigation"
+            >
               {navigationItems.map((item, index) => (
-                <div key={index} className="nav-item-animate">
+                <div
+                  key={item.href}
+                  className="nav-item-animate"
+                  style={{ animationDelay: `${1.2 + index * 0.1}s` }}
+                >
                   {item.href.startsWith('#') ? (
                     <button
                       onClick={(e) => handleSmoothScroll(e, item.href)}
-                      className="font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer transition-colors duration-300 hover:text-[#D3FD50] py-2 px-1"
+                      className="nav-link-item group relative inline-flex items-center py-2 px-1 font-[font2] text-sm lg:text-base xl:text-lg text-white/90 uppercase tracking-wide transition-colors duration-300 ease-in-out hover:text-[#D3FD50] focus:outline-none focus:text-[#D3FD50]"
+                      aria-label={`Navigate to ${item.name}`}
                     >
-                      <span className="pointer-events-none">{item.name}</span>
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D3FD50] to-[#b8e03e] transition-all duration-300 ease-out group-hover:w-full pointer-events-none rounded-full" />
+                      <span className="relative z-10 pointer-events-none">
+                        {item.name}
+                      </span>
+                      <span
+                        className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#D3FD50] via-[#b8e03e] to-[#D3FD50] rounded-full transition-all duration-400 ease-out group-hover:w-full group-focus:w-full pointer-events-none"
+                        aria-hidden="true"
+                      />
                     </button>
                   ) : (
                     <Link
                       to={item.href}
-                      className="font-[font2] text-sm lg:text-base xl:text-lg text-white uppercase tracking-wide relative group cursor-pointer transition-colors duration-300 hover:text-[#D3FD50] py-2 px-1"
+                      className="nav-link-item group relative inline-flex items-center py-2 px-1 font-[font2] text-sm lg:text-base xl:text-lg text-white/90 uppercase tracking-wide transition-colors duration-300 ease-in-out hover:text-[#D3FD50] focus:outline-none focus:text-[#D3FD50]"
+                      aria-label={`Navigate to ${item.name}`}
                     >
-                      <span className="pointer-events-none">{item.name}</span>
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D3FD50] to-[#b8e03e] transition-all duration-300 ease-out group-hover:w-full pointer-events-none rounded-full" />
+                      <span className="relative z-10 pointer-events-none">
+                        {item.name}
+                      </span>
+                      <span
+                        className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#D3FD50] via-[#b8e03e] to-[#D3FD50] rounded-full transition-all duration-400 ease-out group-hover:w-full group-focus:w-full pointer-events-none"
+                        aria-hidden="true"
+                      />
                     </Link>
                   )}
                 </div>
               ))}
 
-              {/* Become an Affiliate Button */}
-              <div className="nav-item-animate">
+              <div
+                className="nav-item-animate"
+                style={{ animationDelay: `${1.2 + navigationItems.length * 0.1}s` }}
+              >
                 <Link
                   to="/affiliate-program"
-                  className="affiliate-btn font-[font2] text-xs lg:text-sm xl:text-base text-white uppercase tracking-wide px-4 lg:px-6 py-2 lg:py-3 border border-gray-400 rounded-full transition-all duration-300 ease-out hover:scale-105 hover:shadow-lg hover:shadow-white/10 active:scale-95 relative group"
+                  className="affiliate-cta-button group relative inline-flex items-center justify-center px-4 lg:px-6 py-2 lg:py-3 font-[font2] text-xs lg:text-sm xl:text-base text-white uppercase tracking-wide border border-white/30 rounded-full overflow-hidden transition-all duration-400 ease-out hover:border-white/60 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] focus:outline-none focus:ring-2 focus:ring-[#D3FD50]/50 focus:ring-offset-2 focus:ring-offset-black active:scale-95"
+                  aria-label="Become an affiliate partner"
                 >
-                  <span className="pointer-events-none">Become an Affiliate</span>
+                  <span className="relative z-10 pointer-events-none transition-transform duration-300 group-hover:scale-105">
+                    Become an Affiliate
+                  </span>
+                  <span
+                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 ease-in-out pointer-events-none"
+                    aria-hidden="true"
+                  />
                 </Link>
               </div>
-            </div>
+            </nav>
 
             {/* Mobile Menu Toggle */}
             <div className="lg:hidden nav-item-animate">

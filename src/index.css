@@ -1120,35 +1120,84 @@ select.input-inset {
     height: clamp(1px, 0.25vw, 2px);
 }
 
-/* Responsive affiliate button */
-.affiliate-btn {
+/* Enhanced navigation link styles */
+.nav-link-item {
     position: relative;
-    overflow: hidden;
-    font-size: clamp(0.875rem, 2.5vw, 1rem);
-    padding: clamp(10px, 2.5vw, 12px) clamp(20px, 5vw, 24px);
-    min-height: 44px;
+    isolation: isolate;
+    will-change: color;
+    -webkit-tap-highlight-color: transparent;
 }
 
-.affiliate-btn::before {
+.nav-link-item::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.6s ease;
+    inset: -4px;
+    border-radius: 8px;
+    opacity: 0;
+    background: radial-gradient(circle at center, rgba(211, 253, 80, 0.1), transparent 70%);
+    transition: opacity 0.3s ease-out;
+    pointer-events: none;
+    z-index: -1;
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .affiliate-btn:hover::before {
-        left: 100%;
+    .nav-link-item:hover::before {
+        opacity: 1;
     }
 
-    .affiliate-btn:hover {
-        border-color: rgba(255, 255, 255, 0.6);
-        box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+    .nav-link-item:hover {
+        text-shadow: 0 0 8px rgba(211, 253, 80, 0.3);
     }
+}
+
+.nav-link-item:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Enhanced affiliate CTA button styles */
+.affiliate-cta-button {
+    position: relative;
+    isolation: isolate;
+    will-change: transform, box-shadow;
+    -webkit-tap-highlight-color: transparent;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.affiliate-cta-button::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+    pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .affiliate-cta-button:hover::before {
+        opacity: 1;
+    }
+
+    .affiliate-cta-button:hover {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+}
+
+.affiliate-cta-button:active {
+    transition-duration: 0.1s;
+}
+
+.affiliate-cta-button:focus-visible {
+    outline: none;
 }
 
 /* Responsive background patterns */
