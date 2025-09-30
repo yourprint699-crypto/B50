@@ -50,7 +50,7 @@ const AboutSection = () => {
   })
 
   return (
-    <section id="about" ref={sectionRef} className='min-h-screen section-dark-alt text-white relative depth-3 section-transition' style={{ border: 'none', boxShadow: 'none' }}>
+    <section id="about" ref={sectionRef} className='min-h-screen section-dark-alt text-white relative depth-3 section-transition'>
       <div className="cinematic-overlay"></div>
       <div className='container mx-auto section-padding'>
         <div className='flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto'>

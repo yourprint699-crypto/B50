@@ -221,7 +221,6 @@ const PortfolioSection = () => {
       id="portfolio"
       ref={sectionRef}
       className="min-h-screen section-dark-alt text-white relative depth-3 section-transition"
-      style={{ border: 'none', boxShadow: 'none' }}
     >
       <div className="cinematic-overlay"></div>
       <div className="container mx-auto section-padding">

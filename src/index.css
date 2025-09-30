@@ -682,11 +682,11 @@ header {
 /* Responsive section transitions - seamless flow */
 .section-transition {
     position: relative;
-    padding: clamp(60px, 12vw, 120px) 0;
+    padding-top: clamp(60px, 12vw, 120px);
+    padding-bottom: clamp(60px, 12vw, 120px);
     background: transparent;
     border: none;
     box-shadow: none;
-    margin: 0;
 }
 
 /* Remove the old transition overlay as we now have seamless backgrounds */
@@ -928,98 +928,52 @@ body.mobile-menu-open {
     -webkit-backface-visibility: hidden;
 }
 
-/* Enhanced section backgrounds with responsive gradients */
+/* Enhanced section backgrounds - seamless flow */
 .section-dark {
-    background: linear-gradient(180deg, 
-        rgba(10, 15, 28, 0.95) 0%, 
-        rgba(0, 0, 0, 0.98) 50%, 
-        rgba(26, 31, 46, 0.95) 100%);
+    background: transparent;
     position: relative;
     min-height: 100vh;
     min-height: 100dvh;
 }
 
 .section-dark-alt {
-    background: linear-gradient(180deg, 
-        rgba(26, 31, 46, 0.95) 0%, 
-        rgba(0, 0, 0, 0.98) 50%, 
-        rgba(10, 15, 28, 0.95) 100%);
+    background: transparent;
     position: relative;
     min-height: 100vh;
     min-height: 100dvh;
 }
 
-/* Enhanced seamless section transition overlays */
+/* Remove section overlays for seamless flow */
 .section-dark::before,
 .section-dark-alt::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: clamp(120px, 20vw, 200px);
-    background: linear-gradient(180deg,
-        rgba(0, 0, 0, 0.95) 0%,
-        rgba(0, 0, 0, 0.7) 30%,
-        rgba(0, 0, 0, 0.3) 70%,
-        transparent 100%);
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
 
 .section-dark::after,
 .section-dark-alt::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: clamp(120px, 20vw, 200px);
-    background: linear-gradient(0deg,
-        rgba(0, 0, 0, 0.95) 0%,
-        rgba(0, 0, 0, 0.7) 30%,
-        rgba(0, 0, 0, 0.3) 70%,
-        transparent 100%);
-    pointer-events: none;
-    z-index: 1;
+    display: none;
 }
 
-/* Enhanced seamless blending for alternating sections */
-.section-dark + .section-dark-alt::before {
-    background: linear-gradient(180deg,
-        rgba(10, 15, 28, 0.98) 0%,
-        rgba(0, 0, 0, 0.8) 30%,
-        rgba(0, 0, 0, 0.4) 70%,
-        transparent 100%);
-}
-
-.section-dark-alt + .section-dark::before {
-    background: linear-gradient(180deg,
-        rgba(26, 31, 46, 0.98) 0%,
-        rgba(0, 0, 0, 0.8) 30%,
-        rgba(0, 0, 0, 0.4) 70%,
-        transparent 100%);
-}
-
-/* Remove any visible borders between sections */
+/* Perfect seamless transitions with negative margins */
 .section-dark + .section-dark-alt,
-.section-dark-alt + .section-dark {
+.section-dark-alt + .section-dark,
+section + section {
+    margin-top: clamp(-120px, -15vw, -80px);
     border-top: none;
     box-shadow: none;
+    padding-top: clamp(180px, 27vw, 200px);
 }
 
-/* Responsive cinematic overlay effects */
+/* Responsive cinematic overlay effects - minimal for seamless sections */
 .cinematic-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-        radial-gradient(ellipse at center top, transparent 0%, rgba(0, 0, 0, 0.2) 40%, rgba(0, 0, 0, 0.4) 100%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.3) 100%);
+    background: transparent;
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0.5;
     z-index: 2;
 }
 
@@ -1038,23 +992,16 @@ body {
 /* Mobile background optimization */
 @media (max-width: 767px) {
     body {
-        background-attachment: scroll; /* Better performance on mobile */
+        background-attachment: scroll;
         background-size: 100% 300vh;
     }
 
-    .section-dark::before,
-    .section-dark-alt::before,
-    .section-dark::after,
-    .section-dark-alt::after {
-        height: clamp(80px, 15vw, 120px);
+    .section-dark + .section-dark-alt,
+    .section-dark-alt + .section-dark,
+    section + section {
+        margin-top: clamp(-80px, -12vw, -60px);
+        padding-top: clamp(140px, 24vw, 160px);
     }
-}
-
-/* Ensure perfectly seamless transitions between all sections */
-section + section {
-    border-top: none !important;
-    margin-top: 0 !important;
-    box-shadow: none !important;
 }
 
 /* Override any depth filter shadows that might create visible lines */
