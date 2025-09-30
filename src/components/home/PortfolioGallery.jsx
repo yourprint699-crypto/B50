@@ -75,7 +75,7 @@ function PortfolioGallery({
             </Link>
           </div>
 
-          <div className="hidden md:block relative overflow-hidden h-[500px] -mb-[200px]">
+          <div className="hidden md:block relative overflow-x-hidden overflow-y-visible h-[500px] -mb-[200px]">
             <div className={`flex ${spacing} pb-8 pt-40 items-end justify-center`}>
               {videos.map((video, index) => {
                 const totalVideos = videos.length;
