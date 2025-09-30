@@ -119,8 +119,8 @@ const PricingSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className='text-center component-margin'>
-          <div className='pricing-content floating-panel-dark max-width-content space-y-6 sm:space-y-8'>
+        <div className='flex flex-col items-center justify-center text-center component-margin'>
+          <div className='pricing-content floating-panel-dark max-width-content mx-auto space-y-6 sm:space-y-8'>
             <button 
               onClick={() => {
                 const element = document.getElementById('contact')
@@ -134,8 +134,8 @@ const PricingSection = () => {
                 Request a Quote
               </span>
             </button>
-            
-            <p className='font-[font1] text-sm sm:text-base text-layer-1'>
+
+            <p className='font-[font1] text-sm sm:text-base text-layer-1 text-center mx-auto'>
               Free consultation • No commitment required
             </p>
           </div>

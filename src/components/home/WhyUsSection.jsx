@@ -117,9 +117,9 @@ const WhyUsSection = () => {
         </div>
 
         {/* Pricing Hero Content */}
-        <div className='quote-card floating-panel-dark max-width-content mx-auto space-y-6 sm:space-y-8 component-margin'>
-          <div className='flex flex-col items-center justify-center text-center space-y-4 sm:space-y-6'>
-            <p className='font-[font1] text-responsive leading-relaxed text-layer-1 max-width-text mx-auto'>
+        <div className='flex flex-col items-center justify-center component-margin'>
+          <div className='quote-card floating-panel-dark max-width-content mx-auto space-y-6 sm:space-y-8'>
+            <p className='font-[font1] text-responsive leading-relaxed text-layer-1 max-width-text mx-auto text-center'>
               Final pricing changes depending on the project type, complexity, and requirements.
             </p>
           </div>
@@ -154,9 +154,9 @@ const WhyUsSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className='text-center component-margin'>
-          <div className='quote-card floating-panel-dark max-width-content space-y-6 sm:space-y-8'>
-            <button 
+        <div className='flex flex-col items-center justify-center text-center component-margin'>
+          <div className='quote-card floating-panel-dark max-width-content mx-auto space-y-6 sm:space-y-8'>
+            <button
               onClick={() => {
                 const element = document.getElementById('contact')
                 if (element) {
@@ -169,8 +169,8 @@ const WhyUsSection = () => {
                 Request a Quote
               </span>
             </button>
-            
-            <p className='font-[font1] text-sm sm:text-base text-layer-1'>
+
+            <p className='font-[font1] text-sm sm:text-base text-layer-1 text-center mx-auto'>
               Free consultation • No commitment required
             </p>
           </div>
