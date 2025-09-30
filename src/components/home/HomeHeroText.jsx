@@ -95,7 +95,7 @@ const HomeHeroText = () => {
           <span>Production</span>
         </div>
         <div className="text-[12vw] sm:text-[9vw] lg:text-[9.5vw] justify-center flex items-center uppercase leading-[10vw] sm:leading-[7.5vw] lg:leading-[8vw] text-layer-3">
-          stitches
+          Partner
         </div>
       </div>
     </div>
