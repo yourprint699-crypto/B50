@@ -51,53 +51,44 @@ const ServicesSection = () => {
     )
   })
 
-  const services = [
-    {
-      icon: '🎬',
-      title: 'Wedding Cinematography',
-      description: 'Cinematic storytelling that captures every precious moment of your special day with artistic flair.',
-      features: ['4K Ultra HD', 'Drone Footage', 'Multiple Angles', 'Same-Day Highlights']
-    },
-    {
-      icon: '📸',
-      title: 'Photography',
-      description: 'Professional wedding photography that preserves memories with stunning visual artistry.',
-      features: ['High Resolution', 'RAW Processing', 'Quick Turnaround', 'Online Gallery']
-    },
-    {
-      icon: '✂️',
-      title: 'Post-Production',
-      description: 'Expert editing and color grading to transform raw footage into cinematic masterpieces.',
-      features: ['Color Grading', 'Audio Enhancement', 'Motion Graphics', 'Custom Music']
-    },
-    {
-      icon: '🎵',
-      title: 'Live Streaming',
-      description: 'Share your special moments with loved ones who cannot attend in person.',
-      features: ['HD Quality', 'Multiple Cameras', 'Real-time Streaming', 'Recording Included']
-    },
-    // SECTION 5 - EDITABLE: Replace icon, title, description, and features below
-    {
-      icon: '💍',
-      title: 'Custom Service Five',
-      description: 'Add your service description here. This section maintains the same structure as others for easy editing.',
-      features: ['Feature One', 'Feature Two', 'Feature Three', 'Feature Four']
-    },
-    // SECTION 6 - EDITABLE: Replace icon, title, description, and features below
-    {
-      icon: '🌟',
-      title: 'Custom Service Six',
-      description: 'Add your service description here. This section maintains the same structure as others for easy editing.',
-      features: ['Feature One', 'Feature Two', 'Feature Three', 'Feature Four']
-    },
-    // SECTION 7 - EDITABLE: Replace icon, title, description, and features below
-    {
-      icon: '🎉',
-      title: 'Custom Service Seven',
-      description: 'Add your service description here. This section maintains the same structure as others for easy editing.',
-      features: ['Feature One', 'Feature Two', 'Feature Three', 'Feature Four']
-    }
-  ]
+ Post prod exp- 7+ years
+Wedding project - 1000+
+Happy Videographers - 74
+
+Our Services - change 
+
+
+Teaser Film
+
+A 1–2 minute cinematic trailer. Short, punchy, and made for social media. Perfect for building anticipation and sharing the vibe.
+
+⚡ Short Highlight Film
+
+A 3–6 minute cinematic story cut. For couples or brands who want something quick and powerful — more depth than a teaser, without going long.
+
+🎬 Highlight Film
+
+Our signature 8–12 minute cinematic edit. A complete story arc of your day or event, cut with rhythm and emotion so it feels like a movie, not a montage.
+
+🎯 Highlight + Teaser
+
+The best of both worlds. A cinematic highlight plus a short teaser you can share everywhere. Our most requested combo.
+
+🎥 Feature Film
+
+A 12–25 minute extended cinematic cut. Includes vows, speeches, and more of the day woven into a story-driven film.
+
+🔥 Complete Package
+
+Highlight + Teaser + Full Documentary (30–90 minutes). For clients who want it all — cinematic storytelling and a full archival film to relive every detail. Our most popular choice.
+
+💎 Custom / Premium Projects
+
+Music videos, branded content, multi-cam events (6+ multicams), or complex storytelling with advanced effects. If you have a vision that doesn’t fit a box, we’ll build it with you.
+
+
+
+You do the work we do the stitches - change to - “We Keep The Edits, You Keep the Calm"
 
   return (
     <section id="services" ref={sectionRef} className='min-h-screen section-dark-alt text-white relative depth-3 section-transition'>
