@@ -92,7 +92,7 @@ const HomeHeroText = () => {
               <source src="/video.mp4" type="video/mp4" />
             </video>
           </div>
-          <span>do the</span>
+          <span>Partner</span>
         </div>
         <div className="text-[12vw] sm:text-[9vw] lg:text-[9.5vw] justify-center flex items-center uppercase leading-[10vw] sm:leading-[7.5vw] lg:leading-[8vw] text-layer-3">
           stitches
