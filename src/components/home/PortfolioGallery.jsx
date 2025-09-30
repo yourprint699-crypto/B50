@@ -20,7 +20,7 @@ function PortfolioGallery({
   className = "",
   maxHeight = 120,
   spacing = "spacing = "-space-x-48 md:-space-x-56 lg:-space-x-64
-  "",
+"",
   onVideoClick,
   pauseOnHover = true,
   marqueeRepeat = 4
