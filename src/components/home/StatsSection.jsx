@@ -16,9 +16,9 @@ const StatsSection = () => {
       icon: '⚘'
     },
     {
-      number: 98,
+      number: 97,
       suffix: '%',
-      label: 'Happy Videographers',
+      label: 'Happy Clients',
       icon: '◉'
     },
     {
