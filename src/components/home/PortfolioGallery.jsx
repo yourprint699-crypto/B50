@@ -19,7 +19,7 @@ function PortfolioGallery({
   videos = [],
   className = "",
   maxHeight = 120,
-  spacing = "-space-x-72 md:-space-x-80",
+  spacing = "-space-x-80 md:-space-x-96",
   onVideoClick,
   pauseOnHover = true,
   marqueeRepeat = 4
@@ -75,7 +75,7 @@ function PortfolioGallery({
             </Link>
           </div>
 
-          <div className="hidden md:block relative overflow-hidden h-[400px] -mb-[200px]">
+          <div className="hidden md:block relative overflow-hidden h-[500px] -mb-[200px]">
             <div className={`flex ${spacing} pb-8 pt-40 items-end justify-center`}>
               {videos.map((video, index) => {
                 const totalVideos = videos.length;

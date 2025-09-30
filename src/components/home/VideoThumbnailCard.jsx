@@ -21,7 +21,7 @@ function VideoThumbnailCard({ video, onClick }) {
       className="group cursor-pointer flex-shrink-0"
     >
       <div
-        className="relative aspect-video w-64 md:w-80 lg:w-96 rounded-lg overflow-hidden transition-transform duration-300 group-hover:scale-105"
+        className="relative aspect-video w-80 md:w-96 lg:w-[500px] rounded-lg overflow-hidden transition-transform duration-300 group-hover:scale-105"
         style={{
           boxShadow: `
             rgba(0, 0, 0, 0.01) 0.796192px 0px 0.796192px 0px,
