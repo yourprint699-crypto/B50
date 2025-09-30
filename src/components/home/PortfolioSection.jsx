@@ -90,7 +90,7 @@ const PortfolioSection = () => {
       <PortfolioGallery
         title="Our Portfolio"
         archiveButton={{
-          text: "View Our Portfolio",
+          text: "View Our Gallery",
           href: "/projects"
         }}
         videos={teasers}
