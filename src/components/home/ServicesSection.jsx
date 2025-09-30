@@ -75,6 +75,27 @@ const ServicesSection = () => {
       title: 'Live Streaming',
       description: 'Share your special moments with loved ones who cannot attend in person.',
       features: ['HD Quality', 'Multiple Cameras', 'Real-time Streaming', 'Recording Included']
+    },
+    // SECTION 5 - EDITABLE: Replace icon, title, description, and features below
+    {
+      icon: '💍',
+      title: 'Custom Service Five',
+      description: 'Add your service description here. This section maintains the same structure as others for easy editing.',
+      features: ['Feature One', 'Feature Two', 'Feature Three', 'Feature Four']
+    },
+    // SECTION 6 - EDITABLE: Replace icon, title, description, and features below
+    {
+      icon: '🌟',
+      title: 'Custom Service Six',
+      description: 'Add your service description here. This section maintains the same structure as others for easy editing.',
+      features: ['Feature One', 'Feature Two', 'Feature Three', 'Feature Four']
+    },
+    // SECTION 7 - EDITABLE: Replace icon, title, description, and features below
+    {
+      icon: '🎉',
+      title: 'Custom Service Seven',
+      description: 'Add your service description here. This section maintains the same structure as others for easy editing.',
+      features: ['Feature One', 'Feature Two', 'Feature Three', 'Feature Four']
     }
   ]
 
