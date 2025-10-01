@@ -117,10 +117,13 @@ const Home = () => {
 
         {/* Process Section */}
         <ProcessSection />
-        
+
+        {/* Pricing Section */}
+        <PricingSection />
+
         {/* About Us Section */}
         <AboutSection />
-        
+
         {/* Contact Section */}
         <ContactSection />
         

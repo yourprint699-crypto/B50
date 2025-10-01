@@ -170,11 +170,15 @@ const Header = () => {
   const handleSmoothScroll = (e, href, action) => {
     if (action === 'scrollToPricing') {
       e.preventDefault()
-      const pricingElement = document.getElementById('pricing')
-      if (pricingElement) {
-        pricingElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      }
+      // Close menu immediately for fast response
       closeMobileMenu()
+      // Small delay to ensure smooth scroll after menu closes
+      setTimeout(() => {
+        const pricingElement = document.getElementById('pricing')
+        if (pricingElement) {
+          pricingElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }
+      }, 50)
       return
     }
 
@@ -337,10 +341,11 @@ const Header = () => {
 
             {/* Mobile Menu Toggle */}
             <div className="lg:hidden nav-item-animate">
-              <button 
+              <button
                 ref={hamburgerButtonRef}
                 onClick={toggleMobileMenu}
-                className="w-12 h-12 flex flex-col items-center justify-center space-y-1.5 group p-2 relative z-50 focus:outline-none focus:ring-2 focus:ring-[#D3FD50] focus:ring-opacity-50 rounded-lg"
+                className="w-12 h-12 flex flex-col items-center justify-center space-y-1.5 group p-2 relative z-50 focus:outline-none focus:ring-2 focus:ring-[#D3FD50] focus:ring-opacity-50 rounded-lg touch-manipulation active:scale-95"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
                 aria-label="Toggle mobile menu"
                 aria-expanded={isMobileMenuOpen}
                 aria-controls="mobile-menu"
@@ -384,7 +389,8 @@ const Header = () => {
             {/* Close Button */}
             <button
               onClick={closeMobileMenu}
-              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-white hover:text-[#D3FD50] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#D3FD50] focus:ring-opacity-50 rounded-lg"
+              className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center text-white hover:text-[#D3FD50] transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#D3FD50] focus:ring-opacity-50 rounded-lg touch-manipulation active:scale-90"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
               aria-label="Close menu"
             >
               <span className="text-2xl">×</span>
@@ -408,7 +414,8 @@ const Header = () => {
                   <button
                     ref={index === 0 ? firstMenuItemRef : null}
                     onClick={(e) => handleSmoothScroll(e, item.href, item.action)}
-                    className="w-full text-left font-[font2] text-lg text-white uppercase tracking-wide py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-[#D3FD50] focus:bg-white/5 focus:text-[#D3FD50] focus:outline-none relative group"
+                    className="w-full text-left font-[font2] text-lg text-white uppercase tracking-wide py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-[#D3FD50] focus:bg-white/5 focus:text-[#D3FD50] focus:outline-none relative group active:bg-white/10 touch-manipulation"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
                     {item.name}
                     <span className="absolute bottom-0 left-4 w-0 h-0.5 bg-[#D3FD50] transition-all duration-300 group-hover:w-8" />
@@ -418,7 +425,8 @@ const Header = () => {
                     ref={index === 0 ? firstMenuItemRef : null}
                     to={item.href}
                     onClick={closeMobileMenu}
-                    className="block font-[font2] text-lg text-white uppercase tracking-wide py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-[#D3FD50] focus:bg-white/5 focus:text-[#D3FD50] focus:outline-none relative group"
+                    className="block font-[font2] text-lg text-white uppercase tracking-wide py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-[#D3FD50] focus:bg-white/5 focus:text-[#D3FD50] focus:outline-none relative group active:bg-white/10 touch-manipulation"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
                     {item.name}
                     <span className="absolute bottom-0 left-4 w-0 h-0.5 bg-[#D3FD50] transition-all duration-300 group-hover:w-8" />
@@ -433,7 +441,8 @@ const Header = () => {
                 to="/affiliate-program"
                 ref={lastMenuItemRef}
                 onClick={closeMobileMenu}
-                className="block w-full text-center font-[font2] text-sm text-white uppercase tracking-wide px-6 py-3 border border-gray-400 rounded-full transition-all duration-300 hover:bg-[#D3FD50] hover:text-black hover:border-[#D3FD50] focus:bg-[#D3FD50] focus:text-black focus:border-[#D3FD50] focus:outline-none"
+                className="block w-full text-center font-[font2] text-sm text-white uppercase tracking-wide px-6 py-3 border border-gray-400 rounded-full transition-all duration-300 hover:bg-[#D3FD50] hover:text-black hover:border-[#D3FD50] focus:bg-[#D3FD50] focus:text-black focus:border-[#D3FD50] focus:outline-none active:scale-95 touch-manipulation"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 Become an Affiliate
               </Link>
