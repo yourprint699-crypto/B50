@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import PageWrapper from '../components/common/PageWrapper'
 import VideoInquiryForm from '../components/forms/VideoInquiryForm'
+import FAQSection from '../components/common/FAQSection'
 
 const Contact = () => {
 
@@ -89,6 +90,11 @@ const Contact = () => {
               </p>
             </div>
           </div>
+        </div>
+
+        {/* FAQ Section */}
+        <div className='max-width-wide mx-auto mt-16 sm:mt-20 lg:mt-24'>
+          <FAQSection />
         </div>
       </div>
     </PageWrapper>
