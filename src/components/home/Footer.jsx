@@ -55,13 +55,18 @@ const Footer = () => {
       <div className="cinematic-overlay"></div>
       <div className='container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-8 sm:pb-10 lg:pb-12'>
         {/* Footer Information Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 mb-8 sm:mb-10 lg:mb-12' style={{ opacity: 1, visibility: 'visible' }}>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 sm:gap-16 lg:gap-20 mb-12 sm:mb-16 lg:mb-20 relative' style={{ opacity: 1, visibility: 'visible' }}>
+          {/* Vertical dividers for desktop */}
+          <div className='hidden lg:block absolute inset-y-0 left-1/4 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent'></div>
+          <div className='hidden lg:block absolute inset-y-0 left-2/4 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent'></div>
+          <div className='hidden lg:block absolute inset-y-0 left-3/4 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent'></div>
+
           {/* Quick Links */}
-          <div className='footer-content floating-panel-dark space-y-4 sm:space-y-6' style={{ opacity: 1, visibility: 'visible' }}>
-            <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] mb-4 sm:mb-6 text-layer-2'>
+          <div className='footer-content space-y-6 sm:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left' style={{ opacity: 1, visibility: 'visible' }}>
+            <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] tracking-wider font-bold'>
               Quick Links
             </h3>
-            <ul className='space-y-3 sm:space-y-4'>
+            <ul className='space-y-4 sm:space-y-5 w-full'>
               <li>
                 <button 
                   onClick={() => {
@@ -70,52 +75,64 @@ const Footer = () => {
                       element.scrollIntoView({ behavior: 'smooth', block: 'start' })
                     }
                   }}
-                  className='font-[font1] text-sm sm:text-base lg:text-lg text-layer-1 interactive-hover text-left micro-bounce w-full text-left'
+                  className='footer-link font-[font1] text-base sm:text-lg lg:text-xl text-white/80 hover:text-[#D3FD50] transition-colors duration-300 relative group w-full text-center lg:text-left'
                 >
                   Our Portfolio
                 </button>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/contact"
-                  className='font-[font1] text-sm sm:text-base lg:text-lg text-layer-1 interactive-hover micro-bounce block'
+                  className='footer-link font-[font1] text-base sm:text-lg lg:text-xl text-white/80 hover:text-[#D3FD50] transition-colors duration-300 relative group block'
                 >
-                  Contact
+                  <span className='relative'>
+                    Contact
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#D3FD50] group-hover:w-full transition-all duration-300'></span>
+                  </span>
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/privacy-policy"
-                  className='font-[font1] text-sm sm:text-base lg:text-lg text-layer-1 interactive-hover micro-bounce block'
+                  className='footer-link font-[font1] text-base sm:text-lg lg:text-xl text-white/80 hover:text-[#D3FD50] transition-colors duration-300 relative group block'
                 >
-                  Privacy Policy
+                  <span className='relative'>
+                    Privacy Policy
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#D3FD50] group-hover:w-full transition-all duration-300'></span>
+                  </span>
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/terms-of-service"
-                  className='font-[font1] text-sm sm:text-base lg:text-lg text-layer-1 interactive-hover micro-bounce block'
+                  className='footer-link font-[font1] text-base sm:text-lg lg:text-xl text-white/80 hover:text-[#D3FD50] transition-colors duration-300 relative group block'
                 >
-                  Terms & Conditions
+                  <span className='relative'>
+                    Terms & Conditions
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#D3FD50] group-hover:w-full transition-all duration-300'></span>
+                  </span>
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/affiliate-program"
-                  className='font-[font1] text-sm sm:text-base lg:text-lg text-layer-1 interactive-hover micro-bounce block'
+                  className='footer-link font-[font1] text-base sm:text-lg lg:text-xl text-white/80 hover:text-[#D3FD50] transition-colors duration-300 relative group block'
                 >
-                  Affiliate Program
+                  <span className='relative'>
+                    Affiliate Program
+                    <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#D3FD50] group-hover:w-full transition-all duration-300'></span>
+                  </span>
                 </Link>
               </li>
             </ul>
           </div>
 
           {/* Company Address */}
-          <div className='footer-content floating-panel-dark space-y-4 sm:space-y-6' style={{ opacity: 1, visibility: 'visible' }}>
-            <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] mb-4 sm:mb-6 text-layer-2 text-glow'>
+          <div className='footer-content space-y-6 sm:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left' style={{ opacity: 1, visibility: 'visible' }}>
+            <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] tracking-wider font-bold'>
               Address
             </h3>
-            <div className='font-[font1] text-sm sm:text-base lg:text-lg text-layer-1 leading-relaxed space-y-1 sm:space-y-2'>
+            <div className='font-[font1] text-base sm:text-lg lg:text-xl text-white/80 leading-loose space-y-2 sm:space-y-3'>
               <p>22 ruelle du Clerc</p>
               <p>59126, Linselles</p>
               <p>(France)</p>
@@ -123,41 +140,42 @@ const Footer = () => {
           </div>
 
           {/* Hours of Operation */}
-          <div className='footer-content floating-panel-dark space-y-4 sm:space-y-6' style={{ opacity: 1, visibility: 'visible' }}>
-            <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] mb-4 sm:mb-6 text-layer-2 text-glow'>
+          <div className='footer-content space-y-6 sm:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left' style={{ opacity: 1, visibility: 'visible' }}>
+            <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] tracking-wider font-bold'>
               Hours
             </h3>
-            <div className='font-[font1] text-sm sm:text-base lg:text-lg text-layer-1 space-y-2 sm:space-y-3'>
+            <div className='font-[font1] text-base sm:text-lg lg:text-xl text-white/80 leading-loose space-y-3 sm:space-y-4'>
               <p>M–F: 9am – 7pm (UTC+1)</p>
               <p>Saturday & Sunday: Closed</p>
             </div>
           </div>
 
           {/* Contact Information */}
-          <div className='footer-content floating-panel-dark space-y-4 sm:space-y-6' style={{ opacity: 1, visibility: 'visible' }}>
-            <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] mb-4 sm:mb-6 text-layer-2 text-glow'>
+          <div className='footer-content space-y-6 sm:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left' style={{ opacity: 1, visibility: 'visible' }}>
+            <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] tracking-wider font-bold'>
               Contact
             </h3>
-            <div className='font-[font1] text-sm sm:text-base lg:text-lg text-layer-1'>
-              <a 
+            <div className='font-[font1] text-base sm:text-lg lg:text-xl text-white/80 leading-loose'>
+              <a
                 href="mailto:contact@amouraworks.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className='interactive-hover micro-bounce break-all sm:break-normal'
+                className='footer-link hover:text-[#D3FD50] transition-colors duration-300 relative group break-all sm:break-normal'
               >
-                contact@amouraworks.com
+                <span className='relative'>
+                  contact@amouraworks.com
+                  <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-[#D3FD50] group-hover:w-full transition-all duration-300'></span>
+                </span>
               </a>
             </div>
           </div>
         </div>
 
         {/* Bottom Border Line */}
-        <div className='floating-panel-dark text-center' style={{ opacity: 1, visibility: 'visible' }}>
-          <div className='text-center'>
-            <p className='font-[font1] text-xs sm:text-sm lg:text-base text-layer-1'>
-              ©️ 2025 Amoura Works. All rights reserved.
-            </p>
-          </div>
+        <div className='text-center pt-8 sm:pt-10 lg:pt-12 border-t border-white/10' style={{ opacity: 1, visibility: 'visible' }}>
+          <p className='font-[font1] text-sm sm:text-base lg:text-lg text-white/60 leading-loose'>
+            ©️ 2025 Amoura Works. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
