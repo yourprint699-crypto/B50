@@ -30,50 +30,56 @@ const Contact = () => {
       </div>
 
       <div className='container mx-auto pb-16 sm:pb-24 lg:pb-32'>
-        <div className='responsive-grid-2 max-width-wide'>
-          {/* Contact Form */}
-          <div className='contact-content'>
+        {/* Two Column Grid - Perfect Symmetry */}
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-width-wide'>
+          {/* Left Column - Contact Form */}
+          <div className='contact-content flex flex-col'>
             <VideoInquiryForm />
           </div>
 
-          {/* Contact Information */}
-          <div className='space-y-6 sm:space-y-8 lg:space-y-10'>
-            <div className='contact-content floating-panel-dark space-y-4 sm:space-y-6'>
-              <h3 className='font-[font2] heading-responsive-lg uppercase text-[#D3FD50] text-layer-2 text-glow'>
-                Let's Connect
-              </h3>
-              <div className='space-y-4 sm:space-y-5 font-[font1] text-responsive text-layer-1'>
-                <div className='flex items-start sm:items-center space-x-3 sm:space-x-4'>
-                  <span className='text-xl sm:text-2xl micro-bounce glow-accent flex-shrink-0'>📧</span>
-                  <a href="mailto:contact@amouraworks.com" className='interactive-hover break-all sm:break-normal'>
-                    contact@amouraworks.com
-                  </a>
-                </div>
-                <div className='flex items-start sm:items-center space-x-3 sm:space-x-4'>
-                  <span className='text-xl sm:text-2xl micro-bounce glow-accent flex-shrink-0'>📍</span>
-                  <span>22 ruelle du Clerc, 59126, Linselles (France)</span>
-                </div>
-                <div className='flex items-start sm:items-center space-x-3 sm:space-x-4'>
-                  <span className='text-xl sm:text-2xl micro-bounce glow-accent flex-shrink-0'>🕒</span>
-                  <span>M–F: 9am – 7pm (UTC+1)</span>
+          {/* Right Column - Contact Information */}
+          <div className='contact-content flex flex-col space-y-6 sm:space-y-8'>
+            {/* Let's Connect Section */}
+            <div className='floating-panel-dark flex-1 flex flex-col justify-between space-y-6'>
+              <div>
+                <h3 className='font-[font2] heading-responsive-lg uppercase text-[#D3FD50] text-layer-2 text-glow mb-6'>
+                  Let's Connect
+                </h3>
+                <div className='space-y-5 font-[font1] text-responsive text-layer-1'>
+                  <div className='flex items-center space-x-4 group transition-all duration-300 hover:translate-x-2'>
+                    <span className='text-2xl micro-bounce glow-accent flex-shrink-0'>📧</span>
+                    <a href="mailto:contact@amouraworks.com" className='interactive-hover break-all sm:break-normal'>
+                      contact@amouraworks.com
+                    </a>
+                  </div>
+                  <div className='flex items-center space-x-4 group transition-all duration-300 hover:translate-x-2'>
+                    <span className='text-2xl micro-bounce glow-accent flex-shrink-0'>📍</span>
+                    <span>22 ruelle du Clerc, 59126, Linselles (France)</span>
+                  </div>
+                  <div className='flex items-center space-x-4 group transition-all duration-300 hover:translate-x-2'>
+                    <span className='text-2xl micro-bounce glow-accent flex-shrink-0'>🕒</span>
+                    <span>M–F: 9am – 7pm (UTC+1)</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className='contact-content floating-panel-dark space-y-4 sm:space-y-6'>
-              <h3 className='font-[font2] heading-responsive-md uppercase text-[#D3FD50] text-layer-2 text-glow'>
+            {/* Follow Our Work Section */}
+            <div className='floating-panel-dark space-y-6'>
+              <h3 className='font-[font2] heading-responsive-md uppercase text-[#D3FD50] text-layer-2 text-glow text-center'>
                 Follow Our Work
               </h3>
-              <div className='flex justify-center sm:justify-start space-x-4 sm:space-x-6'>
+              <div className='flex justify-center space-x-6'>
                 {socialLinks.map((social, index) => (
-                  <a 
+                  <a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className='w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 glass glass-hover glass-click rounded-full flex items-center justify-center group glow-accent'
+                    className='w-16 h-16 glass glass-hover glass-click rounded-2xl flex items-center justify-center group glow-accent transition-all duration-300 hover:scale-110 hover:rotate-6'
+                    style={{ animationDelay: `${index * 0.1}s` }}
                   >
-                    <span className='text-lg sm:text-2xl lg:text-3xl micro-bounce glow-accent'>
+                    <span className='text-3xl micro-bounce glow-accent'>
                       {social.icon}
                     </span>
                   </a>
@@ -81,12 +87,13 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className='contact-content floating-panel-dark'>
-              <h4 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] mb-4 sm:mb-6 text-layer-2 text-glow'>
-                  Response Time
+            {/* Response Time Section */}
+            <div className='floating-panel-dark space-y-4'>
+              <h4 className='font-[font2] text-xl uppercase text-[#D3FD50] text-layer-2 text-glow text-center'>
+                Response Time
               </h4>
-              <p className='font-[font1] text-responsive text-layer-1 leading-relaxed'>
-                  Nous répondons à toutes les demandes dans les 24 heures. Pour les urgences, n'hésitez pas à nous appeler directement.
+              <p className='font-[font1] text-responsive text-layer-1 leading-relaxed text-center'>
+                Nous répondons à toutes les demandes dans les 24 heures. Pour les urgences, n'hésitez pas à nous appeler directement.
               </p>
             </div>
           </div>
