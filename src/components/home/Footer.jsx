@@ -53,9 +53,9 @@ const Footer = () => {
   return (
     <footer ref={footerRef} className='section-dark text-white relative depth-3'>
       <div className="cinematic-overlay"></div>
-      <div className='container mx-auto section-padding'>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-8 sm:pb-10 lg:pb-12'>
         {/* Footer Information Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 mb-12 sm:mb-16 mt-8 sm:mt-12 lg:mt-16' style={{ opacity: 1, visibility: 'visible' }}>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 mb-8 sm:mb-10 lg:mb-12' style={{ opacity: 1, visibility: 'visible' }}>
           {/* Quick Links */}
           <div className='footer-content floating-panel-dark space-y-4 sm:space-y-6' style={{ opacity: 1, visibility: 'visible' }}>
             <h3 className='font-[font2] text-lg sm:text-xl lg:text-2xl uppercase text-[#D3FD50] mb-4 sm:mb-6 text-layer-2'>
