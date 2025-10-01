@@ -37,69 +37,121 @@ const ScrollVideoTransition = () => {
   useGSAP(() => {
     const container = containerRef.current
     const video = videoRef.current
+    const videoWrapper = container?.querySelector('.video-wrapper')
 
-    if (!container || !video) return
+    if (!container || !video || !videoWrapper) return
 
-    // Create timeline for video entrance and scroll-sync
+    // Framer-inspired spring configuration
+    const springConfig = {
+      duration: 1.2,
+      ease: 'power3.out'
+    }
+
+    // Smooth video playback management
+    let isPlaying = false
+    const smoothPlay = () => {
+      if (!isPlaying) {
+        isPlaying = true
+        video.play().catch(err => console.warn('Play failed:', err))
+      }
+    }
+
+    const smoothPause = () => {
+      if (isPlaying) {
+        isPlaying = false
+        video.pause()
+      }
+    }
+
+    // Main scroll-driven timeline with smooth transitions
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: container,
         start: 'top bottom',
         end: 'bottom top',
-        scrub: 1,
-        onEnter: () => {
-          video.play().catch(err => console.warn('Play on scroll failed:', err))
-        },
-        onLeave: () => {
-          video.pause()
-        },
-        onEnterBack: () => {
-          video.play().catch(err => console.warn('Play on scroll back failed:', err))
-        },
-        onLeaveBack: () => {
-          video.pause()
-        }
+        scrub: 1.5,
+        onEnter: smoothPlay,
+        onLeave: smoothPause,
+        onEnterBack: smoothPlay,
+        onLeaveBack: smoothPause
       }
     })
 
-    // Animate container from right to center
+    // Entrance: Slide in from right with scale and blur effect
     tl.fromTo(container,
       {
-        x: '100vw',
+        x: '120%',
         opacity: 0
       },
       {
-        x: '0vw',
+        x: '0%',
         opacity: 1,
-        duration: 0.3,
-        ease: 'power2.out'
+        duration: 0.35,
+        ease: 'power4.out'
       }
     )
-    .to(container, {
-      x: '0vw',
+    .fromTo(videoWrapper,
+      {
+        scale: 0.85,
+        rotateY: 12,
+        filter: 'blur(10px)'
+      },
+      {
+        scale: 1,
+        rotateY: 0,
+        filter: 'blur(0px)',
+        duration: 0.35,
+        ease: 'power4.out'
+      },
+      '<'
+    )
+
+    // Hold: Keep centered while video plays
+    .to([container, videoWrapper], {
+      x: '0%',
+      scale: 1,
+      rotateY: 0,
       opacity: 1,
-      duration: 0.4
-    })
-    .to(container, {
-      x: '-100vw',
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power2.in'
+      filter: 'blur(0px)',
+      duration: 0.3
     })
 
-    // Scroll-sync video playback
+    // Exit: Slide out to left with scale and blur
+    .to(videoWrapper,
+      {
+        scale: 0.85,
+        rotateY: -12,
+        filter: 'blur(10px)',
+        duration: 0.35,
+        ease: 'power4.in'
+      }
+    )
+    .to(container,
+      {
+        x: '-120%',
+        opacity: 0,
+        duration: 0.35,
+        ease: 'power4.in'
+      },
+      '<'
+    )
+
+    // Smooth scroll-synced video playback with easing
     ScrollTrigger.create({
       trigger: container,
       start: 'top bottom',
       end: 'bottom top',
       onUpdate: (self) => {
-        if (video.duration) {
+        if (video.duration && isPlaying) {
           const progress = self.progress
           const targetTime = video.duration * progress
+          const currentTime = video.currentTime
+          const timeDiff = Math.abs(currentTime - targetTime)
 
-          // Only update if difference is significant (prevents jitter)
-          if (Math.abs(video.currentTime - targetTime) > 0.1) {
-            video.currentTime = targetTime
+          // Smooth interpolation for fluid playback
+          if (timeDiff > 0.05) {
+            const smoothTarget = currentTime + (targetTime - currentTime) * 0.3
+            video.currentTime = smoothTarget
           }
         }
       }
@@ -112,10 +164,17 @@ const ScrollVideoTransition = () => {
       ref={containerRef}
       className='h-[60vh] sm:h-[70vh] w-full flex items-center justify-center overflow-visible relative py-12 sm:py-16 lg:py-20'
       style={{
-        willChange: 'transform, opacity'
+        willChange: 'transform, opacity',
+        perspective: '1200px'
       }}
     >
-      <div className='w-[90%] sm:w-[85%] lg:w-[75%] max-w-6xl h-full flex items-center justify-center bg-black rounded-lg overflow-hidden shadow-2xl'>
+      <div
+        className='video-wrapper w-[90%] sm:w-[85%] lg:w-[75%] max-w-6xl h-full flex items-center justify-center bg-black rounded-lg overflow-hidden shadow-2xl'
+        style={{
+          willChange: 'transform, filter',
+          transformStyle: 'preserve-3d'
+        }}
+      >
         <video
           ref={videoRef}
           className='w-full h-full object-cover'
