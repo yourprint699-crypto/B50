@@ -49,7 +49,7 @@ const PricingSection = () => {
         }
       }
     )
-  })
+  }, { dependencies: [], revertOnUpdate: true })
 
   const highlights = [
     {

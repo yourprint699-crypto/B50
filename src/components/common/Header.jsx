@@ -163,11 +163,21 @@ const Header = () => {
 
   const navigationItems = [
     { name: 'Portfolio', href: '/projects' },
-    { name: 'Pricing', href: '#contact', action: 'scrollToQuote' },
+    { name: 'Pricing', href: '#pricing', action: 'scrollToPricing' },
     { name: 'Contact Us', href: '/contact' }
   ]
 
   const handleSmoothScroll = (e, href, action) => {
+    if (action === 'scrollToPricing') {
+      e.preventDefault()
+      const pricingElement = document.getElementById('pricing')
+      if (pricingElement) {
+        pricingElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+      closeMobileMenu()
+      return
+    }
+
     if (action === 'scrollToQuote') {
       e.preventDefault()
       const contactElement = document.getElementById('contact')

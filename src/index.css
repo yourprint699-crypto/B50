@@ -2033,9 +2033,9 @@ iframe {
 
 /* Responsive loading states */
 .loading-shimmer {
-    background: linear-gradient(90deg, 
-        rgba(255, 255, 255, 0.02) 0%, 
-        rgba(255, 255, 255, 0.08) 50%, 
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0.02) 0%,
+        rgba(255, 255, 255, 0.08) 50%,
         rgba(255, 255, 255, 0.02) 100%);
     background-size: 200% 100%;
     animation: shimmer 2s infinite;
@@ -2044,6 +2044,13 @@ iframe {
 @keyframes shimmer {
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
+}
+
+/* Pricing section - always visible without scroll animations */
+.pricing-title,
+.pricing-content {
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 /* 2-Row Grid specific optimizations */
