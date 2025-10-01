@@ -1,20 +1,11 @@
 import React, { useRef, useEffect } from 'react';
-import { useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import VideoInquiryForm from '../forms/VideoInquiryForm';
 
 const ContactSection = () => {
   const sectionRef = useRef(null);
-  const uploadSectionRef = useRef(null);
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitStatus, setSubmitStatus] = useState(null)
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -75,47 +66,6 @@ const ContactSection = () => {
     { name: 'Facebook', url: 'https://facebook.com/amouraworks', icon: '📘' },
     { name: 'LinkedIn', url: 'https://linkedin.com/company/amouraworks', icon: '💼' },
   ];
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }))
-  }
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    setSubmitStatus(null)
-
-    try {
-      const response = await fetch('https://formspree.io/f/mandlzyw', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      })
-
-      if (response.ok) {
-        setSubmitStatus('success')
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          message: ''
-        })
-      } else {
-        setSubmitStatus('error')
-      }
-    } catch (error) {
-      console.error('Form submission error:', error)
-      setSubmitStatus('error')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
 
   return (
     <section
@@ -190,82 +140,8 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Quick Contact Form */}
-          <div className="contact-info floating-panel-dark">
-            <h3 className="font-[font2] heading-responsive-md uppercase text-[#D3FD50] mb-6 sm:mb-8 lg:mb-10 text-layer-2 text-glow">
-                Quick Inquiry
-            </h3>
-
-            {submitStatus === 'success' && (
-              <div className='success-state mb-6 sm:mb-8'>
-                <p className='font-[font2] text-base sm:text-lg'>
-                  Thank you for your inquiry! We will get back to you within 24 hours.
-                </p>
-              </div>
-            )}
-
-            {submitStatus === 'error' && (
-              <div className='error-state mb-6 sm:mb-8'>
-                <p className='font-[font2] text-base sm:text-lg'>
-                  Sorry, there was an error sending your message. Please try again or contact us directly.
-                </p>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
-              <div className="form-grid form-grid-2 gap-4 sm:gap-6">
-                  <input
-                    type="text"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    className="w-full input-inset text-white placeholder-gray-400"
-                  />
-                  <input
-                    type="text"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={formData.lastName}
-                    onChange={handleChange}
-                    required
-                    disabled={isSubmitting}
-                    className="w-full input-inset text-white placeholder-gray-400"
-                  />
-              </div>
-
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email Address"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  disabled={isSubmitting}
-                  className="w-full input-inset text-white placeholder-gray-400"
-                />
-
-                <textarea
-                  name="message"
-                  placeholder="Tell us about your wedding vision..."
-                  rows="3"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  disabled={isSubmitting}
-                  className="w-full input-inset text-white placeholder-gray-400 resize-none"
-                ></textarea>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full btn-pill btn-primary h-12 sm:h-14 font-[font2] text-base sm:text-lg lg:text-xl disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
-                >
-                  <span className="pointer-events-none">{isSubmitting ? 'Sending...' : 'Send Inquiry'}</span>
-                </button>
-            </form>
+          <div className="contact-info">
+            <VideoInquiryForm />
           </div>
         </div>
       </div>
