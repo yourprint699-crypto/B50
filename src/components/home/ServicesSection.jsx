@@ -95,7 +95,7 @@ const ServicesSection = () => {
     >
       <div className="cinematic-overlay"></div>
 
-      <div className='container mx-auto section-padding'>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-[clamp(3rem,12vw,8rem)]'>
         {/* Title */}
         <div className='flex flex-col items-center justify-center text-center component-margin'>
           <h2 className='services-title font-[font2] heading-responsive-xl uppercase leading-tight text-layer-3 text-glow'>
