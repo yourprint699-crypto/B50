@@ -8,6 +8,7 @@ import PortfolioSection from '../components/home/PortfolioSection'
 import StatsSection from '../components/home/StatsSection'
 import PricingSection from '../components/home/PricingSection'
 import ServicesSection from '../components/home/ServicesSection'
+import ScrollVideoTransition from '../components/home/ScrollVideoTransition'
 import ProcessSection from '../components/home/ProcessSection'
 import AboutSection from '../components/home/AboutSection'
 import ContactSection from '../components/home/ContactSection'
@@ -110,7 +111,10 @@ const Home = () => {
         
         {/* Services Section */}
         <ServicesSection />
-        
+
+        {/* Scroll Video Transition */}
+        <ScrollVideoTransition />
+
         {/* Process Section */}
         <ProcessSection />
         
