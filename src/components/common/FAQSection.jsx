@@ -37,7 +37,7 @@ const FAQSection = () => {
   return (
     <div className='contact-content'>
       <h3 className='font-[font2] heading-responsive-lg uppercase text-[#D3FD50] mb-6 sm:mb-8 lg:mb-10 text-center text-layer-2 text-glow'>
-        Frequently Asked Questions
+        ‎ ‎ ‎ ‎ ‎ ‎ ‎ Frequently Asked Questions
       </h3>
       <div className='space-y-4'>
         {faqs.map((faq, index) => (
