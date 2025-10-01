@@ -110,12 +110,12 @@ const ScrollVideoTransition = () => {
   return (
     <div
       ref={containerRef}
-      className='h-screen w-screen flex items-center justify-center overflow-hidden relative'
+      className='h-[60vh] sm:h-[70vh] w-full flex items-center justify-center overflow-visible relative py-12 sm:py-16 lg:py-20'
       style={{
         willChange: 'transform, opacity'
       }}
     >
-      <div className='w-full h-full flex items-center justify-center bg-black'>
+      <div className='w-[90%] sm:w-[85%] lg:w-[75%] max-w-6xl h-full flex items-center justify-center bg-black rounded-lg overflow-hidden shadow-2xl'>
         <video
           ref={videoRef}
           className='w-full h-full object-cover'
