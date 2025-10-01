@@ -1041,6 +1041,28 @@ section + section {
     padding-top: clamp(180px, 27vw, 200px);
 }
 
+/* Specific spacing reduction between Portfolio and Pricing sections */
+#portfolio + #pricing {
+    margin-top: clamp(-160px, -20vw, -120px);
+    padding-top: clamp(100px, 18vw, 140px);
+}
+
+/* Tablet-specific Portfolio to Pricing spacing */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #portfolio + #pricing {
+        margin-top: clamp(-140px, -18vw, -100px);
+        padding-top: clamp(90px, 16vw, 120px);
+    }
+}
+
+/* Desktop-specific Portfolio to Pricing spacing */
+@media (min-width: 1024px) {
+    #portfolio + #pricing {
+        margin-top: clamp(-180px, -22vw, -140px);
+        padding-top: clamp(80px, 14vw, 120px);
+    }
+}
+
 /* Responsive cinematic overlay effects - minimal for seamless sections */
 .cinematic-overlay {
     position: absolute;
@@ -1078,6 +1100,12 @@ body {
     section + section {
         margin-top: clamp(-80px, -12vw, -60px);
         padding-top: clamp(140px, 24vw, 160px);
+    }
+
+    /* Mobile-specific Portfolio to Pricing spacing */
+    #portfolio + #pricing {
+        margin-top: clamp(-100px, -16vw, -80px);
+        padding-top: clamp(80px, 16vw, 100px);
     }
 }
 
