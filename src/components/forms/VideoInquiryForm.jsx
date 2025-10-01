@@ -19,11 +19,13 @@ const VideoInquiryForm = () => {
   const [submitStatus, setSubmitStatus] = useState(null)
 
   const projectTypes = [
-    'Wedding',
-    'Event',
-    'Short Film',
-    'Social Media / Marketing Video',
-    'Other'
+    'Teaser Film',
+    'Short Highlight Film',
+    'Highlight Film',
+    'Highlight + Teaser',
+    'Feature Film',
+    'Complete Package',
+    'Custom / Premium Projects'
   ]
 
   const timelines = [
@@ -226,7 +228,7 @@ const VideoInquiryForm = () => {
           <input
             type="text"
             name="location"
-            placeholder="City, State / County (e.g., Windham, ME or London, Greater London)"
+            placeholder="City, State / County (e.g., Windham, ME; Portland, OR; Austin, TX; London, Greater London)"
             value={formData.location}
             onChange={handleChange}
             disabled={isSubmitting}

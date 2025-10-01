@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import PageWrapper from '../components/common/PageWrapper'
-import ContactForm from '../components/forms/ContactForm'
+import VideoInquiryForm from '../components/forms/VideoInquiryForm'
 
 const Contact = () => {
 
@@ -32,7 +32,7 @@ const Contact = () => {
         <div className='responsive-grid-2 max-width-wide'>
           {/* Contact Form */}
           <div className='contact-content'>
-            <ContactForm />
+            <VideoInquiryForm />
           </div>
 
           {/* Contact Information */}

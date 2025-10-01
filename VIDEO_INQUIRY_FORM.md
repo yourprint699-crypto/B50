@@ -25,18 +25,20 @@ A comprehensive, accessible video editing inquiry form built with React and Tail
 
 5. **Location** (Required)
    - Single-line text input
-   - Placeholder: "City, State / County (e.g., Windham, ME or London, Greater London)"
+   - Placeholder: "City, State / County (e.g., Windham, ME; Portland, OR; Austin, TX; London, Greater London)"
    - Accepts all USA states and international locations
    - Validation: Cannot be empty
 
 6. **Project Type** (Required)
    - Dropdown select
    - Options:
-     - Wedding
-     - Event
-     - Short Film
-     - Social Media / Marketing Video
-     - Other
+     - Teaser Film
+     - Short Highlight Film
+     - Highlight Film
+     - Highlight + Teaser
+     - Feature Film
+     - Complete Package
+     - Custom / Premium Projects
    - Validation: Must select an option
 
 7. **Project Details / Vision** (Required)
