@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [openIndex, setOpenIndex] = useState(null)
 
   const faqs = [
     {
@@ -30,7 +30,7 @@ const FAQSection = () => {
     }
   ]
 
-  const toggleFAQ = (index: number) => {
+  const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index)
   }
 
