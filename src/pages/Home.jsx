@@ -3,10 +3,8 @@ import Video from '../components/home/Video'
 import HomeHeroText from '../components/home/HomeHeroText'
 import HomeBottomText from '../components/home/HomeBottomText'
 import Header from '../components/common/Header'
-import WhyUsSection from '../components/home/WhyUsSection'
 import PortfolioSection from '../components/home/PortfolioSection'
 import StatsSection from '../components/home/StatsSection'
-import PricingSection from '../components/home/PricingSection'
 import ServicesSection from '../components/home/ServicesSection'
 import ScrollVideoTransition from '../components/home/ScrollVideoTransition'
 import ProcessSection from '../components/home/ProcessSection'
@@ -102,10 +100,7 @@ const Home = () => {
         
         {/* Portfolio Section */}
         <PortfolioSection />
-        
-        {/* Why Us Section */}
-        <WhyUsSection />
-        
+
         {/* Stats Section */}
         <StatsSection />
         
@@ -117,9 +112,6 @@ const Home = () => {
 
         {/* Process Section */}
         <ProcessSection />
-
-        {/* Pricing Section */}
-        <PricingSection />
 
         {/* About Us Section */}
         <AboutSection />

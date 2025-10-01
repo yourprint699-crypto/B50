@@ -163,25 +163,11 @@ const Header = () => {
 
   const navigationItems = [
     { name: 'Portfolio', href: '/projects' },
-    { name: 'Pricing', href: '#contact', action: 'scrollToQuote' },
+    { name: 'Inquire Now', href: '/video-inquiry' },
     { name: 'Contact Us', href: '/contact' }
   ]
 
-  const handleSmoothScroll = (e, href, action) => {
-    if (action === 'scrollToQuote') {
-      e.preventDefault()
-      // Close menu immediately for fast response
-      closeMobileMenu()
-      // Small delay to ensure smooth scroll after menu closes
-      setTimeout(() => {
-        const contactElement = document.getElementById('contact')
-        if (contactElement) {
-          contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-      }, 100)
-      return
-    }
-
+  const handleSmoothScroll = (e, href) => {
     if (href.startsWith('#')) {
       e.preventDefault()
       const element = document.getElementById(href.substring(1))
@@ -263,35 +249,19 @@ const Header = () => {
                   className="nav-item-animate"
                   style={{ animationDelay: `${1.2 + index * 0.1}s` }}
                 >
-                  {item.href.startsWith('#') ? (
-                    <button
-                      onClick={(e) => handleSmoothScroll(e, item.href, item.action)}
-                      className="nav-link-item group relative inline-flex items-center py-2 px-1 font-[font2] text-sm lg:text-base xl:text-lg text-white/90 uppercase tracking-wide transition-colors duration-300 ease-in-out hover:text-[#D3FD50] focus:outline-none focus:text-[#D3FD50]"
-                      aria-label={`Navigate to ${item.name}`}
-                    >
-                      <span className="relative z-10 pointer-events-none">
-                        {item.name}
-                      </span>
-                      <span
-                        className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#D3FD50] via-[#b8e03e] to-[#D3FD50] rounded-full transition-all duration-400 ease-out group-hover:w-full group-focus:w-full pointer-events-none"
-                        aria-hidden="true"
-                      />
-                    </button>
-                  ) : (
-                    <Link
-                      to={item.href}
-                      className="nav-link-item group relative inline-flex items-center py-2 px-1 font-[font2] text-sm lg:text-base xl:text-lg text-white/90 uppercase tracking-wide transition-colors duration-300 ease-in-out hover:text-[#D3FD50] focus:outline-none focus:text-[#D3FD50]"
-                      aria-label={`Navigate to ${item.name}`}
-                    >
-                      <span className="relative z-10 pointer-events-none">
-                        {item.name}
-                      </span>
-                      <span
-                        className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#D3FD50] via-[#b8e03e] to-[#D3FD50] rounded-full transition-all duration-400 ease-out group-hover:w-full group-focus:w-full pointer-events-none"
-                        aria-hidden="true"
-                      />
-                    </Link>
-                  )}
+                  <Link
+                    to={item.href}
+                    className="nav-link-item group relative inline-flex items-center py-2 px-1 font-[font2] text-sm lg:text-base xl:text-lg text-white/90 uppercase tracking-wide transition-colors duration-300 ease-in-out hover:text-[#D3FD50] focus:outline-none focus:text-[#D3FD50]"
+                    aria-label={`Navigate to ${item.name}`}
+                  >
+                    <span className="relative z-10 pointer-events-none">
+                      {item.name}
+                    </span>
+                    <span
+                      className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-[#D3FD50] via-[#b8e03e] to-[#D3FD50] rounded-full transition-all duration-400 ease-out group-hover:w-full group-focus:w-full pointer-events-none"
+                      aria-hidden="true"
+                    />
+                  </Link>
                 </div>
               ))}
 
@@ -386,28 +356,16 @@ const Header = () => {
           <div className="px-6 py-8 space-y-6">
             {navigationItems.map((item, index) => (
               <div key={index} className="mobile-nav-item">
-                {item.href.startsWith('#') ? (
-                  <button
-                    ref={index === 0 ? firstMenuItemRef : null}
-                    onClick={(e) => handleSmoothScroll(e, item.href, item.action)}
-                    className="w-full text-left font-[font2] text-lg text-white uppercase tracking-wide py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-[#D3FD50] focus:bg-white/5 focus:text-[#D3FD50] focus:outline-none relative group active:bg-white/10 touch-manipulation"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
-                  >
-                    {item.name}
-                    <span className="absolute bottom-0 left-4 w-0 h-0.5 bg-[#D3FD50] transition-all duration-300 group-hover:w-8" />
-                  </button>
-                ) : (
-                  <Link
-                    ref={index === 0 ? firstMenuItemRef : null}
-                    to={item.href}
-                    onClick={closeMobileMenu}
-                    className="block font-[font2] text-lg text-white uppercase tracking-wide py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-[#D3FD50] focus:bg-white/5 focus:text-[#D3FD50] focus:outline-none relative group active:bg-white/10 touch-manipulation"
-                    style={{ WebkitTapHighlightColor: 'transparent' }}
-                  >
-                    {item.name}
-                    <span className="absolute bottom-0 left-4 w-0 h-0.5 bg-[#D3FD50] transition-all duration-300 group-hover:w-8" />
-                  </Link>
-                )}
+                <Link
+                  ref={index === 0 ? firstMenuItemRef : null}
+                  to={item.href}
+                  onClick={closeMobileMenu}
+                  className="block font-[font2] text-lg text-white uppercase tracking-wide py-3 px-4 rounded-lg transition-all duration-300 hover:bg-white/5 hover:text-[#D3FD50] focus:bg-white/5 focus:text-[#D3FD50] focus:outline-none relative group active:bg-white/10 touch-manipulation"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
+                >
+                  {item.name}
+                  <span className="absolute bottom-0 left-4 w-0 h-0.5 bg-[#D3FD50] transition-all duration-300 group-hover:w-8" />
+                </Link>
               </div>
             ))}
             
