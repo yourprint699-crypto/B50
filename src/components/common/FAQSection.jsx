@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const FAQSection = () => {
-  const [openIndex, setOpenIndex] = useState(null)
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   const faqs = [
     {
@@ -30,14 +30,14 @@ const FAQSection = () => {
     }
   ]
 
-  const toggleFAQ = (index) => {
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index)
   }
 
   return (
     <div className='contact-content'>
       <h3 className='font-[font2] heading-responsive-lg uppercase text-[#D3FD50] mb-6 sm:mb-8 lg:mb-10 text-center text-layer-2 text-glow'>
-        ‎ ‎ ‎ ‎ ‎ ‎ ‎ Frequently Asked Questions
+        Frequently Asked Questions
       </h3>
       <div className='space-y-4'>
         {faqs.map((faq, index) => (
@@ -47,15 +47,21 @@ const FAQSection = () => {
             onClick={() => toggleFAQ(index)}
           >
             <div className='flex justify-between items-start gap-4'>
-              <h4 className='font-[font2] text-lg sm:text-xl text-layer-2 flex-1'>
+              <h4 className='font-[font2] text-lg sm:text-xl text-layer-2 flex-1 whitespace-nowrap overflow-hidden text-ellipsis'>
                 {faq.question}
               </h4>
-              <div className={`text-[#D3FD50] text-2xl transition-transform duration-300 flex-shrink-0 ${openIndex === index ? 'rotate-45' : ''}`}>
+              <div
+                className={`text-[#D3FD50] text-2xl transition-transform duration-300 flex-shrink-0 ${
+                  openIndex === index ? 'rotate-45' : ''
+                }`}
+              >
                 +
               </div>
             </div>
             <div
-              className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}
+              className={`overflow-hidden transition-all duration-300 ${
+                openIndex === index ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'
+              }`}
             >
               <p className='font-[font1] text-responsive text-layer-1 leading-relaxed'>
                 {faq.answer}
