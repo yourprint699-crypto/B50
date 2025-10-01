@@ -163,46 +163,22 @@ const Header = () => {
 
   const navigationItems = [
     { name: 'Portfolio', href: '/projects' },
-    { name: 'Pricing', href: '#pricing', action: 'scrollToPricing' },
+    { name: 'Pricing', href: '#contact', action: 'scrollToQuote' },
     { name: 'Contact Us', href: '/contact' }
   ]
 
   const handleSmoothScroll = (e, href, action) => {
-    if (action === 'scrollToPricing') {
+    if (action === 'scrollToQuote') {
       e.preventDefault()
       // Close menu immediately for fast response
       closeMobileMenu()
       // Small delay to ensure smooth scroll after menu closes
       setTimeout(() => {
-        const pricingElement = document.getElementById('pricing')
-        if (pricingElement) {
-          pricingElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        const contactElement = document.getElementById('contact')
+        if (contactElement) {
+          contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
         }
-      }, 50)
-      return
-    }
-
-    if (action === 'scrollToQuote') {
-      e.preventDefault()
-      const contactElement = document.getElementById('contact')
-      if (contactElement) {
-        contactElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
-        setTimeout(() => {
-          const uploadButton = document.querySelector('[aria-controls="file-upload-section"]')
-          if (uploadButton && uploadButton.getAttribute('aria-expanded') === 'false') {
-            uploadButton.click()
-          }
-
-          setTimeout(() => {
-            const uploadArea = document.querySelector('#file-upload-section')
-            if (uploadArea) {
-              uploadArea.scrollIntoView({ behavior: 'smooth', block: 'center' })
-            }
-          }, 600)
-        }, 800)
-      }
-      closeMobileMenu()
+      }, 100)
       return
     }
 
