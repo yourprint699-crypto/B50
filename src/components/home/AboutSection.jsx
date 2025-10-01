@@ -12,19 +12,17 @@ const AboutSection = () => {
   gsap.registerPlugin(ScrollTrigger)
 
   useGSAP(() => {
-    // Title animation with split reveal effect
+    // Title animation - faster and simpler
     gsap.fromTo('.about-title',
       {
         opacity: 0,
-        y: 60,
-        scale: 0.9
+        y: 30
       },
       {
         opacity: 1,
         y: 0,
-        scale: 1,
-        duration: 1.2,
-        ease: "power3.out",
+        duration: 0.6,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: '.about-title',
           start: 'top 85%',
@@ -33,52 +31,47 @@ const AboutSection = () => {
       }
     )
 
-    // Story card with parallax effect
+    // Story card - faster entrance
     gsap.fromTo('.story-card',
       {
         opacity: 0,
-        y: 80,
-        rotateX: 15
+        y: 40
       },
       {
         opacity: 1,
         y: 0,
-        rotateX: 0,
-        duration: 1.4,
-        ease: "power3.out",
+        duration: 0.7,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: '.story-card',
           start: 'top 80%',
-          end: 'bottom 20%',
           toggleActions: 'play none none none'
         }
       }
     )
 
-    // Image parallax scroll
+    // Image parallax scroll - smoother
     gsap.to('.about-image-wrapper', {
-      yPercent: -10,
+      yPercent: -8,
       ease: "none",
       scrollTrigger: {
         trigger: '.story-card',
         start: 'top bottom',
         end: 'bottom top',
-        scrub: 1
+        scrub: 0.5
       }
     })
 
-    // Quote reveal with slide effect
+    // Quote reveal - faster
     gsap.fromTo('.quote-reveal',
       {
         opacity: 0,
-        x: -30,
-        scale: 0.95
+        y: 20
       },
       {
         opacity: 1,
-        x: 0,
-        scale: 1,
-        duration: 1,
+        y: 0,
+        duration: 0.6,
         ease: "power2.out",
         scrollTrigger: {
           trigger: '.quote-reveal',
@@ -88,23 +81,21 @@ const AboutSection = () => {
       }
     )
 
-    // Values cards with staggered 3D entrance
+    // Values cards - faster staggered entrance
     gsap.fromTo('.value-card',
       {
         opacity: 0,
-        y: 60,
-        rotateY: -15,
-        scale: 0.9
+        y: 30,
+        scale: 0.95
       },
       {
         opacity: 1,
         y: 0,
-        rotateY: 0,
         scale: 1,
-        duration: 1,
-        ease: "back.out(1.2)",
+        duration: 0.6,
+        ease: "power2.out",
         stagger: {
-          amount: 0.4,
+          amount: 0.2,
           from: "start"
         },
         scrollTrigger: {
@@ -115,18 +106,18 @@ const AboutSection = () => {
       }
     )
 
-    // Icon animations
+    // Icon animations - faster pop-in
     gsap.fromTo('.value-icon',
       {
         scale: 0,
-        rotation: -180
+        rotation: -90
       },
       {
         scale: 1,
         rotation: 0,
-        duration: 0.8,
-        ease: "back.out(2)",
-        stagger: 0.15,
+        duration: 0.5,
+        ease: "back.out(1.5)",
+        stagger: 0.1,
         scrollTrigger: {
           trigger: '.values-grid',
           start: 'top 70%',
@@ -168,7 +159,7 @@ const AboutSection = () => {
         <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-[#D3FD50]/5 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }}></div>
       </div>
 
-      <div className='container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-[clamp(3rem,12vw,8rem)] relative z-10'>
+      <div className='container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-12 sm:pb-16 lg:pb-20 relative z-10'>
         {/* Title with enhanced styling */}
         <div className='flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto'>
           <div className='relative'>
@@ -180,7 +171,7 @@ const AboutSection = () => {
         </div>
 
         {/* Main story card - Framer-inspired bento layout */}
-        <div className='max-width-wide mb-16 sm:mb-24'>
+        <div className='max-width-wide mb-12 sm:mb-16'>
           <div className='story-card floating-panel-dark backdrop-blur-xl bg-white/5 border border-white/10 rounded-3xl sm:rounded-[2.5rem] overflow-hidden relative group'>
             {/* Hover gradient effect */}
             <div className='absolute inset-0 bg-gradient-to-br from-[#D3FD50]/0 via-[#D3FD50]/5 to-[#D3FD50]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none'></div>
@@ -221,9 +212,8 @@ const AboutSection = () => {
                     ref={imageRef}
                     src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800&h=800&fit=crop"
                     alt="Our Team in Action"
-                    className='w-full h-full object-cover transition-all duration-700 lazy-image scale-105 group-hover:scale-110'
-                    loading="lazy"
-                    onLoad={(e) => e.target.classList.add('loaded')}
+                    className='w-full h-full object-cover transition-all duration-500 scale-105 group-hover:scale-110'
+                    loading="eager"
                   />
 
                   {/* Decorative corner accent */}
@@ -286,15 +276,6 @@ const AboutSection = () => {
         @keyframes float {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
           50% { transform: translateY(-20px) rotate(2deg); }
-        }
-
-        .lazy-image {
-          filter: blur(20px);
-          transition: filter 0.5s ease-out;
-        }
-
-        .lazy-image.loaded {
-          filter: blur(0);
         }
       `}</style>
     </section>
