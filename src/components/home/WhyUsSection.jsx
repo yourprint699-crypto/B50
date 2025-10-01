@@ -103,7 +103,7 @@ const WhyUsSection = () => {
       className="min-h-screen section-dark text-white relative depth-3 section-transition"
     >
       <div className="cinematic-overlay"></div>
-      <div className="container mx-auto section-padding">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 lg:pt-16 pb-[clamp(3rem,12vw,8rem)]">
         {/* Section Header */}
         <div className="flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto">
           <h2 className="quote-title font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow">
