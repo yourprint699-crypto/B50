@@ -6,45 +6,52 @@ import { ScrollTrigger } from 'gsap/all'
 const StatsSection = () => {
   const sectionRef = useRef(null)
   const [hasAnimated, setHasAnimated] = useState(false)
-  
-  // Configurable stats data for easy editing
+  const [hoveredCard, setHoveredCard] = useState(null)
+
   const statsData = [
     {
       number: 500,
       suffix: '+',
       label: 'Wedding projects completed',
-      icon: '⚘'
+      icon: '⚘',
+      color: 'from-[#D3FD50] to-[#b8e03e]',
+      glowColor: 'rgba(211, 253, 80, 0.3)'
     },
     {
       number: 97,
       suffix: '%',
       label: 'Happy Clients',
-      icon: '◉'
+      icon: '◉',
+      color: 'from-[#D3FD50] to-[#a3d139]',
+      glowColor: 'rgba(211, 253, 80, 0.4)'
     },
     {
       number: 8,
       suffix: '',
       label: 'Editors in our team',
-      icon: '✎'
+      icon: '✎',
+      color: 'from-[#b8e03e] to-[#D3FD50]',
+      glowColor: 'rgba(184, 224, 62, 0.3)'
     },
     {
       number: 7,
       suffix: ' years',
       label: 'Post-production experience',
-      icon: '⚝'
+      icon: '⚝',
+      color: 'from-[#a3d139] to-[#D3FD50]',
+      glowColor: 'rgba(163, 209, 57, 0.35)'
     }
   ]
 
   gsap.registerPlugin(ScrollTrigger)
 
-  // Counter animation function
-  const animateCounter = (element, finalNumber, duration = 2) => {
+  const animateCounter = (element, finalNumber, duration = 2.5) => {
     const counter = { value: 0 }
-    
+
     gsap.to(counter, {
       value: finalNumber,
       duration: duration,
-      ease: "power2.out",
+      ease: "expo.out",
       onUpdate: () => {
         element.textContent = Math.floor(counter.value).toLocaleString()
       }
@@ -52,105 +59,294 @@ const StatsSection = () => {
   }
 
   useGSAP(() => {
-    // Animate section title
-    gsap.fromTo('.stats-title',
-      {
-        opacity: 0,
-        y: 50
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: '.stats-title',
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
-      }
-    )
-
-    // Animate stat cards with stagger
-    gsap.fromTo('.stat-card',
-      {
-        opacity: 0,
-        y: 40,
-        scale: 0.95
-      },
-      {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: "power2.out",
-        stagger: {
-          amount: 0.3
+    const ctx = gsap.context(() => {
+      gsap.fromTo('.stats-title',
+        {
+          opacity: 0,
+          y: 60,
+          scale: 0.9,
+          rotateX: -15
         },
-        scrollTrigger: {
-          trigger: '.stats-grid',
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-          onEnter: () => {
-            if (!hasAnimated) {
-              // Trigger counter animations
-              setTimeout(() => {
-                document.querySelectorAll('.counter-number').forEach((counter, index) => {
-                  animateCounter(counter, statsData[index].number, 2.5)
-                })
-                setHasAnimated(true)
-              }, 400)
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotateX: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: '.stats-title',
+            start: 'top 80%',
+            toggleActions: 'play none none none'
+          }
+        }
+      )
+
+      gsap.fromTo('.stat-card',
+        {
+          opacity: 0,
+          y: 80,
+          scale: 0.8,
+          rotateY: -10
+        },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          rotateY: 0,
+          duration: 1,
+          ease: "back.out(1.4)",
+          stagger: {
+            amount: 0.4,
+            from: "start",
+            ease: "power2.inOut"
+          },
+          scrollTrigger: {
+            trigger: '.stats-grid',
+            start: 'top 75%',
+            toggleActions: 'play none none none',
+            onEnter: () => {
+              if (!hasAnimated) {
+                setTimeout(() => {
+                  document.querySelectorAll('.counter-number').forEach((counter, index) => {
+                    animateCounter(counter, statsData[index].number, 3)
+                  })
+                  setHasAnimated(true)
+                }, 600)
+              }
             }
           }
         }
-      }
-    )
+      )
+
+      gsap.utils.toArray('.stat-icon').forEach((icon) => {
+        gsap.to(icon, {
+          y: -10,
+          duration: 2,
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+          scrollTrigger: {
+            trigger: icon,
+            start: 'top 90%',
+            toggleActions: 'play none none none'
+          }
+        })
+      })
+
+      gsap.utils.toArray('.accent-line').forEach((line, index) => {
+        gsap.fromTo(line,
+          {
+            scaleX: 0,
+            opacity: 0
+          },
+          {
+            scaleX: 1,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            delay: index * 0.1,
+            scrollTrigger: {
+              trigger: line,
+              start: 'top 85%',
+              toggleActions: 'play none none none'
+            }
+          }
+        )
+      })
+    }, sectionRef)
+
+    return () => ctx.revert()
   }, [hasAnimated])
 
   return (
-    <section id="stats" ref={sectionRef} className='min-h-screen section-dark text-white relative depth-3 section-transition'>
+    <section
+      id="stats"
+      ref={sectionRef}
+      className='min-h-screen section-dark text-white relative depth-3 section-transition overflow-hidden'
+    >
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#D3FD50] opacity-[0.03] blur-[120px] rounded-full"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#b8e03e] opacity-[0.02] blur-[120px] rounded-full"></div>
+      </div>
+
       <div className="cinematic-overlay"></div>
-      <div className='container mx-auto section-padding'>
-        {/* Section Header */}
+
+      <div className='container mx-auto section-padding relative z-10'>
         <div className='flex flex-col items-center justify-center text-center component-margin space-y-4 sm:space-y-6 lg:space-y-8 mx-auto'>
-          <h2 className='stats-title font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow'>
-            A Few Stats About Us
+          <h2 className='stats-title font-[font2] heading-responsive-xl uppercase mb-4 sm:mb-6 lg:mb-8 leading-tight text-layer-3 text-glow relative'>
+            <span className="relative inline-block">
+              A Few Stats About Us
+              <div className="absolute -inset-2 bg-gradient-to-r from-transparent via-[#D3FD50]/5 to-transparent blur-xl opacity-0 animate-glow-pulse"></div>
+            </span>
           </h2>
         </div>
 
-        {/* Stats Grid */}
         <div className='stats-grid responsive-grid-2 max-width-content'>
           {statsData.map((stat, index) => (
-            <div 
+            <div
               key={index}
-              className='stat-card group floating-panel-dark glass-hover glass-click text-center gpu-accelerated'
+              className='stat-card group relative text-center gpu-accelerated transition-all duration-500 ease-out'
+              onMouseEnter={() => setHoveredCard(index)}
+              onMouseLeave={() => setHoveredCard(null)}
+              style={{
+                transformStyle: 'preserve-3d',
+                perspective: '1000px'
+              }}
             >
-              {/* Icon */}
-              <div className='text-4xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8 micro-bounce glow-accent'>
-                {stat.icon}
-              </div>
-              
-              {/* Number */}
-              <div className='mb-4 sm:mb-6'>
-                <span className='counter-number font-[font2] text-layer-2 glow-accent text-glow-strong' style={{background: 'none', backgroundColor: 'transparent'}}>
-                  0
-                </span>
-                <span className='font-[font2] text-3xl sm:text-4xl lg:text-5xl text-layer-2 glow-accent text-glow-strong' style={{background: 'none', backgroundColor: 'transparent'}}>
-                  {stat.suffix}
-                </span>
-              </div>
-              
-              {/* Label */}
-              <p className='font-[font1] text-responsive leading-relaxed text-layer-1'>
-                {stat.label}
-              </p>
+              <div className={`
+                relative h-full
+                bg-gradient-to-br from-black/40 via-black/30 to-black/40
+                backdrop-blur-xl
+                border border-white/[0.08]
+                rounded-[32px]
+                p-8 sm:p-10 lg:p-12
+                transition-all duration-500 ease-out
+                ${hoveredCard === index ? 'border-[#D3FD50]/30 shadow-[0_0_40px_rgba(211,253,80,0.15)]' : ''}
+              `}>
+                <div
+                  className="absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{
+                    background: `radial-gradient(circle at 50% 0%, ${stat.glowColor}, transparent 70%)`
+                  }}
+                ></div>
 
-              {/* Hover accent line */}
-              <div className='w-full accent-line mt-6 sm:mt-8 rounded-full mx-auto glow-accent'></div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D3FD50] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[32px]"></div>
+
+                <div className='relative z-10'>
+                  <div className='stat-icon text-4xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8 inline-block transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3'>
+                    <div className="relative">
+                      <span className={`
+                        inline-block
+                        bg-gradient-to-br ${stat.color}
+                        bg-clip-text text-transparent
+                        filter drop-shadow-[0_0_15px_${stat.glowColor}]
+                        transition-all duration-300
+                      `}>
+                        {stat.icon}
+                      </span>
+                      {hoveredCard === index && (
+                        <div
+                          className="absolute inset-0 blur-2xl opacity-50 animate-pulse"
+                          style={{
+                            background: `radial-gradient(circle, ${stat.glowColor}, transparent)`
+                          }}
+                        ></div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className='mb-4 sm:mb-6 relative'>
+                    <div className="inline-block relative">
+                      <span
+                        className={`
+                          counter-number
+                          font-[font2]
+                          text-5xl sm:text-6xl lg:text-7xl
+                          bg-gradient-to-br ${stat.color}
+                          bg-clip-text text-transparent
+                          inline-block
+                          transition-all duration-300
+                          ${hoveredCard === index ? 'scale-105' : 'scale-100'}
+                        `}
+                        style={{
+                          filter: `drop-shadow(0 0 20px ${stat.glowColor})`,
+                          WebkitTextFillColor: 'transparent',
+                          WebkitBackgroundClip: 'text'
+                        }}
+                      >
+                        0
+                      </span>
+                      <span
+                        className={`
+                          font-[font2]
+                          text-3xl sm:text-4xl lg:text-5xl
+                          bg-gradient-to-br ${stat.color}
+                          bg-clip-text text-transparent
+                          inline-block
+                          transition-all duration-300
+                        `}
+                        style={{
+                          filter: `drop-shadow(0 0 20px ${stat.glowColor})`,
+                          WebkitTextFillColor: 'transparent',
+                          WebkitBackgroundClip: 'text'
+                        }}
+                      >
+                        {stat.suffix}
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className='font-[font1] text-base sm:text-lg lg:text-xl leading-relaxed text-white/80 transition-colors duration-300 group-hover:text-white'>
+                    {stat.label}
+                  </p>
+
+                  <div className='relative w-full h-[2px] mt-6 sm:mt-8 mx-auto overflow-hidden'>
+                    <div
+                      className={`
+                        accent-line
+                        absolute inset-0
+                        bg-gradient-to-r from-transparent via-[#D3FD50] to-transparent
+                        transition-all duration-500
+                        ${hoveredCard === index ? 'opacity-100 scale-x-110' : 'opacity-60 scale-x-100'}
+                      `}
+                      style={{
+                        filter: `drop-shadow(0 0 8px ${stat.glowColor})`
+                      }}
+                    ></div>
+                  </div>
+
+                  {hoveredCard === index && (
+                    <div className="absolute inset-0 pointer-events-none">
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
+                        {[...Array(3)].map((_, i) => (
+                          <div
+                            key={i}
+                            className="absolute inset-0 rounded-[32px] border border-[#D3FD50]/20 animate-ping"
+                            style={{
+                              animationDelay: `${i * 0.3}s`,
+                              animationDuration: '2s'
+                            }}
+                          ></div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+
+        @keyframes glow-pulse {
+          0%, 100% { opacity: 0; }
+          50% { opacity: 0.3; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .stat-card,
+          .stat-icon,
+          .animate-pulse,
+          .animate-ping,
+          .animate-glow-pulse {
+            animation: none !important;
+            transition: none !important;
+          }
+        }
+
+        @media (hover: hover) and (pointer: fine) {
+          .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+          }
+        }
+      `}</style>
     </section>
   )
 }
