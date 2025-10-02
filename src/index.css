@@ -29,6 +29,13 @@
     src: url(../public/fonts/Lausanne-500.woff2);
     font-display: swap;
 }
+@font-face {
+    font-family: 'Bunya';
+    src: url(../public/fonts/Bunya-Regular_PERSONAL.ttf) format('truetype');
+    font-display: swap;
+    font-weight: normal;
+    font-style: normal;
+}
 
 /* Enhanced root variables for responsive design system */
 :root {
