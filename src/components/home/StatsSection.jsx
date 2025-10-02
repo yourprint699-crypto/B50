@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect, useState, useMemo } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
@@ -8,7 +8,7 @@ const StatsSection = () => {
   const [hasAnimated, setHasAnimated] = useState(false)
   const [hoveredCard, setHoveredCard] = useState(null)
 
-  const statsData = [
+  const statsData = useMemo(() => [
     {
       number: 500,
       suffix: '+',
@@ -41,7 +41,7 @@ const StatsSection = () => {
       color: 'from-[#a3d139] to-[#D3FD50]',
       glowColor: 'rgba(163, 209, 57, 0.35)'
     }
-  ]
+  ], [])
 
   gsap.registerPlugin(ScrollTrigger)
 
@@ -119,20 +119,6 @@ const StatsSection = () => {
         }
       )
 
-      gsap.utils.toArray('.stat-icon').forEach((icon) => {
-        gsap.to(icon, {
-          y: -10,
-          duration: 2,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
-          scrollTrigger: {
-            trigger: icon,
-            start: 'top 90%',
-            toggleActions: 'play none none none'
-          }
-        })
-      })
 
       gsap.utils.toArray('.accent-line').forEach((line, index) => {
         gsap.fromTo(line,
@@ -183,57 +169,46 @@ const StatsSection = () => {
         </div>
 
         <div className='stats-grid responsive-grid-2 max-width-content'>
-          {statsData.map((stat, index) => (
+          {statsData.map((stat, index) => {
+            const isHovered = hoveredCard === index
+            return (
             <div
               key={index}
-              className='stat-card group relative text-center gpu-accelerated transition-all duration-500 ease-out'
+              className='stat-card group relative text-center transition-transform duration-500 ease-out will-change-transform'
               onMouseEnter={() => setHoveredCard(index)}
               onMouseLeave={() => setHoveredCard(null)}
-              style={{
-                transformStyle: 'preserve-3d',
-                perspective: '1000px'
-              }}
             >
               <div className={`
                 relative h-full
                 bg-gradient-to-br from-black/40 via-black/30 to-black/40
                 backdrop-blur-xl
-                border border-white/[0.08]
-                rounded-[32px]
+                border rounded-[32px]
                 p-8 sm:p-10 lg:p-12
-                transition-all duration-500 ease-out
-                ${hoveredCard === index ? 'border-[#D3FD50]/30 shadow-[0_0_40px_rgba(211,253,80,0.15)]' : ''}
+                transition-all duration-300 ease-out
+                ${isHovered ? 'border-[#D3FD50]/30 shadow-[0_0_40px_rgba(211,253,80,0.15)]' : 'border-white/[0.08]'}
               `}>
                 <div
-                  className="absolute inset-0 rounded-[32px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className={`absolute inset-0 rounded-[32px] transition-opacity duration-300 pointer-events-none ${isHovered ? 'opacity-100' : 'opacity-0'}`}
                   style={{
                     background: `radial-gradient(circle at 50% 0%, ${stat.glowColor}, transparent 70%)`
                   }}
                 ></div>
 
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D3FD50] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-[32px]"></div>
+                <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#D3FD50] to-transparent transition-opacity duration-300 rounded-t-[32px] ${isHovered ? 'opacity-100' : 'opacity-0'}`}></div>
 
                 <div className='relative z-10'>
-                  <div className='stat-icon text-4xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8 inline-block transform transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3'>
-                    <div className="relative">
-                      <span className={`
-                        inline-block
-                        bg-gradient-to-br ${stat.color}
-                        bg-clip-text text-transparent
-                        filter drop-shadow-[0_0_15px_${stat.glowColor}]
-                        transition-all duration-300
-                      `}>
-                        {stat.icon}
-                      </span>
-                      {hoveredCard === index && (
-                        <div
-                          className="absolute inset-0 blur-2xl opacity-50 animate-pulse"
-                          style={{
-                            background: `radial-gradient(circle, ${stat.glowColor}, transparent)`
-                          }}
-                        ></div>
-                      )}
-                    </div>
+                  <div className='stat-icon text-4xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8 inline-block transform transition-transform duration-300 group-hover:scale-110 will-change-transform'>
+                    <span className={`
+                      inline-block
+                      bg-gradient-to-br ${stat.color}
+                      bg-clip-text text-transparent
+                      transition-all duration-300
+                    `}
+                    style={{
+                      filter: `drop-shadow(0 0 15px ${stat.glowColor})`
+                    }}>
+                      {stat.icon}
+                    </span>
                   </div>
 
                   <div className='mb-4 sm:mb-6 relative'>
@@ -246,8 +221,8 @@ const StatsSection = () => {
                           bg-gradient-to-br ${stat.color}
                           bg-clip-text text-transparent
                           inline-block
-                          transition-all duration-300
-                          ${hoveredCard === index ? 'scale-105' : 'scale-100'}
+                          transition-transform duration-300 will-change-transform
+                          ${isHovered ? 'scale-105' : 'scale-100'}
                         `}
                         style={{
                           filter: `drop-shadow(0 0 20px ${stat.glowColor})`,
@@ -264,7 +239,6 @@ const StatsSection = () => {
                           bg-gradient-to-br ${stat.color}
                           bg-clip-text text-transparent
                           inline-block
-                          transition-all duration-300
                         `}
                         style={{
                           filter: `drop-shadow(0 0 20px ${stat.glowColor})`,
@@ -287,44 +261,22 @@ const StatsSection = () => {
                         accent-line
                         absolute inset-0
                         bg-gradient-to-r from-transparent via-[#D3FD50] to-transparent
-                        transition-all duration-500
-                        ${hoveredCard === index ? 'opacity-100 scale-x-110' : 'opacity-60 scale-x-100'}
+                        transition-all duration-300 will-change-transform
+                        ${isHovered ? 'opacity-100 scale-x-110' : 'opacity-60 scale-x-100'}
                       `}
                       style={{
                         filter: `drop-shadow(0 0 8px ${stat.glowColor})`
                       }}
                     ></div>
                   </div>
-
-                  {hoveredCard === index && (
-                    <div className="absolute inset-0 pointer-events-none">
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full">
-                        {[...Array(3)].map((_, i) => (
-                          <div
-                            key={i}
-                            className="absolute inset-0 rounded-[32px] border border-[#D3FD50]/20 animate-ping"
-                            style={{
-                              animationDelay: `${i * 0.3}s`,
-                              animationDuration: '2s'
-                            }}
-                          ></div>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
             </div>
-          ))}
+          )})}
         </div>
       </div>
 
       <style jsx>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-        }
-
         @keyframes glow-pulse {
           0%, 100% { opacity: 0; }
           50% { opacity: 0.3; }
@@ -333,8 +285,6 @@ const StatsSection = () => {
         @media (prefers-reduced-motion: reduce) {
           .stat-card,
           .stat-icon,
-          .animate-pulse,
-          .animate-ping,
           .animate-glow-pulse {
             animation: none !important;
             transition: none !important;
