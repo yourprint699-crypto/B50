@@ -4,6 +4,7 @@ import gsap from 'gsap'
 import PageWrapper from '../components/common/PageWrapper'
 import VideoInquiryForm from '../components/forms/VideoInquiryForm'
 import FAQSection from '../components/common/FAQSection'
+import MouseFollower from '../components/common/MouseFollower'
 
 const Contact = () => {
 
@@ -40,7 +41,7 @@ const Contact = () => {
           {/* Right Column - Contact Information */}
           <div className='contact-content flex flex-col space-y-6 sm:space-y-8'>
             {/* Let's Connect Section */}
-            <div className='floating-panel-dark flex-1 flex flex-col justify-between space-y-6'>
+            <div className='floating-panel-dark flex-1 flex flex-col justify-between space-y-6 relative'>
               <div>
                 <h3 className='font-[font2] heading-responsive-lg uppercase text-[#D3FD50] text-layer-2 text-glow mb-6'>
                   Let's Connect
@@ -62,6 +63,7 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
+              <MouseFollower />
             </div>
 
             {/* Follow Our Work Section */}
