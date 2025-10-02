@@ -36,6 +36,13 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Canela';
+    src: url(../public/fonts/CanelaText-Medium-Trial.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 500;
+    font-style: normal;
+}
 
 /* Enhanced root variables for responsive design system */
 :root {
