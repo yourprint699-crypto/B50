@@ -230,7 +230,7 @@ const Header = () => {
                     </div>
                   </div>
                 </div>
-                <span className="font-[font2] text-lg sm:text-xl lg:text-2xl text-white uppercase tracking-wide">
+                <span className="text-lg sm:text-xl lg:text-2xl text-white uppercase tracking-wide" style={{ fontFamily: '"Bunya", sans-serif' }}>
                   Amoura Works
                 </span>
               </Link>
@@ -343,9 +343,10 @@ const Header = () => {
             </button>
             
             <div className="flex items-center justify-center">
-              <span 
+              <span
                 id="mobile-menu-title"
-                className="font-[font2] text-xl text-white uppercase tracking-wide text-center"
+                className="text-xl text-white uppercase tracking-wide text-center"
+                style={{ fontFamily: '"Bunya", sans-serif' }}
               >
                 Amoura Works
               </span>
