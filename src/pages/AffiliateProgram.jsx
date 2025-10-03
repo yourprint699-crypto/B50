@@ -1,26 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/common/PageWrapper'
+import { DollarSign, Target, BarChart3, Handshake } from 'lucide-react'
+
+const BenefitIcon = ({ type, className }) => {
+  const icons = { dollar: DollarSign, target: Target, chart: BarChart3, handshake: Handshake }
+  const Icon = icons[type]
+  return <Icon className={className} strokeWidth={1.5} />
+}
 
 const AffiliateProgram = () => {
   const benefits = [
     {
-      icon: '💰',
+      icon: 'dollar',
       title: '15% Lifetime Commission',
       description: 'Earn 15% commission on every client you refer, for the lifetime of their relationship with us.'
     },
     {
-      icon: '🎯',
+      icon: 'target',
       title: 'High Conversion Rate',
       description: 'Our premium services and proven track record ensure high conversion rates for your referrals.'
     },
     {
-      icon: '📊',
+      icon: 'chart',
       title: 'Real-Time Tracking',
       description: 'Monitor your referrals and earnings with our comprehensive affiliate dashboard.'
     },
     {
-      icon: '🤝',
+      icon: 'handshake',
       title: 'Dedicated Support',
       description: 'Get personalized support from our affiliate team to maximize your earning potential.'
     }
@@ -101,12 +108,12 @@ const AffiliateProgram = () => {
             </h2>
             <div className='responsive-grid-2'>
               {benefits.map((benefit, index) => (
-                <div 
+                <div
                   key={index}
                   className='group floating-panel-dark glass-hover glass-click gpu-accelerated'
                 >
-                  <div className='text-4xl sm:text-5xl lg:text-6xl mb-6 sm:mb-8 micro-bounce glow-accent'>
-                    {benefit.icon}
+                  <div className='w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#D3FD50]/20 to-transparent border border-[#D3FD50]/30 mb-6 sm:mb-8 micro-bounce glow-accent transition-all duration-500 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-[#D3FD50]/30'>
+                    <BenefitIcon type={benefit.icon} className='w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-[#D3FD50]' />
                   </div>
                   
                   <div className='space-y-4 sm:space-y-6'>

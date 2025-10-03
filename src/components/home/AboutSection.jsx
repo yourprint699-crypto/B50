@@ -2,6 +2,13 @@ import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import { Target, Diamond, Zap } from 'lucide-react'
+
+const ValueIcon = ({ type, className }) => {
+  const icons = { target: Target, diamond: Diamond, zap: Zap }
+  const Icon = icons[type]
+  return <Icon className={className} strokeWidth={1.5} />
+}
 
 const AboutSection = () => {
   const sectionRef = useRef(null)
@@ -129,19 +136,19 @@ const AboutSection = () => {
 
   const values = [
     {
-      icon: '🎯',
+      icon: 'target',
       title: 'Vision',
       description: 'We want every wedding film to feel like a piece of your story.  real, timeless, and full of love.',
       gradient: 'from-[#D3FD50]/10 to-transparent'
     },
     {
-      icon: '💎',
+      icon: 'diamond',
       title: 'Mission',
       description: 'Our goal is simple: to give you memories that feel alive, not staged. Films that make you feel the day all over again.',
       gradient: 'from-blue-500/10 to-transparent'
     },
     {
-      icon: '⚡',
+      icon: 'zap',
       title: 'Values',
       description: 'We stay true to what\'s real. We create with heart and imagination. And we give our very best, every single time.',
       gradient: 'from-[#D3FD50]/10 to-transparent'
@@ -243,9 +250,7 @@ const AboutSection = () => {
                   <div className='value-icon relative inline-flex items-center justify-center'>
                     <div className='absolute inset-0 bg-[#D3FD50]/20 rounded-2xl blur-xl scale-150 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500'></div>
                     <div className='relative w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#D3FD50]/10 to-transparent border border-[#D3FD50]/20 transition-all duration-500 group-hover/card:scale-110 group-hover/card:rotate-6'>
-                      <span className='text-4xl sm:text-5xl transition-transform duration-500 group-hover/card:scale-110'>
-                        {value.icon}
-                      </span>
+                      <ValueIcon type={value.icon} className='w-10 h-10 sm:w-12 sm:h-12 text-[#D3FD50] transition-transform duration-500 group-hover/card:scale-110' />
                     </div>
                   </div>
 

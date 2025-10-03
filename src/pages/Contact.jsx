@@ -5,6 +5,7 @@ import PageWrapper from '../components/common/PageWrapper'
 import VideoInquiryForm from '../components/forms/VideoInquiryForm'
 import FAQSection from '../components/common/FAQSection'
 import MouseFollower from '../components/common/MouseFollower'
+import { Mail, MapPin } from 'lucide-react'
 
 const Contact = () => {
 
@@ -73,13 +74,17 @@ const Contact = () => {
                 </h3>
                 <div className='space-y-4 font-[font1] text-base sm:text-lg text-white/90'>
                   <div className='flex items-center space-x-3'>
-                    <span className='text-xl'>📧</span>
+                    <span className='flex items-center justify-center w-10 h-10 rounded-lg bg-[#D3FD50]/10 border border-[#D3FD50]/20'>
+                      <Mail className='w-5 h-5 text-[#D3FD50]' strokeWidth={1.5} />
+                    </span>
                     <a href="mailto:contact@amouraworks.com" className='interactive-hover break-all sm:break-normal'>
                       contact@amouraworks.com
                     </a>
                   </div>
                   <div className='flex items-center space-x-3'>
-                    <span className='text-xl'>📍</span>
+                    <span className='flex items-center justify-center w-10 h-10 rounded-lg bg-[#D3FD50]/10 border border-[#D3FD50]/20'>
+                      <MapPin className='w-5 h-5 text-[#D3FD50]' strokeWidth={1.5} />
+                    </span>
                     <span>22 ruelle du Clerc, 59126, Linselles (France)</span>
                   </div>
                 </div>

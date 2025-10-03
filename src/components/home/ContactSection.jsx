@@ -3,6 +3,7 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
 import VideoInquiryForm from '../forms/VideoInquiryForm';
+import { Mail, MapPin, Clock } from 'lucide-react';
 
 const ContactSection = () => {
   const sectionRef = useRef(null);
@@ -95,15 +96,21 @@ const ContactSection = () => {
               </h3>
               <div className="space-y-3 sm:space-y-4 font-[font1] text-responsive text-layer-1">
                 <p className="flex items-start sm:items-center space-x-3 sm:space-x-4">
-                  <span className="micro-bounce glow-accent">📧</span>
+                  <span className="micro-bounce glow-accent flex items-center justify-center w-8 h-8 rounded-lg bg-[#D3FD50]/10 border border-[#D3FD50]/20">
+                    <Mail className="w-4 h-4 text-[#D3FD50]" strokeWidth={1.5} />
+                  </span>
                   <span className="break-all sm:break-normal">contact@amouraworks.com</span>
                 </p>
                 <p className="flex items-start sm:items-center space-x-3 sm:space-x-4">
-                  <span className="micro-bounce glow-accent">📍</span>
+                  <span className="micro-bounce glow-accent flex items-center justify-center w-8 h-8 rounded-lg bg-[#D3FD50]/10 border border-[#D3FD50]/20">
+                    <MapPin className="w-4 h-4 text-[#D3FD50]" strokeWidth={1.5} />
+                  </span>
                   <span>22 ruelle du Clerc, 59126, Linselles (France)</span>
                 </p>
                 <p className="flex items-start sm:items-center space-x-3 sm:space-x-4">
-                  <span className="micro-bounce glow-accent">🕒</span>
+                  <span className="micro-bounce glow-accent flex items-center justify-center w-8 h-8 rounded-lg bg-[#D3FD50]/10 border border-[#D3FD50]/20">
+                    <Clock className="w-4 h-4 text-[#D3FD50]" strokeWidth={1.5} />
+                  </span>
                   <span>M–F: 9am – 7pm (UTC+1)</span>
                 </p>
               </div>

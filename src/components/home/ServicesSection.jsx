@@ -2,6 +2,21 @@ import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/all'
+import { Film, Zap, Clapperboard, Target, Video, Flame, Diamond } from 'lucide-react'
+
+const ServiceIcon = ({ type, className }) => {
+  const icons = {
+    film: Film,
+    zap: Zap,
+    clapperboard: Clapperboard,
+    target: Target,
+    video: Video,
+    flame: Flame,
+    diamond: Diamond
+  }
+  const Icon = icons[type]
+  return <Icon className={className} strokeWidth={1.5} />
+}
 
 const ServicesSection = () => {
   const sectionRef = useRef(null)
@@ -96,49 +111,49 @@ const ServicesSection = () => {
 
   const services = [
     {
-      icon: '🎬',
+      icon: 'film',
       title: 'Teaser Film',
       description: 'A 1–2 minute cinematic trailer — short, punchy, and perfect for social media. Designed to build anticipation and share the vibe instantly.',
       features: ['1–2 Minute Edit', 'Cinematic Trailer', 'Optimized for Social Media', 'Fast Delivery'],
       gradient: 'from-purple-500/20 to-pink-500/20'
     },
     {
-      icon: '⚡',
+      icon: 'zap',
       title: 'Short Highlight Film',
       description: 'A 3–6 minute cinematic story cut. Quick, powerful, and emotionally rich — more depth than a teaser, without going long.',
       features: ['3–6 Minute Edit', 'Cinematic Storytelling', 'Licensed Music', 'Perfect for Sharing'],
       gradient: 'from-yellow-500/20 to-orange-500/20'
     },
     {
-      icon: '🎬',
+      icon: 'clapperboard',
       title: 'Highlight Film',
       description: 'Our signature 8–12 minute cinematic edit — a complete story arc of your day or event, cut with rhythm and emotion so it feels like a movie.',
       features: ['8–12 Minute Edit', 'Cinematic Story Arc', 'Professional Color Grade', 'Emotion-Driven Cuts'],
       gradient: 'from-blue-500/20 to-cyan-500/20'
     },
     {
-      icon: '🎯',
+      icon: 'target',
       title: 'Highlight + Teaser',
       description: 'The best of both worlds — a cinematic highlight plus a short teaser to share everywhere. Our most requested combo.',
       features: ['Highlight Film Included', 'Teaser Trailer Included', 'Social Media Ready', 'Most Popular Combo'],
       gradient: 'from-red-500/20 to-rose-500/20'
     },
     {
-      icon: '🎥',
+      icon: 'video',
       title: 'Feature Film',
       description: 'A 12–25 minute extended cinematic cut. Includes vows, speeches, and more woven into a story-driven film experience.',
       features: ['12–25 Minute Film', 'Vows & Speeches Included', 'Cinematic Narrative', 'Immersive Audio Mix'],
       gradient: 'from-indigo-500/20 to-purple-500/20'
     },
     {
-      icon: '🔥',
+      icon: 'flame',
       title: 'Complete Package',
       description: 'Highlight + Teaser + Full Documentary (30–90 minutes). For clients who want it all — cinematic storytelling plus full archival coverage.',
       features: ['Highlight Film', 'Teaser Trailer', '30–90 Min Documentary', 'Comprehensive Coverage'],
       gradient: 'from-orange-500/20 to-red-500/20'
     },
     {
-      icon: '💎',
+      icon: 'diamond',
       title: 'Custom / Premium Projects',
       description: 'Music videos, branded content, multi-cam events, or complex storytelling with advanced effects. If you have a vision, we\'ll build it with you.',
       features: ['Music Videos', 'Branded Content', '6+ Multi-Cam Shoots', 'Advanced VFX & Storytelling'],
@@ -188,8 +203,8 @@ const ServicesSection = () => {
 
               <div className='relative z-10 p-6 sm:p-8 lg:p-10'>
                 <div className='flex items-start justify-between mb-6'>
-                  <div className='text-5xl sm:text-6xl lg:text-7xl transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6'>
-                    {service.icon}
+                  <div className='w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 flex items-center justify-center rounded-2xl bg-gradient-to-br from-[#D3FD50]/20 to-transparent border border-[#D3FD50]/30 transform transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 group-hover:shadow-lg group-hover:shadow-[#D3FD50]/30'>
+                    <ServiceIcon type={service.icon} className='w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-[#D3FD50]' />
                   </div>
                   <div className='w-12 h-12 rounded-full bg-gradient-to-br from-[#D3FD50]/20 to-transparent border border-[#D3FD50]/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:rotate-180'>
                     <div className='w-6 h-6 rounded-full bg-[#D3FD50]/40'></div>

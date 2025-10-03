@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect, useRef } from 'react'
+import { Paperclip, Camera, X, Lightbulb } from 'lucide-react'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -301,7 +302,9 @@ const ContactForm = () => {
             aria-controls="file-upload-section"
           >
             <div className='flex items-center gap-3 sm:gap-4'>
-              <span className='text-2xl sm:text-3xl glow-accent pointer-events-none'>📎</span>
+              <span className='glow-accent pointer-events-none flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-[#D3FD50]/10 border border-[#D3FD50]/20'>
+                <Paperclip className='w-5 h-5 sm:w-6 sm:h-6 text-[#D3FD50]' strokeWidth={1.5} />
+              </span>
               <div className='text-left pointer-events-none'>
                 <h3 className='font-[font2] text-sm sm:text-base lg:text-lg uppercase text-white'>
                   Upload Reference Images
@@ -349,7 +352,9 @@ const ContactForm = () => {
                 />
 
                 <div className='space-y-3 sm:space-y-4 pointer-events-none'>
-                  <div className='text-4xl sm:text-5xl lg:text-6xl'>📸</div>
+                  <div className='flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 mx-auto rounded-2xl bg-[#D3FD50]/10 border border-[#D3FD50]/20'>
+                    <Camera className='w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 text-[#D3FD50]' strokeWidth={1.5} />
+                  </div>
                   <div>
                     <p className='font-[font2] text-base sm:text-lg lg:text-xl text-white mb-2'>
                       Drop files here or click to browse
@@ -383,10 +388,10 @@ const ContactForm = () => {
                       <button
                         type="button"
                         onClick={() => removeFile(index)}
-                        className='absolute top-2 right-2 w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center bg-red-500 hover:bg-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200 text-white text-sm sm:text-base'
+                        className='absolute top-2 right-2 w-7 h-7 sm:w-8 sm:h-8 flex items-center justify-center bg-red-500 hover:bg-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200 text-white'
                         aria-label={`Remove ${file.name}`}
                       >
-                        <span className='pointer-events-none'>✕</span>
+                        <X className='w-4 h-4 pointer-events-none' strokeWidth={2} />
                       </button>
 
                       <div className='absolute bottom-0 left-0 right-0 bg-black/70 p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
@@ -400,8 +405,13 @@ const ContactForm = () => {
               )}
 
               <div className='glass rounded-xl p-4 sm:p-5'>
-                <p className='font-[font1] text-xs sm:text-sm text-white/70 leading-relaxed'>
-                  <span className='font-[font2] text-[#D3FD50]'>💡 Pro Tip:</span> Upload reference photos or videos that inspire your wedding vision. This helps us understand your style preferences and deliver exactly what you envision.
+                <p className='font-[font1] text-xs sm:text-sm text-white/70 leading-relaxed flex items-start gap-2'>
+                  <span className='flex items-center justify-center w-6 h-6 rounded-lg bg-[#D3FD50]/10 border border-[#D3FD50]/20 flex-shrink-0 mt-0.5'>
+                    <Lightbulb className='w-3.5 h-3.5 text-[#D3FD50]' strokeWidth={1.5} />
+                  </span>
+                  <span>
+                    <span className='font-[font2] text-[#D3FD50]'>Pro Tip:</span> Upload reference photos or videos that inspire your wedding vision. This helps us understand your style preferences and deliver exactly what you envision.
+                  </span>
                 </p>
               </div>
             </div>
