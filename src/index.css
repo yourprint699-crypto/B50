@@ -43,6 +43,68 @@
     font-weight: 500;
     font-style: normal;
 }
+@font-face {
+    font-family: 'EBGaramond';
+    src: url(../public/fonts/EBGaramond-VariableFont_wght.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 400 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'AlanSans';
+    src: url(../public/fonts/AlanSans-VariableFont_wght.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 400 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'BricolageGrotesque';
+    src: url(../public/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf) format('truetype');
+    font-display: swap;
+    font-weight: 400 700;
+    font-style: normal;
+}
+
+/* Font application rules */
+
+/* Keep Amoura Works logo and portfolio main headings unchanged */
+.font-bunya-keep,
+h1.font-\[font2\],
+h2.font-\[font2\] {
+    font-family: font2, sans-serif !important;
+}
+
+/* Headings use EBGaramond */
+h1:not(.font-\[font2\]):not(.font-bunya-keep),
+h2:not(.font-\[font2\]):not(.font-bunya-keep),
+h3:not(.font-\[font2\]):not(.font-bunya-keep),
+h4:not(.font-\[font2\]):not(.font-bunya-keep),
+h5:not(.font-\[font2\]):not(.font-bunya-keep),
+h6:not(.font-\[font2\]):not(.font-bunya-keep) {
+    font-family: 'EBGaramond', serif !important;
+}
+
+/* Body text uses AlanSans */
+p:not(nav p),
+span:not(nav span):not([style*="Bunya"]),
+div:not(nav div):not(.font-\[font2\]),
+li,
+label,
+input,
+textarea,
+select {
+    font-family: 'AlanSans', sans-serif !important;
+}
+
+body, button:not(nav button) {
+    font-family: 'AlanSans', sans-serif;
+}
+
+/* Navigation links use BricolageGrotesque (Portfolio, Inquire Now, Contact Us, Become an Affiliate) */
+nav a,
+nav button {
+    font-family: 'BricolageGrotesque', sans-serif !important;
+}
 
 /* Enhanced root variables for responsive design system */
 :root {
