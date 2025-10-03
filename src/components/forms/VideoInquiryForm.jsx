@@ -196,6 +196,48 @@ const VideoInquiryForm = () => {
           </div>
         </div>
 
+        {/* Phone & Company Name */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className='w-full input-inset text-white placeholder:text-gray-400 focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'
+            aria-label="Phone Number"
+          />
+          <input
+            type="text"
+            name="companyName"
+            placeholder="Company / Brand Name"
+            value={formData.companyName}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className='w-full input-inset text-white placeholder:text-gray-400 focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'
+            aria-label="Company or Brand Name"
+          />
+        </div>
+
+        {/* Location */}
+        <input
+          type="text"
+          name="location"
+          placeholder="City, State / County (e.g., Windham, ME; Portland, OR; Austin, TX)"
+          value={formData.location}
+          onChange={handleChange}
+          disabled={isSubmitting}
+          className={`w-full input-inset text-white placeholder:text-gray-400 ${
+            errors.location ? 'border-red-500 focus:border-[#D3FD50]' : 'focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'
+          }`}
+          aria-label="Location"
+          aria-required="true"
+        />
+        {errors.location && (
+          <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.location}</p>
+        )}
+
         {/* Project Type */}
         <div>
           <select
@@ -240,6 +282,44 @@ const VideoInquiryForm = () => {
             <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.projectDetails}</p>
           )}
         </div>
+
+        {/* Video Link */}
+        <div>
+          <input
+            type="url"
+            name="sampleVideoLink"
+            placeholder="Paste your video link (Google Drive etc.)"
+            value={formData.sampleVideoLink}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className={`w-full input-inset text-white placeholder:text-gray-400 ${
+              errors.sampleVideoLink ? 'border-red-500 focus:border-[#D3FD50]' : 'focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'
+            }`}
+            aria-label="Sample Video Link"
+          />
+          {errors.sampleVideoLink && (
+            <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.sampleVideoLink}</p>
+          )}
+        </div>
+
+        {/* Preferred Timeline */}
+        <select
+          name="preferredTimeline"
+          value={formData.preferredTimeline}
+          onChange={handleChange}
+          disabled={isSubmitting}
+          className={`w-full input-inset text-white ${
+            !formData.preferredTimeline ? 'text-gray-400' : ''
+          } focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]`}
+          aria-label="Preferred Timeline"
+        >
+          <option value="">Preferred Timeline</option>
+          {timelines.map(timeline => (
+            <option key={timeline} value={timeline} className='text-white bg-[#0a0f1c]'>
+              {timeline}
+            </option>
+          ))}
+        </select>
 
         {/* Budget */}
         <input

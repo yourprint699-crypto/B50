@@ -7,8 +7,12 @@ const ContactForm = () => {
     lastName: '',
     email: '',
     phone: '',
+    companyName: '',
+    location: '',
     venue: '',
     package: '',
+    videoLink: '',
+    timeline: '',
     message: '',
     files: []
   })
@@ -120,8 +124,12 @@ const ContactForm = () => {
           lastName: '',
           email: '',
           phone: '',
+          companyName: '',
+          location: '',
           venue: '',
           package: '',
+          videoLink: '',
+          timeline: '',
           message: '',
           files: []
         })
@@ -194,11 +202,32 @@ const ContactForm = () => {
           className='w-full input-inset text-white placeholder:text-gray-400'
         />
         
-        <input 
-          type="tel" 
-          name="phone"
-          placeholder="Phone Number"
-          value={formData.phone}
+        <div className='form-grid form-grid-2 gap-4 sm:gap-6'>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            value={formData.phone}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className='w-full input-inset text-white placeholder:text-gray-400'
+          />
+          <input
+            type="text"
+            name="companyName"
+            placeholder="Company / Brand Name"
+            value={formData.companyName}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className='w-full input-inset text-white placeholder:text-gray-400'
+          />
+        </div>
+
+        <input
+          type="text"
+          name="location"
+          placeholder="City, State / County (e.g., Windham, ME; Portland, OR; Austin, TX)"
+          value={formData.location}
           onChange={handleChange}
           disabled={isSubmitting}
           className='w-full input-inset text-white placeholder:text-gray-400'
@@ -214,19 +243,44 @@ const ContactForm = () => {
           className='w-full input-inset text-white placeholder:text-gray-400'
         />
         
-        <select 
-          name="package"
-          value={formData.package}
+        <div className='form-grid form-grid-2 gap-4 sm:gap-6'>
+          <select
+            name="package"
+            value={formData.package}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className='w-full input-inset text-white'
+          >
+            <option value="">Select Package</option>
+            <option value="essential">Essential Package</option>
+            <option value="premium">Premium Package</option>
+            <option value="luxury">Luxury Package</option>
+            <option value="custom">Custom Package</option>
+          </select>
+          <select
+            name="timeline"
+            value={formData.timeline}
+            onChange={handleChange}
+            disabled={isSubmitting}
+            className='w-full input-inset text-white'
+          >
+            <option value="">Preferred Timeline</option>
+            <option value="asap">ASAP</option>
+            <option value="1-2weeks">1–2 weeks</option>
+            <option value="3-4weeks">3–4 weeks</option>
+            <option value="flexible">Flexible</option>
+          </select>
+        </div>
+
+        <input
+          type="url"
+          name="videoLink"
+          placeholder="Paste your video link (Google Drive etc.)"
+          value={formData.videoLink}
           onChange={handleChange}
           disabled={isSubmitting}
-          className='w-full input-inset text-white'
-        >
-          <option value="">Select Package</option>
-          <option value="essential">Essential Package</option>
-          <option value="premium">Premium Package</option>
-          <option value="luxury">Luxury Package</option>
-          <option value="custom">Custom Package</option>
-        </select>
+          className='w-full input-inset text-white placeholder:text-gray-400'
+        />
         
         <textarea
           name="message"
