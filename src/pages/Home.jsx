@@ -8,6 +8,7 @@ import StatsSection from '../components/home/StatsSection'
 import ServicesSection from '../components/home/ServicesSection'
 import ScrollVideoTransition from '../components/home/ScrollVideoTransition'
 import ProcessSection from '../components/home/ProcessSection'
+import LogoVideo from '../components/home/LogoVideo'
 import AboutSection from '../components/home/AboutSection'
 import ContactSection from '../components/home/ContactSection'
 import Footer from '../components/home/Footer'
@@ -112,6 +113,9 @@ const Home = () => {
 
         {/* Process Section */}
         <ProcessSection />
+
+        {/* Logo Video */}
+        <LogoVideo />
 
         {/* About Us Section */}
         <AboutSection />
