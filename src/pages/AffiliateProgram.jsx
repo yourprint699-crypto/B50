@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/common/PageWrapper'
-import { DollarSign, Target, BarChart3, Handshake } from 'lucide-react'
+import { DollarSign, Target, ChartBar as BarChart3, Handshake } from 'lucide-react'
 
 const BenefitIcon = ({ type, className }) => {
   const icons = { dollar: DollarSign, target: Target, chart: BarChart3, handshake: Handshake }
