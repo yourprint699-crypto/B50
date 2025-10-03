@@ -10,9 +10,9 @@ const Contact = () => {
 
 
   const socialLinks = [
-    { name: 'Instagram', url: 'https://instagram.com/Amouraworks', icon: '📷' },
-    { name: 'Facebook', url: 'https://facebook.com/Amouraworks', icon: '📘' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/company/Amouraworks', icon: '💼' }
+    { name: 'Instagram', url: 'https://instagram.com/Amouraworks', icon: '/instagram-icon.svg' },
+    { name: 'Facebook', url: 'https://facebook.com/Amouraworks', icon: '/facebook-icon.svg' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/company/Amouraworks', icon: '/linkedin-icon.svg' }
   ]
 
   return (
@@ -30,75 +30,89 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className='container mx-auto pb-16 sm:pb-24 lg:pb-32'>
-        {/* Two Column Grid - Perfect Symmetry */}
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 max-width-wide'>
-          {/* Left Column - Contact Form */}
-          <div className='contact-content flex flex-col'>
-            <VideoInquiryForm />
-          </div>
+      <div className='container mx-auto pb-16 sm:pb-24 lg:pb-32 px-4'>
+        {/* Single Large Container with Two Columns */}
+        <div className='floating-panel-dark max-width-wide mx-auto relative'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 gap-0'>
+            {/* Left Column - Form */}
+            <div className='p-8 sm:p-10 lg:p-12 border-b lg:border-b-0 lg:border-r border-white/10'>
+              <h2 className='font-[font2] text-3xl sm:text-4xl lg:text-5xl uppercase text-white mb-4 sm:mb-6'>
+                Let's Create Together
+              </h2>
+              <p className='font-[font1] text-base sm:text-lg text-white/80 leading-relaxed mb-8 sm:mb-10'>
+                Ready to bring your vision to life? Share your project details with us and we'll craft a custom quote tailored to your needs.
+              </p>
 
-          {/* Right Column - Contact Information */}
-          <div className='contact-content flex flex-col space-y-6 sm:space-y-8'>
-            {/* Let's Connect Section */}
-            <div className='floating-panel-dark flex-1 flex flex-col justify-between space-y-6 relative'>
+              <VideoInquiryForm />
+            </div>
+
+            {/* Right Column - Information */}
+            <div className='p-8 sm:p-10 lg:p-12 flex flex-col justify-between space-y-8 sm:space-y-10'>
+              {/* Client Testimonial */}
               <div>
-                <h3 className='font-[font2] heading-responsive-lg uppercase text-[#D3FD50] text-layer-2 text-glow mb-6'>
+                <h3 className='font-[font2] text-xl sm:text-2xl uppercase text-[#D3FD50] text-layer-2 text-glow mb-4'>
+                  Client Testimonial
+                </h3>
+                <blockquote className='space-y-4'>
+                  <p className='font-[font1] text-lg sm:text-xl italic text-white/90 leading-relaxed'>
+                    "Their attention to detail and creative vision elevated our project beyond all expectations."
+                  </p>
+                  <footer className='font-[font1] text-base text-white/70'>
+                    — Alex Chen, Creative Director at Nexus Studios
+                  </footer>
+                </blockquote>
+              </div>
+
+              {/* Divider */}
+              <div className='h-px bg-gradient-to-r from-transparent via-white/20 to-transparent'></div>
+
+              {/* Let's Connect */}
+              <div>
+                <h3 className='font-[font2] text-xl sm:text-2xl uppercase text-[#D3FD50] text-layer-2 text-glow mb-4'>
                   Let's Connect
                 </h3>
-                <div className='space-y-5 font-[font1] text-responsive text-layer-1'>
-                  <div className='flex items-center space-x-4 group transition-all duration-300 hover:translate-x-2'>
-                    <span className='text-2xl micro-bounce glow-accent flex-shrink-0'>📧</span>
+                <div className='space-y-4 font-[font1] text-base sm:text-lg text-white/90'>
+                  <div className='flex items-center space-x-3'>
+                    <span className='text-xl'>📧</span>
                     <a href="mailto:contact@amouraworks.com" className='interactive-hover break-all sm:break-normal'>
                       contact@amouraworks.com
                     </a>
                   </div>
-                  <div className='flex items-center space-x-4 group transition-all duration-300 hover:translate-x-2'>
-                    <span className='text-2xl micro-bounce glow-accent flex-shrink-0'>📍</span>
+                  <div className='flex items-center space-x-3'>
+                    <span className='text-xl'>📍</span>
                     <span>22 ruelle du Clerc, 59126, Linselles (France)</span>
-                  </div>
-                  <div className='flex items-center space-x-4 group transition-all duration-300 hover:translate-x-2'>
-                    <span className='text-2xl micro-bounce glow-accent flex-shrink-0'>🕒</span>
-                    <span>M–F: 9am – 7pm (UTC+1)</span>
                   </div>
                 </div>
               </div>
-              <MouseFollower />
-            </div>
 
-            {/* Follow Our Work Section */}
-            <div className='floating-panel-dark space-y-6'>
-              <h3 className='font-[font2] heading-responsive-md uppercase text-[#D3FD50] text-layer-2 text-glow text-center'>
-                Follow Our Work
-              </h3>
-              <div className='flex justify-center space-x-6'>
-                {socialLinks.map((social, index) => (
-                  <a
-                    key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className='w-16 h-16 glass glass-hover glass-click rounded-2xl flex items-center justify-center group glow-accent transition-all duration-300 hover:scale-110 hover:rotate-6'
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    <span className='text-3xl micro-bounce glow-accent'>
-                      {social.icon}
-                    </span>
-                  </a>
-                ))}
+              {/* Follow Our Work */}
+              <div>
+                <h3 className='font-[font2] text-xl sm:text-2xl uppercase text-[#D3FD50] text-layer-2 text-glow mb-4 text-center'>
+                  Follow Our Work
+                </h3>
+                <div className='flex justify-center space-x-6'>
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className='w-14 h-14 glass glass-hover glass-click rounded-2xl flex items-center justify-center group glow-accent transition-all duration-300 hover:scale-110'
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <img
+                        src={social.icon}
+                        alt={social.name}
+                        className='w-7 h-7 transition-all duration-300 group-hover:scale-110'
+                        style={{ filter: 'invert(1) brightness(1.2)' }}
+                      />
+                    </a>
+                  ))}
+                </div>
               </div>
             </div>
-
-            {/* Response Time Section */}
-            <div className='floating-panel-dark space-y-4'>
-              <h4 className='font-[font2] text-xl uppercase text-[#D3FD50] text-layer-2 text-glow text-center'>
-                Response Time
-              </h4>
-              <p className='font-[font1] text-responsive text-layer-1 leading-relaxed text-center'>
-                Nous répondons à toutes les demandes dans les 24 heures. Pour les urgences, n'hésitez pas à nous appeler directement.
-              </p>
-            </div>
           </div>
+          <MouseFollower />
         </div>
 
         {/* FAQ Section */}

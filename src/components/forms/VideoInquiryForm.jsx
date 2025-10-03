@@ -137,11 +137,7 @@ const VideoInquiryForm = () => {
   }
 
   return (
-    <div className='floating-panel-dark'>
-      <h2 className='font-[font2] heading-responsive-lg uppercase text-[#D3FD50] mb-6 sm:mb-8 lg:mb-10 text-layer-2 text-glow'>
-        Inquire Now
-      </h2>
-
+    <>
       {submitStatus === 'success' && (
         <div className='success-state mb-6 sm:mb-8'>
           <p className='font-[font2] text-base sm:text-lg'>
@@ -158,89 +154,46 @@ const VideoInquiryForm = () => {
         </div>
       )}
 
-      <form onSubmit={handleSubmit} className='space-y-6 sm:space-y-8'>
-        {/* Full Name */}
-        <div>
-          <input
-            type="text"
-            name="fullName"
-            placeholder="Full Name *"
-            value={formData.fullName}
-            onChange={handleChange}
-            disabled={isSubmitting}
-            className={`w-full input-inset text-white placeholder:text-gray-400 ${
-              errors.fullName ? 'border-red-500' : ''
-            }`}
-            aria-label="Full Name"
-            aria-required="true"
-          />
-          {errors.fullName && (
-            <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.fullName}</p>
-          )}
-        </div>
+      <form onSubmit={handleSubmit} className='space-y-5'>
+        {/* Full Name & Email - Side by Side */}
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
+          <div>
+            <input
+              type="text"
+              name="fullName"
+              placeholder="Full Name *"
+              value={formData.fullName}
+              onChange={handleChange}
+              disabled={isSubmitting}
+              className={`w-full input-inset text-white placeholder:text-gray-400 ${
+                errors.fullName ? 'border-red-500 focus:border-[#D3FD50]' : 'focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'
+              }`}
+              aria-label="Full Name"
+              aria-required="true"
+            />
+            {errors.fullName && (
+              <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.fullName}</p>
+            )}
+          </div>
 
-        {/* Email Address */}
-        <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address *"
-            value={formData.email}
-            onChange={handleChange}
-            disabled={isSubmitting}
-            className={`w-full input-inset text-white placeholder:text-gray-400 ${
-              errors.email ? 'border-red-500' : ''
-            }`}
-            aria-label="Email Address"
-            aria-required="true"
-          />
-          {errors.email && (
-            <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.email}</p>
-          )}
-        </div>
-
-        {/* Phone Number */}
-        <input
-          type="tel"
-          name="phone"
-          placeholder="Phone Number"
-          value={formData.phone}
-          onChange={handleChange}
-          disabled={isSubmitting}
-          className='w-full input-inset text-white placeholder:text-gray-400'
-          aria-label="Phone Number"
-        />
-
-        {/* Company / Brand Name */}
-        <input
-          type="text"
-          name="companyName"
-          placeholder="Company / Brand Name"
-          value={formData.companyName}
-          onChange={handleChange}
-          disabled={isSubmitting}
-          className='w-full input-inset text-white placeholder:text-gray-400'
-          aria-label="Company or Brand Name"
-        />
-
-        {/* Location */}
-        <div>
-          <input
-            type="text"
-            name="location"
-            placeholder="City, State / County (e.g., Windham, ME; Portland, OR; Austin, TX; London, Greater London)"
-            value={formData.location}
-            onChange={handleChange}
-            disabled={isSubmitting}
-            className={`w-full input-inset text-white placeholder:text-gray-400 ${
-              errors.location ? 'border-red-500' : ''
-            }`}
-            aria-label="Location"
-            aria-required="true"
-          />
-          {errors.location && (
-            <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.location}</p>
-          )}
+          <div>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email *"
+              value={formData.email}
+              onChange={handleChange}
+              disabled={isSubmitting}
+              className={`w-full input-inset text-white placeholder:text-gray-400 ${
+                errors.email ? 'border-red-500 focus:border-[#D3FD50]' : 'focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'
+              }`}
+              aria-label="Email Address"
+              aria-required="true"
+            />
+            {errors.email && (
+              <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.email}</p>
+            )}
+          </div>
         </div>
 
         {/* Project Type */}
@@ -252,7 +205,7 @@ const VideoInquiryForm = () => {
             disabled={isSubmitting}
             className={`w-full input-inset text-white ${
               !formData.projectType ? 'text-gray-400' : ''
-            } ${errors.projectType ? 'border-red-500' : ''}`}
+            } ${errors.projectType ? 'border-red-500 focus:border-[#D3FD50]' : 'focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'}`}
             aria-label="Project Type"
             aria-required="true"
           >
@@ -272,13 +225,13 @@ const VideoInquiryForm = () => {
         <div>
           <textarea
             name="projectDetails"
-            placeholder="Describe your footage, style, preferred edit type, and any inspiration references."
+            placeholder="Describe your project"
             value={formData.projectDetails}
             onChange={handleChange}
-            rows="5"
+            rows="4"
             disabled={isSubmitting}
             className={`w-full input-inset text-white placeholder:text-gray-400 resize-none ${
-              errors.projectDetails ? 'border-red-500' : ''
+              errors.projectDetails ? 'border-red-500 focus:border-[#D3FD50]' : 'focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'
             }`}
             aria-label="Project Details and Vision"
             aria-required="true"
@@ -288,44 +241,6 @@ const VideoInquiryForm = () => {
           )}
         </div>
 
-        {/* Sample Video Link */}
-        <div>
-          <input
-            type="url"
-            name="sampleVideoLink"
-            placeholder="Paste your video link (YouTube, Vimeo, Google Drive, etc.)"
-            value={formData.sampleVideoLink}
-            onChange={handleChange}
-            disabled={isSubmitting}
-            className={`w-full input-inset text-white placeholder:text-gray-400 ${
-              errors.sampleVideoLink ? 'border-red-500' : ''
-            }`}
-            aria-label="Sample Video Link"
-          />
-          {errors.sampleVideoLink && (
-            <p className='text-red-400 text-sm mt-2 font-[font1]'>{errors.sampleVideoLink}</p>
-          )}
-        </div>
-
-        {/* Preferred Timeline */}
-        <select
-          name="preferredTimeline"
-          value={formData.preferredTimeline}
-          onChange={handleChange}
-          disabled={isSubmitting}
-          className={`w-full input-inset text-white ${
-            !formData.preferredTimeline ? 'text-gray-400' : ''
-          }`}
-          aria-label="Preferred Timeline"
-        >
-          <option value="">Preferred Timeline</option>
-          {timelines.map(timeline => (
-            <option key={timeline} value={timeline} className='text-white bg-[#0a0f1c]'>
-              {timeline}
-            </option>
-          ))}
-        </select>
-
         {/* Budget */}
         <input
           type="text"
@@ -334,12 +249,12 @@ const VideoInquiryForm = () => {
           value={formData.budget}
           onChange={handleChange}
           disabled={isSubmitting}
-          className='w-full input-inset text-white placeholder:text-gray-400'
+          className='w-full input-inset text-white placeholder:text-gray-400 focus:border-[#D3FD50] focus:ring-1 focus:ring-[#D3FD50]'
           aria-label="Budget"
         />
 
         {/* Consent Checkbox */}
-        <div className='space-y-2'>
+        <div className='space-y-2 pt-2'>
           <label className='flex items-start gap-3 cursor-pointer group'>
             <input
               type="checkbox"
@@ -352,8 +267,8 @@ const VideoInquiryForm = () => {
               } bg-white/5 checked:bg-[#D3FD50] checked:border-[#D3FD50] transition-all cursor-pointer focus:ring-2 focus:ring-[#D3FD50] focus:ring-offset-2 focus:ring-offset-black`}
               aria-required="true"
             />
-            <span className='font-[font1] text-sm sm:text-base text-white/80 leading-relaxed flex-1'>
-              I agree to share my footage and project details for review. I understand we will provide a custom quote after reviewing my submission. *
+            <span className='font-[font1] text-sm text-white/80 leading-relaxed flex-1'>
+              I agree to share my project details for review. I understand we will provide a custom quote after reviewing my submission. *
             </span>
           </label>
           {errors.consentGiven && (
@@ -365,15 +280,15 @@ const VideoInquiryForm = () => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className='w-full btn-pill btn-primary h-12 sm:h-14 lg:h-16 font-[font2] text-base sm:text-xl lg:text-2xl disabled:opacity-50 disabled:cursor-not-allowed'
-          aria-label="Send Inquiry"
+          className='w-full btn-pill btn-primary h-14 font-[font2] text-lg uppercase disabled:opacity-50 disabled:cursor-not-allowed mt-6'
+          aria-label="Send Your Inquiry"
         >
           <span className='pointer-events-none'>
-            {isSubmitting ? 'Sending...' : 'Send Inquiry'}
+            {isSubmitting ? 'Sending...' : 'Send Your Inquiry'}
           </span>
         </button>
       </form>
-    </div>
+    </>
   )
 }
 
