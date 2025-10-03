@@ -74,22 +74,22 @@ h2.font-\[font2\] {
     font-family: font2, sans-serif !important;
 }
 
-/* Headings use EBGaramond */
-h1:not(.font-\[font2\]):not(.font-bunya-keep),
-h2:not(.font-\[font2\]):not(.font-bunya-keep),
-h3:not(.font-\[font2\]):not(.font-bunya-keep),
-h4:not(.font-\[font2\]):not(.font-bunya-keep),
-h5:not(.font-\[font2\]):not(.font-bunya-keep),
-h6:not(.font-\[font2\]):not(.font-bunya-keep) {
+/* Headings use EBGaramond (but respect inline styles) */
+h1:not(.font-\[font2\]):not(.font-bunya-keep):not([style*="fontFamily"]),
+h2:not(.font-\[font2\]):not(.font-bunya-keep):not([style*="fontFamily"]),
+h3:not(.font-\[font2\]):not(.font-bunya-keep):not([style*="fontFamily"]),
+h4:not(.font-\[font2\]):not(.font-bunya-keep):not([style*="fontFamily"]),
+h5:not(.font-\[font2\]):not(.font-bunya-keep):not([style*="fontFamily"]),
+h6:not(.font-\[font2\]):not(.font-bunya-keep):not([style*="fontFamily"]) {
     font-family: 'EBGaramond', serif !important;
 }
 
-/* Body text uses AlanSans */
-p:not(nav p),
-span:not(nav span):not([style*="Bunya"]),
-div:not(nav div):not(.font-\[font2\]),
-li,
-label,
+/* Body text uses AlanSans (but respect inline styles and nav elements) */
+p:not(nav p):not([style*="fontFamily"]),
+span:not(nav span):not([style*="Bunya"]):not([style*="fontFamily"]),
+div:not(nav div):not(.font-\[font2\]):not([style*="fontFamily"]),
+li:not([style*="fontFamily"]),
+label:not([style*="fontFamily"]),
 input,
 textarea,
 select {
