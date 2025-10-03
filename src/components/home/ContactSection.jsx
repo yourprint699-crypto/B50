@@ -62,9 +62,9 @@ const ContactSection = () => {
   }, []);
 
   const socialLinks = [
-    { name: 'Instagram', url: 'https://instagram.com/s111khar', icon: '📷' },
-    { name: 'Facebook', url: 'https://facebook.com/amouraworks', icon: '📘' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/company/amouraworks', icon: '💼' },
+    { name: 'Instagram', url: 'https://instagram.com/s111khar', icon: '/icons8-instagram-100.png' },
+    { name: 'Facebook', url: 'https://facebook.com/amouraworks', icon: '/icons8-facebook-100.png' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/company/amouraworks', icon: '/icons8-linkedin-100.png' },
   ];
 
   return (
@@ -122,9 +122,12 @@ const ContactSection = () => {
                     rel="noopener noreferrer"
                     className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 glass rounded-full flex items-center justify-center group glow-accent transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#D3FD50]/20 cursor-pointer"
                   >
-                    <span className="text-lg sm:text-xl lg:text-2xl glow-accent pointer-events-none">
-                      {social.icon}
-                    </span>
+                    <img
+                      src={social.icon}
+                      alt={social.name}
+                      className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 transition-all duration-300 group-hover:scale-110 pointer-events-none"
+                      style={{ filter: 'invert(1) brightness(1.2)' }}
+                    />
                   </a>
                 ))}
               </div>

@@ -10,9 +10,9 @@ const Contact = () => {
 
 
   const socialLinks = [
-    { name: 'Instagram', url: 'https://instagram.com/Amouraworks', icon: '/instagram-icon.svg' },
-    { name: 'Facebook', url: 'https://facebook.com/Amouraworks', icon: '/facebook-icon.svg' },
-    { name: 'LinkedIn', url: 'https://linkedin.com/company/Amouraworks', icon: '/linkedin-icon.svg' }
+    { name: 'Instagram', url: 'https://instagram.com/Amouraworks', icon: '/icons8-instagram-100.png' },
+    { name: 'Facebook', url: 'https://facebook.com/Amouraworks', icon: '/icons8-facebook-100.png' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/company/Amouraworks', icon: '/icons8-linkedin-100.png' }
   ]
 
   return (
