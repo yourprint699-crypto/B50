@@ -147,7 +147,7 @@ const MouseFollower = () => {
       />
 
       <div className="absolute bottom-8 right-8 text-[#D3FD50]/30 text-sm font-[font1] animate-pulse">
-        Move your mouse
+        
       </div>
     </div>
   )
